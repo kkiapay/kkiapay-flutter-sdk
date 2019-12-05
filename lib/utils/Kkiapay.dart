@@ -20,20 +20,22 @@ import 'package:meta/meta.dart';
 "url":"https://api.kkiapay.me/utils/file/zse2kUp6hgdDRps1OBpkSHxRE"
 
 }
-96820190
-96809883
+
 */
 
 class Kkiapay {
-  String apikey;
+  String key;
   bool sandbox;
   //
-  String amount;
-  String data;
-  String host;
-  String theme;
-  String phone;
-  String callback;
+  final String amount;
+  final dynamic data;
+  final String host;
+  final String theme;
+  final String phone;
+  final String url;
+
+  final callback = 'http://redirect.kkiapay.me';
+  final sdk = 'android';
   Function sucessCallback;
 
   final _sandboxEndpoint = 'https://api-sandbox.kkiapay.me';
@@ -41,15 +43,21 @@ class Kkiapay {
 
   String get _endpoint => sandbox ? _sandboxEndpoint : _liveEndpoint;
 
-  Kkiapay(
-      {@required this.apikey,
-      this.sandbox = false,
-      this.callback = 'http://redirect.kkiapay.me',
-      this.sucessCallback});
+  Kkiapay({
+    @required this.key,
+    this.sandbox = false,
+    this.sucessCallback,
+    this.theme,
+    this.host,
+    this.data = '',
+    this.amount,
+    this.phone,
+    this.url,
+  });
 
   Future<Map> getTransactionInfo(transactionId) async {
     final response = await http.post('$_endpoint/api/v1/transactions/status',
-        headers: {'x-api-key': apikey}, body: {'transactionId': transactionId});
+        headers: {'x-api-key': key}, body: {'transactionId': transactionId});
     Map responseObject = json.decode(response.body);
 
     return responseObject;

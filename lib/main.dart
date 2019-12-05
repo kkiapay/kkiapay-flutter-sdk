@@ -1,16 +1,11 @@
 import 'dart:async';
-import 'dart:core' as prefix0;
+import 'dart:core';
 
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
-import 'dart:core';
+import 'package:webview_project/utils/success_callback.dart';
 
 import 'package:webview_project/utils/Kkiapay.dart';
-
-void hello(params) {
-  print(params);
-  print('voici les informations lier au paiement');
-}
 
 final obj = {
   "amount": "1",
@@ -28,9 +23,9 @@ final obj = {
 };
 
 final Kkiapay kkiapay = Kkiapay(
-    apikey: 'f1e7270098f811e99eae1f0cfc677927',
+    key: 'f1e7270098f811e99eae1f0cfc677927',
     sandbox: true,
-    sucessCallback: hello);
+    sucessCallback: sucessCallback);
 
 final url =
     'https://widget.kkiapay.me/?=eyJhbW91bnQiOiIxIiwiY2FsbGJhY2siOiJodHRwOi8vcmVkaXJlY3Qua2tpYXBheS5tZSIsImRhdGEiOiJMZW9uZWwgemVndWUiLCJob3N0IjoiY28ub3BlbnNpLm1lZGljYWwiLCJrZXkiOiJmMWU3MjcwMDk4ZjgxMWU5OWVhZTFmMGNmYzY3NzkyNyIsIm5hbWUiOiJITlMgSWl5YW1hIiwicGhvbmUiOiI5NzAwMDAwMCIsInJlYXNvbiI6IlBhaWVtZW50IGRcdTAwMjd1biByZW5kZXotdm91cyIsInNhbmRib3giOnRydWUsInNkayI6ImFuZHJvaWQiLCJ0aGVtZSI6IiMyYmEzNTkiLCJ1cmwiOiJodHRwczovL2FwaS5ra2lhcGF5Lm1lL3V0aWxzL2ZpbGUvenNlMmtVcDZoZ2REUnBzMU9CcGtTSHhSRSJ9';
@@ -89,8 +84,8 @@ class _MyappState extends State<Myapp> {
               // print
 
               if (response['status'] == 'SUCCESS') {
-                Navigator.pop(context);
-                return hello(response);
+                // Navigator.pop(context);
+                return sucessCallback(response['amount'], context);
               }
             }).catchError((onError) {
               print(onError);
