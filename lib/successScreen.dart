@@ -13,7 +13,8 @@ class SuccessScreen extends StatelessWidget {
         ),
         body: SingleChildScrollView(
           child: Container(
-            child: Text('votre paiement de $amount a été recu avec succès'),
+            child:
+                Text('votre paiement de $amount Fcfa a été recu avec succès'),
           ),
         ),
       ),

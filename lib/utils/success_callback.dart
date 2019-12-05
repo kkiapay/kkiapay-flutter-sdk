@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:webview_project/successScree.dart';
+import 'package:webview_project/successScreen.dart';
 
-Function sucessCallback(amount, context) {
+void sucessCallback(amount, context) {
   Navigator.push(
     context,
     MaterialPageRoute(
