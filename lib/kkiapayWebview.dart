@@ -4,7 +4,7 @@ import 'dart:core';
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
-import 'package:webview_project/utils/Kkiapay.dart';
+import 'package:kkiapay_flutter_sdk/utils/Kkiapay.dart';
 
 class KkiapayWebview extends StatefulWidget {
   final Kkiapay _kkiapayInstance;

@@ -1,7 +1,7 @@
 import 'package:example/screens/successScreen.dart';
 import 'package:flutter/material.dart';
-import 'package:webview_project/kkiapayWebview.dart';
-import 'package:webview_project/utils/Kkiapay.dart';
+import 'package:kkiapay_flutter_sdk/kkiapayWebview.dart';
+import 'package:kkiapay_flutter_sdk/utils/Kkiapay.dart';
 
 void main() => runApp(App());
 

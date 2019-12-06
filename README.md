@@ -1,16 +1,42 @@
-# webview_project
+# kkiapay_flutter_sdk
 
-A new Flutter project.
+[Kkiapay](https://kkiapay.me) is developer friendly solution that allows you to accept mobile money and credit card payments
+in your application or website.
 
-## Getting Started
+Before using this SDK, make sure you have a right Merchant Account on [Kkiapay](https://kkiapay.me), otherwise [go](https://kkiapay.me)
+and create your account is free and without pain :sunglasses:.
 
-This project is a starting point for a Flutter application.
+## Installation
 
-A few resources to get you started if this is your first Flutter project:
+To use this package :
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+```yaml
+dependencies:
+  flutter:
+    sdk: flutter
+  kkiapay_flutter_sdk:
+```
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.dev/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+## Usage
+
+```yaml
+    import 'package:kkiapay_flutter_sdk/kkiapayWebview.dart';
+    import 'package:kkiapay_flutter_sdk/utils/Kkiapay.dart';
+```
+##### Initialise the Kkiapay Instance
+In the onCreate method of your Application class
+```kotlin
+Kkiapay.init(applicationContext,
+            "<kkiapay-api-key>",
+            SdkConfig(themeColor = R.color.colorPrimary, imageResource = R.raw.armoiries, 
+            /* set this to false in prod */ enableSandbox = true))
+```
+
+##### Create payment webview instance
+In the onCreate method of your Application class
+```kotlin
+Kkiapay.init(applicationContext,
+            "<kkiapay-api-key>",
+            SdkConfig(themeColor = R.color.colorPrimary, imageResource = R.raw.armoiries, 
+            /* set this to false in prod */ enableSandbox = true))
+```
