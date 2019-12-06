@@ -1,29 +1,10 @@
-import 'package:http/http.dart' as http;
+import 'package:http/http.dart' show Client;
 import 'dart:convert';
 
 import 'package:meta/meta.dart';
 
-/*
-{
-  
-"amount":"1",
-"callback":"http://redirect.kkiapay.me",
-"data":"Leonel zegue",
-"host":"co.opensi.medical",
-"key":"f1e7270098f811e99eae1f0cfc677927",
-"name":"HNS Iiyama",
-"phone":"97000000",
-"reason":"Paiement d\u0027un rendez-vous",
-"sandbox":true,
-"sdk":"android",
-"theme":"#2ba359",
-"url":"https://api.kkiapay.me/utils/file/zse2kUp6hgdDRps1OBpkSHxRE"
-
-}
-
-*/
-
 class Kkiapay {
+  Client client = Client();
   String key;
   bool sandbox;
   //
@@ -33,6 +14,7 @@ class Kkiapay {
   final String theme;
   final String phone;
   final String url;
+  final String name;
 
   final callback = 'http://redirect.kkiapay.me';
   final sdk = 'android';
@@ -45,18 +27,19 @@ class Kkiapay {
 
   Kkiapay({
     @required this.key,
+    this.name,
     this.sandbox = false,
-    this.sucessCallback,
-    this.theme,
+    @required this.sucessCallback,
+    this.theme = '',
     this.host,
     this.data = '',
-    this.amount,
+    @required this.amount,
     this.phone,
-    this.url,
+    this.url = '',
   });
 
   Future<Map> getTransactionInfo(transactionId) async {
-    final response = await http.post('$_endpoint/api/v1/transactions/status',
+    final response = await client.post('$_endpoint/api/v1/transactions/status',
         headers: {'x-api-key': key}, body: {'transactionId': transactionId});
     Map responseObject = json.decode(response.body);
 

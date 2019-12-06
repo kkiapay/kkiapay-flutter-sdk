@@ -1,7 +1,9 @@
+import 'package:example/screens/successScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:webview_project/kkiapayWebview.dart';
-import 'package:webview_project/successScreen.dart';
 import 'package:webview_project/utils/Kkiapay.dart';
+
+void main() => runApp(App());
 
 void sucessCallback(amount, context) {
   // Navigator.pop(context);
@@ -24,8 +26,6 @@ final kkiapay = Kkiapay(
     phone: '97000000',
     name: 'JOHN DOE',
     theme: '#2ba359');
-
-void main() => runApp(App());
 
 class App extends StatelessWidget {
   @override
