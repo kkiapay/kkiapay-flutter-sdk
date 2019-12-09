@@ -144,10 +144,6 @@ the successCallback function takes two parameters in the following order
 - the context of type BuildContext
 
 
-la function successCallback prends deux  parametres dans l'ordre suivant
-
-
-
 ```
 
 ### Issues and feedback
