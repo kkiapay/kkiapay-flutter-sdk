@@ -23,6 +23,7 @@ dependencies:
     import 'package:kkiapay_flutter_sdk/kkiapayWebview.dart';
     import 'package:kkiapay_flutter_sdk/utils/Kkiapay.dart';
 ```
+
 ##### Initialise the Kkiapay Instance
 
 ```dart
@@ -124,7 +125,30 @@ class KkiapaySample extends StatelessWidget {
 
 ### Reference
 
+<table>
+<tr><td>Argument</td><td>Type</td><td>Required</td><td>Details</td></tr>
+<tr><td>phone</td><td>String</td><td>Yes</td><td>Valid mobile money number to debit. ex : 22967434270 </td></tr>
+<tr><td>amount</td><td>Numeric</td><td>Yes</td><td>Amount to debit from user account (XOF) </td></tr>
+<tr><td>name</td><td>String</td><td>No</td><td>Client firstname and lastname </td></tr>
+<tr><td>key</td><td>String</td><td>Yes</td><td>public api key</td></tr>
+<tr><td>sandbox</td><td>Boolean</td><td>No</td><td>The true value of this attribute allows you to switch to test mode</td></tr>
+<tr><td>sucessCallback</td><td>Function</td><td>No</td><td>This function is called once the payment has been successfully made</td></tr>
+</table>
 
+```dart
+
+
+the successCallback function takes two parameters in the following order
+- Map<String,dynamic> containing the transaction information
+
+- the context of type BuildContext
+
+
+la function successCallback prends deux  parametres dans l'ordre suivant
+
+
+
+```
 
 ### Issues and feedback
 

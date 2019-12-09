@@ -2,6 +2,7 @@ import 'package:http/http.dart' show Client;
 import 'dart:convert';
 
 import 'package:meta/meta.dart';
+import 'package:package_info/package_info.dart';
 
 class Kkiapay {
   Client client = Client();
@@ -10,7 +11,7 @@ class Kkiapay {
   //
   final String amount;
   final dynamic data;
-  final String host;
+  String host;
   final String theme;
   final String phone;
   final String url;
@@ -25,18 +26,17 @@ class Kkiapay {
 
   String get _endpoint => sandbox ? _sandboxEndpoint : _liveEndpoint;
 
-  Kkiapay({
-    @required this.key,
-    this.name,
-    this.sandbox = false,
-    @required this.sucessCallback,
-    this.theme = '',
-    this.host,
-    this.data = '',
-    @required this.amount,
-    this.phone,
-    this.url = '',
-  });
+  Kkiapay(
+      {@required this.key,
+      this.name,
+      this.sandbox = false,
+      @required this.sucessCallback,
+      this.theme = '',
+      this.data = '',
+      @required this.amount,
+      this.phone,
+      this.url = '',
+      this.host});
 
   Future<Map> getTransactionInfo(transactionId) async {
     final response = await client.post('$_endpoint/api/v1/transactions/status',
@@ -52,5 +52,17 @@ class Kkiapay {
     final base64Str = base64.encode(bytes);
 
     return base64Str;
+  }
+
+  getAppInfo() async {
+    //get app information
+    PackageInfo packageInfo = await PackageInfo.fromPlatform();
+
+    String appName = packageInfo.appName;
+    String packageName = packageInfo.packageName;
+    String version = packageInfo.version;
+    String buildNumber = packageInfo.buildNumber;
+
+    host = packageName;
   }
 }
