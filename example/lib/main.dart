@@ -7,6 +7,7 @@ void main() => runApp(App());
 
 void sucessCallback(amount, context) {
   // Navigator.pop(context);
+  print('function appelé avec succès');
   Navigator.push(
     context,
     MaterialPageRoute(
@@ -18,13 +19,13 @@ void sucessCallback(amount, context) {
 
 final kkiapay = Kkiapay(
     sucessCallback: sucessCallback,
-    amount: '2000',
+    amount: '5000',
     sandbox: true,
     data: 'fakedata',
     //put your api key there
     key: 'f1e7270098f811e99eae1f0cfc677927',
     phone: '97000000',
-    name: 'JOHN DOE',
+    name: 'AZERTY UIOP',
     theme: '#2ba359');
 
 class App extends StatelessWidget {
