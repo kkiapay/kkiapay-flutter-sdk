@@ -36,9 +36,10 @@ class Kkiapay {
       @required this.amount,
       this.phone,
       this.url = '',
-      this.host});
+      this.host = 'globalHost'});
 
   Future<Map> getTransactionInfo(transactionId) async {
+    print('cette function est appelé');
     final response = await client.post('$_endpoint/api/v1/transactions/status',
         headers: {'x-api-key': key}, body: {'transactionId': transactionId});
     Map responseObject = json.decode(response.body);
@@ -56,13 +57,20 @@ class Kkiapay {
 
   getAppInfo() async {
     //get app information
-    PackageInfo packageInfo = await PackageInfo.fromPlatform();
+    // PackageInfo packageInfo = await PackageInfo.fromPlatform();
 
-    String appName = packageInfo.appName;
-    String packageName = packageInfo.packageName;
-    String version = packageInfo.version;
-    String buildNumber = packageInfo.buildNumber;
+    // String appName = packageInfo.appName;
+    // String packageName = packageInfo.packageName;
+    // String version = packageInfo.version;
+    // String buildNumber = packageInfo.buildNumber;
 
-    host = packageName;
+    // host = packageName;
+
+    PackageInfo.fromPlatform().then((PackageInfo packageInfo) {
+      String appName = packageInfo.appName;
+      String packageName = packageInfo.packageName;
+      String version = packageInfo.version;
+      String buildNumber = packageInfo.buildNumber;
+    });
   }
 }
