@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 import 'package:kkiapay_flutter_sdk/utils/Kkiapay.dart';
-// import 'package:flutter_webview_plugin_example/screen.dart';
 
 class KkiapayWebview extends StatefulWidget {
   final Kkiapay _kkiapayInstance;
@@ -52,8 +51,6 @@ class _KkiapayWebviewState extends State<KkiapayWebview> {
 
     encodedvalue = widget._kkiapayInstance.convertObjectToBase64(finalObject);
 
-    // flutterWebViewPlugin.close();
-
     _onStateChanged = flutterWebViewPlugin.onStateChanged
         .listen((WebViewStateChanged state) async {
       if (state.type == WebViewState.shouldStart) {
@@ -68,6 +65,7 @@ class _KkiapayWebviewState extends State<KkiapayWebview> {
               print('object');
               widget._kkiapayInstance
                   .sucessCallback(response['amount'], context);
+              flutterWebViewPlugin.close();
             }
           }).catchError((onError) {
             print(onError);
@@ -77,14 +75,14 @@ class _KkiapayWebviewState extends State<KkiapayWebview> {
       }
     });
 
-    flutterWebViewPlugin.launch('http://kkiapay-devi.surge.sh/?=$encodedvalue');
+    // flutterWebViewPlugin.launch('https://widget.kkiapay.me/?=$encodedvalue');
   }
 
   @override
   void dispose() {
     // Every listener should be canceled, the same should be done with this stream.
 
-    _onUrlChanged.cancel();
+    //R_onUrlChanged.c
     _onStateChanged.cancel();
     flutterWebViewPlugin.dispose();
 
@@ -93,6 +91,22 @@ class _KkiapayWebviewState extends State<KkiapayWebview> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+        body: WebviewScaffold(
+      url: 'https://widget.kkiapay.me/?=$encodedvalue',
+      mediaPlaybackRequiresUserGesture: false,
+      appBar: AppBar(
+        title: const Text('Pay with kkiapay'),
+      ),
+      withZoom: true,
+      withLocalStorage: true,
+      hidden: true,
+      initialChild: Container(
+        color: Colors.transparent,
+        child: const Center(
+          child: CircularProgressIndicator(),
+        ),
+      ),
+    ));
   }
 }

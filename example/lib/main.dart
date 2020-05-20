@@ -6,7 +6,7 @@ import 'package:kkiapay_flutter_sdk/utils/Kkiapay.dart';
 void main() => runApp(App());
 
 void sucessCallback(amount, context) {
-  // Navigator.pop(context);
+  Navigator.pop(context);
   print('function appelé avec succès');
   Navigator.push(
     context,
