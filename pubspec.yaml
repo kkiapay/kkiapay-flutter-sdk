@@ -1,5 +1,6 @@
 name: kkiapay_flutter_sdk
-description: A new Flutter project.
+description: flutter kkiapay sdk
+
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -11,7 +12,9 @@ description: A new Flutter project.
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 1.0.0+1
+version: 0.0.1
+author: kkiapay <support@kkiapay.me> 
+homepage: 'https://github.com/boussarilatif/kkiapay-flutter-sdk'
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
@@ -20,7 +23,7 @@ dependencies:
   flutter:
     sdk: flutter
   http: ^0.12.0+2
-  package_info:
+  package_info: ^0.4.0+18
 
   webview_flutter: ^0.3.1
   flutter_webview_plugin: ^0.3.10
