@@ -24,11 +24,11 @@ class _KKiaPayState extends State<KKiaPay> {
   final String _phone;
   final String _data;
 
-  /**
-   * @Params amount : Payment amount
-   * @Params phone : Payment phoneNumber
-   * @Params data : Payment data send by webhook
-   */
+  ///
+  // * @Params amount : Payment amount
+  // * @Params phone : Payment phoneNumber
+  // * @Params data : Payment data send by webhook
+  // 
   _KKiaPayState(this._amount, this._phone, this._data);
 
   @override
