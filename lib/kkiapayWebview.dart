@@ -47,8 +47,11 @@ class _KKiaPayState extends State<KKiaPay> {
            * Payment Done with success
            */
           print(url);
-          print('=========>>>');
-          callback(amount,context);
+          final link = Uri.parse(url);
+          final transactionId =  link.queryParameters['transaction_id'];
+          print(transactionId);
+          print(amount);
+          callback({'amount':amount,'transactionId':transactionId},context);
           flutterWebViewPlugin.dispose();
           flutterWebViewPlugin.hide();
           

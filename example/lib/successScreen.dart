@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 
 class SuccessScreen extends StatelessWidget {
   final int amount;
+  final transactionId;
 
-  const SuccessScreen({this.amount});
+  const SuccessScreen({this.amount,this.transactionId});
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -14,7 +15,7 @@ class SuccessScreen extends StatelessWidget {
         body: SingleChildScrollView(
           child: Container(
             child:
-                Text('votre paiement de $amount Fcfa a été recu avec succès'),
+                Text('votre paiement de $amount Fcfa a été recu avec succès et lID de la transaction est $transactionId'),
           ),
         ),
       ),

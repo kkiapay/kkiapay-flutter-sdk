@@ -8,14 +8,18 @@ import './successScreen.dart';
 
 void main() => runApp(App());
 
-void sucessCallback(amount, context) {
+void sucessCallback(response, context) {
+  print(response);
+  print('-============>');
   Navigator.pop(context);
   print('function appelé avec succès');
   Navigator.push(
     context,
     MaterialPageRoute(
         builder: (context) => SuccessScreen(
-              amount: amount,
+              
+              amount: response['amount'],
+              transactionId: response['transactionId']
             )),
   );
 }
