@@ -2,7 +2,6 @@
 // import 'package:example/screens/main.dart' ;
 import 'package:flutter/material.dart';
 import 'package:kkiapay_flutter_sdk/kkiapayWebview.dart';
-import 'package:kkiapay_flutter_sdk/utils/Kkiapay.dart';
 import './successScreen.dart';
 
 

@@ -21,7 +21,6 @@ dependencies:
 
 ```dart
     import 'package:kkiapay_flutter_sdk/kkiapayWebview.dart';
-    import 'package:kkiapay_flutter_sdk/utils/Kkiapay.dart';
 ```
 
 ##### Initialise the Kkiapay Instance
@@ -30,7 +29,7 @@ dependencies:
 final kkiapay = Kkiapay(
     @required sucessCallback: Function,
     @required amount: String,
-    @required key: String,
+    @required apikey: String,
     sandbox: bool,
     data: String,
     phone: String,
@@ -56,13 +55,14 @@ import 'package:kkiapay_flutter_sdk/utils/Kkiapay.dart';
 
 void main() => runApp(App());
 
-void sucessCallback(Map<String,dynamic> transactionInfo, context) {
-  // Navigator.pop(context);
+void sucessCallback(response, context) {
+  Navigator.pop(context);
   Navigator.push(
     context,
     MaterialPageRoute(
-        builder: (context) => SuccessScreen(
-              amount: amount,
+        builder: (context) => SuccessScreen( 
+              amount: response['amount'],
+              transactionId: response['transactionId']
             )),
   );
 }
@@ -72,7 +72,6 @@ final kkiapay = Kkiapay(
     amount: '2000',
     sandbox: true,
     data: 'fakedata',
-    //put your api key there
     apikey: 'xxxxxxxxxxxxxxxxxxxxxxx',
     phone: '97000000',
     name: 'JOHN DOE',
@@ -112,7 +111,7 @@ class KkiapaySample extends StatelessWidget {
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => KkiapayWebview(kkiapay)),
+              MaterialPageRoute(builder: (context) => kkiapay),
             );
           },
         ),
