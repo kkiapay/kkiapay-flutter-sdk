@@ -1,7 +1,10 @@
-import 'successScreen.dart';
+// import 'successScreen.dart';
+// import 'package:example/screens/main.dart' ;
 import 'package:flutter/material.dart';
 import 'package:kkiapay_flutter_sdk/kkiapayWebview.dart';
 import 'package:kkiapay_flutter_sdk/utils/Kkiapay.dart';
+import './successScreen.dart';
+
 
 void main() => runApp(App());
 
@@ -16,17 +19,10 @@ void sucessCallback(amount, context) {
             )),
   );
 }
+// KkiapayWebview()
+// _SdkData()
 
-final kkiapay = Kkiapay(
-    sucessCallback: sucessCallback,
-    amount: '5000',
-    sandbox: true,
-    data: 'fakedata',
-    //put your api key there
-    key: 'f1e7270098f811e99eae1f0cfc677927',
-    phone: '97000000',
-    name: 'AZERTY UIOP',
-    theme: '#2ba359');
+final kkiapay = KKiaPay(amount: 1,phone: '97000000',data: 'hello world',sandbox: true,apikey: 'f1e7270098f811e99eae1f0cfc677927',callback: sucessCallback,);
 
 class App extends StatelessWidget {
   @override
@@ -62,7 +58,7 @@ class KkiapaySample extends StatelessWidget {
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => KkiapayWebview(kkiapay)),
+              MaterialPageRoute(builder: (context) => kkiapay),
             );
           },
         ),

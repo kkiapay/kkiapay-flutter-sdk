@@ -6,30 +6,36 @@ import 'kkiapayConf.sample.dart';
 
 class KKiaPay extends StatefulWidget {
 
-  int _amount;
-  String _phone;
-  String _data;
+  int amount;
+  String phone;
+  String data;
+  String apikey;
+  bool sandbox;
+  Function callback;
 
 
-  KKiaPay(this._amount, this._phone, this._data);
+  KKiaPay({this.amount, this.phone, this.data,this.sandbox,this.apikey,this.callback});
 
   @override
-  _KKiaPayState createState() => _KKiaPayState(this._amount, this._phone, this._data);
+  _KKiaPayState createState() => _KKiaPayState(this.amount, this.phone, this.data,this.sandbox,this.apikey,this.callback);
 }
 
 class _KKiaPayState extends State<KKiaPay> {
 
   final flutterWebViewPlugin = FlutterWebviewPlugin();
-  final int _amount;
-  final String _phone;
-  final String _data;
+  final int amount;
+  final String phone;
+  final String data;
+  final String apikey;
+  final bool sandbox;
+  final Function callback;
 
   ///
   // * @Params amount : Payment amount
   // * @Params phone : Payment phoneNumber
   // * @Params data : Payment data send by webhook
   // 
-  _KKiaPayState(this._amount, this._phone, this._data);
+  _KKiaPayState(this.amount, this.phone, this.data,this.sandbox,this.apikey,this.callback);
 
   @override
   void initState() {
@@ -40,8 +46,12 @@ class _KKiaPayState extends State<KKiaPay> {
           /**
            * Payment Done with success
            */
+          print(url);
+          print('=========>>>');
+          callback(amount);
           flutterWebViewPlugin.dispose();
           flutterWebViewPlugin.hide();
+          
           //TODO action of success payment
         }
       }
@@ -57,10 +67,15 @@ class _KKiaPayState extends State<KKiaPay> {
 
   @override
   Widget build(BuildContext context) {
+    print(this.apikey);
+    print(this.sandbox);
+    print('====================>');
     final url = '$KKiaPayURL/?=${_SdkData(
-      amount: this._amount,
-      phone: this._phone,
-      data: this._data
+      amount: this.amount,
+      phone: this.phone,
+      data: this.data,
+      sandbox: this.sandbox,
+      apikey: this.apikey
     ).toBase64()}';
     return WebviewScaffold (
         url: url,
@@ -90,10 +105,10 @@ class _SdkData {
    * @Params data : Payment data send by webhook
    * @Params sandbox : Payment request made in sandbox
    */
-  _SdkData({this.amount, this.reason,this.name, this.phone, this.data, this.sandbox = true});
+  _SdkData({this.amount, this.reason,this.name, this.phone, this.data, this.sandbox = true,this.apikey});
 
   final int amount;
-  final reason, name, sandbox, phone, data;
+  final reason, name, sandbox, phone, data, apikey;
 
   Map<String, dynamic> toMap() {
     return {
@@ -101,7 +116,7 @@ class _SdkData {
       'reason': reason,
       'name': name,
       'sandbox': sandbox,
-      'key': key,
+      'key': apikey,
       'callback': callback,
       'phone': phone,
       'sdk': sdk,
