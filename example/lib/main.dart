@@ -25,7 +25,7 @@ void sucessCallback(response, context) {
 // KkiapayWebview()
 // _SdkData()
 
-final kkiapay = KKiaPay(amount: 1,phone: '97000000',data: 'hello world',sandbox: true,apikey: 'f1e7270098f811e99eae1f0cfc677927',callback: sucessCallback,);
+final kkiapay = KKiaPay(amount: 1,phone: '97000000',data: 'hello world',sandbox: true,apikey: 'xxxxxxxxxxxxxxx',callback: sucessCallback,);
 
 class App extends StatelessWidget {
   @override
