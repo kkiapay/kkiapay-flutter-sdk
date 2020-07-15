@@ -1,5 +1,4 @@
-// import 'successScreen.dart';
-// import 'package:example/screens/main.dart' ;
+
 import 'package:flutter/material.dart';
 import 'package:kkiapay_flutter_sdk/kkiapayWebview.dart';
 import './successScreen.dart';
@@ -9,9 +8,7 @@ void main() => runApp(App());
 
 void sucessCallback(response, context) {
   print(response);
-  print('-============>');
   Navigator.pop(context);
-  print('function appelé avec succès');
   Navigator.push(
     context,
     MaterialPageRoute(
@@ -22,8 +19,7 @@ void sucessCallback(response, context) {
             )),
   );
 }
-// KkiapayWebview()
-// _SdkData()
+
 
 final kkiapay = KKiaPay(amount: 1,phone: '97000000',data: 'hello world',sandbox: true,apikey: 'xxxxxxxxxxxxxxx',callback: sucessCallback,);
 
