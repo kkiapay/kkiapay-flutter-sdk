@@ -1,3 +1,7 @@
+## 1.0
+
+- kkiapay official release
+
 ## 0.5.0
 
 - add docs
