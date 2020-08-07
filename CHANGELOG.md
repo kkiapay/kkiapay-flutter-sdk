@@ -1,3 +1,7 @@
+## 0.5.0
+
+- add docs
+
 # 0.2.0
 
 - refactor
