@@ -26,8 +26,8 @@ dependencies:
 ##### Initialise the Kkiapay Instance
 
 ```dart
-final kkiapay = Kkiapay(
-    @required successCallback: Function,
+final kkiapay = KKiaPay(
+    @required successCallback: Function(Map<String, dynamic> response, BuildContext context),
     @required amount: String,
     @required apikey: String,
     sandbox: bool,
@@ -51,7 +51,6 @@ final Widget kkiapayWebview = KkiapayWebview(kkiapay)
 import 'package:example/screens/successScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:kkiapay_flutter_sdk/kkiapayWebview.dart';
-import 'package:kkiapay_flutter_sdk/utils/Kkiapay.dart';
 
 void main() => runApp(App());
 
@@ -67,7 +66,7 @@ void successCallback(response, context) {
   );
 }
 
-final kkiapay = Kkiapay(
+final kkiapay = KKiaPay(
     successCallback: successCallback,
     amount: '2000',
     sandbox: true,

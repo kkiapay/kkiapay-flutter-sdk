@@ -1,4 +1,8 @@
-## 1.0
+## 1.0.2
+
+- add type for callback
+
+## 1.0.0
 
 - kkiapay official release
 
