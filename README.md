@@ -67,7 +67,7 @@ void successCallback(response, context) {
   );
 }
 
-final kkiapay = Kkiapay(
+final kkiapay = KKiaPay(
     successCallback: successCallback,
     amount: '2000',
     sandbox: true,
