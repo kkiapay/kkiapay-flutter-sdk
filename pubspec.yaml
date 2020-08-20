@@ -14,7 +14,7 @@ description: KkiaPay allows businesses to safely receive payments by mobile mone
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
 version: 1.0.0
 support: kkiapay <support@kkiapay.me> 
-homepage: 'https://github.com/boussarilatif/kkiapay-flutter-sdk'
+homepage: 'https://github.com/kkiapay/kkiapay-flutter-sdk'
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
