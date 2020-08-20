@@ -131,7 +131,7 @@ class KkiapaySample extends StatelessWidget {
 <tr><td>name</td><td>String</td><td>No</td><td>Client firstname and lastname </td></tr>
 <tr><td>apikey</td><td>String</td><td>Yes</td><td>public api key</td></tr>
 <tr><td>sandbox</td><td>Boolean</td><td>No</td><td>The true value of this attribute allows you to switch to test mode</td></tr>
-<tr><td>@required successCallback: Function(Map<String, dynamic> response, BuildContext context)</td><td>Function</td><td>No</td><td>This function is called once the payment has been successfully made</td></tr>
+<tr><td>successCallback</td><td>Function</td><td>No</td><td>This function is called once the payment has been successfully made</td></tr>
 </table>
 
 ```dart
