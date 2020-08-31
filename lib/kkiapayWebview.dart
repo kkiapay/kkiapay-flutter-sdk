@@ -12,12 +12,13 @@ class KKiaPay extends StatefulWidget {
   String apikey;
   bool sandbox;
   Function callback;
+  String theme;
 
 
-  KKiaPay({this.amount, this.phone, this.data,this.sandbox,this.apikey,this.callback});
+  KKiaPay({this.amount, this.phone, this.data,this.sandbox,this.apikey,this.callback,String theme});
 
   @override
-  _KKiaPayState createState() => _KKiaPayState(this.amount, this.phone, this.data,this.sandbox,this.apikey,this.callback);
+  _KKiaPayState createState() => _KKiaPayState(this.amount, this.phone, this.data,this.sandbox,this.apikey,this.callback,this.theme);
 }
 
 class _KKiaPayState extends State<KKiaPay> {
@@ -29,13 +30,14 @@ class _KKiaPayState extends State<KKiaPay> {
   final String apikey;
   final bool sandbox;
   final Function callback;
+  final String theme;
 
   ///
   // * @Params amount : Payment amount
   // * @Params phone : Payment phoneNumber
   // * @Params data : Payment data send by webhook
   // 
-  _KKiaPayState(this.amount, this.phone, this.data,this.sandbox,this.apikey,this.callback);
+  _KKiaPayState(this.amount, this.phone, this.data,this.sandbox,this.apikey,this.callback,this.theme);
 
   @override
   void initState() {
@@ -78,7 +80,8 @@ class _KKiaPayState extends State<KKiaPay> {
       phone: this.phone,
       data: this.data,
       sandbox: this.sandbox,
-      apikey: this.apikey
+      apikey: this.apikey,
+      theme: this.theme
     ).toBase64()}';
     return WebviewScaffold (
         url: url,
@@ -108,10 +111,10 @@ class _SdkData {
    * @Params data : Payment data send by webhook
    * @Params sandbox : Payment request made in sandbox
    */
-  _SdkData({this.amount, this.reason,this.name, this.phone, this.data, this.sandbox = true,this.apikey});
+  _SdkData({this.amount, this.reason,this.name, this.phone, this.data, this.sandbox = true,this.apikey,this.theme});
 
   final int amount;
-  final reason, name, sandbox, phone, data, apikey;
+  final reason, name, sandbox, phone, data, apikey,theme;
 
   Map<String, dynamic> toMap() {
     return {
