@@ -15,7 +15,7 @@ class KKiaPay extends StatefulWidget {
   String theme;
 
 
-  KKiaPay({this.amount, this.phone, this.data,this.sandbox,this.apikey,this.callback,String theme});
+  KKiaPay({this.amount, this.phone, this.data,this.sandbox,this.apikey,this.callback, this.theme});
 
   @override
   _KKiaPayState createState() => _KKiaPayState(this.amount, this.phone, this.data,this.sandbox,this.apikey,this.callback,this.theme);
@@ -48,11 +48,8 @@ class _KKiaPayState extends State<KKiaPay> {
           /**
            * Payment Done with success
            */
-          print(url);
           final link = Uri.parse(url);
           final transactionId =  link.queryParameters['transaction_id'];
-          print(transactionId);
-          print(amount);
           callback({'amount':amount,'transactionId':transactionId},context);
           flutterWebViewPlugin.dispose();
           flutterWebViewPlugin.hide();
@@ -72,9 +69,6 @@ class _KKiaPayState extends State<KKiaPay> {
 
   @override
   Widget build(BuildContext context) {
-    print(this.apikey);
-    print(this.sandbox);
-    print('====================>');
     final url = '$KKiaPayURL/?=${_SdkData(
       amount: this.amount,
       phone: this.phone,
@@ -84,11 +78,7 @@ class _KKiaPayState extends State<KKiaPay> {
       theme: this.theme
     ).toBase64()}';
     return WebviewScaffold (
-        url: url,
-        appBar: new AppBar(
-          backgroundColor: Color(0xFFFE7367),
-        title: const Text('Paiement', style: TextStyle(color: Colors.white),),
-      ),
+      url: url,
       withZoom: true,
       withLocalStorage: true,
       hidden: true,
@@ -111,7 +101,7 @@ class _SdkData {
    * @Params data : Payment data send by webhook
    * @Params sandbox : Payment request made in sandbox
    */
-  _SdkData({this.amount, this.reason,this.name, this.phone, this.data, this.sandbox = true,this.apikey,this.theme});
+  _SdkData({this.amount, this.reason,this.name, this.phone, this.data, this.sandbox = true,this.apikey,this.theme ='#4E6BFC'});
 
   final int amount;
   final reason, name, sandbox, phone, data, apikey,theme;
