@@ -27,7 +27,7 @@ dependencies:
 
 ```dart
 final kkiapay = KKiaPay(
-    @required successCallback: Function(Map<String, dynamic> response, BuildContext context),
+    @required callback: Function(Map<String, dynamic> response, BuildContext context),
     @required amount: String,
     @required apikey: String,
     sandbox: bool,
@@ -67,7 +67,7 @@ void successCallback(response, context) {
 }
 
 final kkiapay = KKiaPay(
-    successCallback: successCallback,
+    callback: successCallback,
     amount: '2000',
     sandbox: true,
     data: 'fakedata',

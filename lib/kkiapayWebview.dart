@@ -13,12 +13,13 @@ class KKiaPay extends StatefulWidget {
   bool sandbox;
   Function callback;
   String theme;
+  String name;
 
 
-  KKiaPay({this.amount, this.phone, this.data,this.sandbox,this.apikey,this.callback, this.theme});
+  KKiaPay({this.amount, this.phone, this.data,this.sandbox,this.apikey,this.callback, this.theme,this.name});
 
   @override
-  _KKiaPayState createState() => _KKiaPayState(this.amount, this.phone, this.data,this.sandbox,this.apikey,this.callback,this.theme);
+  _KKiaPayState createState() => _KKiaPayState(this.amount, this.phone, this.data,this.sandbox,this.apikey,this.callback,this.theme,this.name);
 }
 
 class _KKiaPayState extends State<KKiaPay> {
@@ -31,13 +32,14 @@ class _KKiaPayState extends State<KKiaPay> {
   final bool sandbox;
   final Function callback;
   final String theme;
+  final String name;
 
   ///
   // * @Params amount : Payment amount
   // * @Params phone : Payment phoneNumber
   // * @Params data : Payment data send by webhook
   // 
-  _KKiaPayState(this.amount, this.phone, this.data,this.sandbox,this.apikey,this.callback,this.theme);
+  _KKiaPayState(this.amount, this.phone, this.data,this.sandbox,this.apikey,this.callback,this.theme,this.name);
 
   @override
   void initState() {
@@ -75,7 +77,8 @@ class _KKiaPayState extends State<KKiaPay> {
       data: this.data,
       sandbox: this.sandbox,
       apikey: this.apikey,
-      theme: this.theme
+      theme: this.theme,
+      name: this.name
     ).toBase64()}';
     return WebviewScaffold (
       url: url,
