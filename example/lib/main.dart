@@ -1,9 +1,6 @@
-
 import 'package:flutter/material.dart';
 import 'package:kkiapay_flutter_sdk/kkiapayWebview.dart';
 import './successScreen.dart';
-
-
 
 void main() => runApp(App());
 
@@ -13,28 +10,37 @@ void sucessCallback(response, context) {
   Navigator.push(
     context,
     MaterialPageRoute(
-        builder: (context) => SuccessScreen(
-              
-              amount: response['amount'],
-              transactionId: response['transactionId']
-            )),
+      builder: (context) => SuccessScreen(
+        amount: response['amount'],
+        transactionId: response['transactionId'],
+      ),
+    ),
   );
 }
 
-
-final kkiapay = KKiaPay(amount: 1,phone: '97000000',data: 'hello world',sandbox: true,apikey: 'xxxxxxxxxxxxxxxxxxx',callback: sucessCallback);
+final kkiapay = KKiaPay(
+  amount: 1,
+  phone: '97000000',
+  data: 'hello world',
+  sandbox: true,
+  apikey: 'XXXXXXXXXXXXXXX',
+  callback: sucessCallback,
+  name: 'JOHN DOE',
+  theme: "#E30E25",
+);
 
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        home: Scaffold(
-      appBar: AppBar(
-        title: Text('Kkiapay Sample'),
-        centerTitle: true,
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Kkiapay Sample'),
+          centerTitle: true,
+        ),
+        body: KkiapaySample(),
       ),
-      body: KkiapaySample(),
-    ));
+    );
   }
 }
 

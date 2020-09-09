@@ -5,19 +5,12 @@
 // gestures. You can also use WidgetTester to find child widgets in the widget
 // tree, read text, and verify that the values of widget properties are correct.
 
-import 'dart:convert';
-
-import 'package:flutter/material.dart';
-import 'package:flutter_test/flutter_test.dart';
-import 'package:http/http.dart';
-import 'package:http/testing.dart';
-
 // import 'package:webview_project/main.dart';
-import 'package:kkiapay_flutter_sdk/utils/Kkiapay.dart';
+//import 'package:kkiapay_flutter_sdk/utils/Kkiapay.dart';
 
-void main() {
+/* void main() {
   final kkiapay =
-      Kkiapay(key: 'apikeyisthere', amount: '3000', sucessCallback: null);
+      KKiaPay(key: 'apikeyisthere', amount: '3000', sucessCallback: null);
 
   final mapJson = {
     "performed_at": "2019-12-05T10:03:44.274Z",
@@ -52,3 +45,4 @@ void main() {
     expect(base64expected, isA<String>());
   });
 }
+ */
