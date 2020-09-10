@@ -4,18 +4,18 @@ class SuccessScreen extends StatelessWidget {
   final int amount;
   final transactionId;
 
-  const SuccessScreen({this.amount,this.transactionId});
+  const SuccessScreen({this.amount, this.transactionId});
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('PAYEMENT SUCCESSUFUL'),
+          title: Text('PAYMENT SUCCESSFUL'),
         ),
-        body: SingleChildScrollView(
-          child: Container(
-            child:
-                Text('votre paiement de $amount Fcfa a été recu avec succès et lID de la transaction est $transactionId'),
+        body: Center(
+          child: Text(
+            "Votre paiement de $amount Fcfa a été recu avec succès et l'ID de la transaction est $transactionId",
+            textAlign: TextAlign.center,
           ),
         ),
       ),
