@@ -81,7 +81,7 @@ class _KKiaPayState extends State<KKiaPay> {
           flutterWebViewPlugin.dispose();
           flutterWebViewPlugin.hide();
 
-          //TODO action of success payment
+          // implement action of success payment
         }
       }
     });
