@@ -106,20 +106,22 @@ class _KKiaPayState extends State<KKiaPay> {
   Widget build(BuildContext context) {
     final url =
         '$KKiaPayURL/?=${_SdkData(amount: this.amount, phone: this.phone, data: this.data, sandbox: this.sandbox, apikey: this.apikey, theme: this.theme, name: this.name).toBase64()}';
-    return WebviewScaffold(
-      url: url,
-      withZoom: false,
-      withLocalStorage: true,
-      appBar: Platform.isIOS
-          ? AppBar(
-              backgroundColor: Color(_getColorFromHex(theme ?? '#4E6BFC')),
-            )
-          : null,
-      hidden: true,
-      initialChild: Container(
-        color: Colors.transparent,
-        child: const Center(
-          child: CircularProgressIndicator(),
+    return SingleChildScrollView(
+      child: WebviewScaffold(
+        url: url,
+        withZoom: false,
+        withLocalStorage: true,
+        appBar: Platform.isIOS
+            ? AppBar(
+                backgroundColor: Color(_getColorFromHex(theme ?? '#4E6BFC')),
+              )
+            : null,
+        hidden: true,
+        initialChild: Container(
+          color: Colors.transparent,
+          child: const Center(
+            child: CircularProgressIndicator(),
+          ),
         ),
       ),
     );
