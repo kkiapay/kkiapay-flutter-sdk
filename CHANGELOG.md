@@ -1,3 +1,7 @@
+## 1.0.5
+
+- add support for flutter last version
+
 ## 1.0.3
 
 - remove appbar
