@@ -23,7 +23,7 @@ final kkiapay = KKiaPay(
   phone: '97000000',
   data: 'hello world',
   sandbox: true,
-  apikey: 'XXXXXXXXXXXXXXX',
+  apikey: 'xxx',
   callback: sucessCallback,
   name: 'JOHN DOE',
   theme: "#E30E25",
@@ -46,7 +46,7 @@ class App extends StatelessWidget {
 
 class KkiapaySample extends StatelessWidget {
   const KkiapaySample({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override

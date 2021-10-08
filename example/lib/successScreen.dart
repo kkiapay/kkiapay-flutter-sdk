@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class SuccessScreen extends StatelessWidget {
-  final int amount;
+  final int? amount;
   final transactionId;
 
   const SuccessScreen({this.amount, this.transactionId});

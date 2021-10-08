@@ -5,16 +5,16 @@ support: kkiapay <support@kkiapay.me>
 homepage: 'https://github.com/kkiapay/kkiapay-flutter-sdk'
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: '>=2.12.0 <3.0.0'
 
 dependencies:
   flutter:
     sdk: flutter
-  http: ^0.13.0
+  http: ^0.13.3
 
-  webview_flutter: ^0.3.1
-  flutter_webview_plugin: ^0.3.10
-  cupertino_icons: ^1.0.2
+  #webview_flutter: ^0.3.1
+  flutter_webview_plugin: ^0.4.0
+  cupertino_icons: ^1.0.3
 
 dev_dependencies:
   flutter_test:

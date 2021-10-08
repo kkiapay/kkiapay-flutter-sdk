@@ -6,14 +6,14 @@ import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 import 'kkiapayConf.sample.dart';
 
 class KKiaPay extends StatefulWidget {
-  final int amount;
-  final String phone;
-  final String data;
-  final String apikey;
-  final bool sandbox;
-  final Function(Map<String, dynamic>, BuildContext) callback;
-  final String theme;
-  final String name;
+  final int? amount;
+  final String? phone;
+  final String? data;
+  final String? apikey;
+  final bool? sandbox;
+  final Function(Map<String, dynamic>, BuildContext)? callback;
+  final String? theme;
+  final String? name;
 
   KKiaPay({
     this.amount,
@@ -41,14 +41,14 @@ class KKiaPay extends StatefulWidget {
 
 class _KKiaPayState extends State<KKiaPay> {
   final flutterWebViewPlugin = FlutterWebviewPlugin();
-  final int amount;
-  final String phone;
-  final String data;
-  final String apikey;
-  final bool sandbox;
-  final Function(Map<String, dynamic>, BuildContext) callback;
-  final String theme;
-  final String name;
+  final int? amount;
+  final String? phone;
+  final String? data;
+  final String? apikey;
+  final bool? sandbox;
+  final Function(Map<String, dynamic>, BuildContext)? callback;
+  final String? theme;
+  final String? name;
 
   ///
   // * @Params amount : Payment amount
@@ -77,7 +77,7 @@ class _KKiaPayState extends State<KKiaPay> {
            */
           final link = Uri.parse(url);
           final transactionId = link.queryParameters['transaction_id'];
-          callback({'amount': amount, 'transactionId': transactionId}, context);
+          callback!({'amount': amount, 'transactionId': transactionId}, context);
           flutterWebViewPlugin.dispose();
           flutterWebViewPlugin.hide();
 
@@ -115,7 +115,7 @@ class _KKiaPayState extends State<KKiaPay> {
               backgroundColor: Color(_getColorFromHex(theme ?? '#4E6BFC')),
             )
           : null,
-      hidden: true,
+      hidden: false,
       initialChild: Container(
         color: Colors.transparent,
         child: const Center(
@@ -144,7 +144,7 @@ class _SdkData {
     this.theme = '#4E6BFC',
   });
 
-  final int amount;
+  final int? amount;
   final reason, name, sandbox, phone, data, apikey, theme;
 
   Map<String, dynamic> toMap() {
