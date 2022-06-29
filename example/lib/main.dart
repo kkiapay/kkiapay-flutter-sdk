@@ -20,13 +20,14 @@ void sucessCallback(response, context) {
 
 final kkiapay = KKiaPay(
   amount: 1,
-  phone: '97000000',
+  phone: '61000000',
   data: 'hello world',
   sandbox: true,
   apikey: 'xxx',
   callback: sucessCallback,
   name: 'JOHN DOE',
   theme: "#E30E25",
+  //paymentMethode: PaymentMethode.momo, // or PaymentMethode.card
 );
 
 class App extends StatelessWidget {
