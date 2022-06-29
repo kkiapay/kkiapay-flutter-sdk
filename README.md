@@ -128,6 +128,7 @@ class KkiapaySample extends StatelessWidget {
 <tr><td>phone</td><td>String</td><td>Yes</td><td>Valid mobile money number to debit. ex : 22967434270 </td></tr>
 <tr><td>amount</td><td>Numeric</td><td>Yes</td><td>Amount to debit from user account (XOF) </td></tr>
 <tr><td>name</td><td>String</td><td>No</td><td>Client firstname and lastname </td></tr>
+<tr><td>paymentMethod</td><td>PaymentMethod</td><td>No</td><td>Set widget payment method </td></tr>
 <tr><td>theme</td><td>String</td><td>No</td><td> the hexadecimal code of the color you want to give to your widget </td></tr>
 <tr><td>apikey</td><td>String</td><td>Yes</td><td>public api key</td></tr>
 <tr><td>sandbox</td><td>Boolean</td><td>No</td><td>The true value of this attribute allows you to switch to test mode</td></tr>

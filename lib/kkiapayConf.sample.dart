@@ -15,7 +15,7 @@ const url = "";
 const host = ""; /** package name */
 
 /// Widget payment Mode
-enum PaymentMethode {
+enum PaymentMethod {
   momo,
   card
 }

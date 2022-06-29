@@ -14,13 +14,13 @@ class KKiaPay extends StatefulWidget {
   final Function(Map<String, dynamic>, BuildContext)? callback;
   final String? theme;
   final String? name;
-  final PaymentMethode? paymentMethode;
+  final PaymentMethod? paymentMethod;
 
   KKiaPay({
     this.amount,
     this.phone,
     this.data,
-    this.paymentMethode,
+    this.paymentMethod,
     this.sandbox,
     this.apikey,
     this.callback,
@@ -33,7 +33,7 @@ class KKiaPay extends StatefulWidget {
         this.amount,
         this.phone,
         this.data,
-        this.paymentMethode,
+        this.paymentMethod,
         this.sandbox,
         this.apikey,
         this.callback,
@@ -52,7 +52,7 @@ class _KKiaPayState extends State<KKiaPay> {
   final Function(Map<String, dynamic>, BuildContext)? callback;
   final String? theme;
   final String? name;
-  final PaymentMethode? paymentMethode;
+  final PaymentMethod? paymentMethod;
 
   ///
   // * @Params amount : Payment amount
@@ -63,7 +63,7 @@ class _KKiaPayState extends State<KKiaPay> {
     this.amount,
     this.phone,
     this.data,
-    this.paymentMethode,
+    this.paymentMethod,
     this.sandbox,
     this.apikey,
     this.callback,
@@ -111,7 +111,7 @@ class _KKiaPayState extends State<KKiaPay> {
   @override
   Widget build(BuildContext context) {
     final url =
-        '$KKiaPayURL/?=${_SdkData(amount: this.amount, paymentMethode: this.paymentMethode?.name, phone: this.phone, data: this.data, sandbox: this.sandbox, apikey: this.apikey, theme: this.theme, name: this.name).toBase64()}';
+        '$KKiaPayURL/?=${_SdkData(amount: this.amount, paymentMethod: this.paymentMethod?.name, phone: this.phone, data: this.data, sandbox: this.sandbox, apikey: this.apikey, theme: this.theme, name: this.name).toBase64()}';
     return WebviewScaffold(
       url: url,
       withZoom: false,
@@ -141,7 +141,7 @@ class _SdkData {
   /// @Params sandbox : Payment request made in sandbox
   _SdkData({
     this.amount,
-    this.paymentMethode,
+    this.paymentMethod,
     this.reason,
     this.name,
     this.phone,
@@ -152,12 +152,12 @@ class _SdkData {
   });
 
   final int? amount;
-  final reason, name, sandbox, phone, data, apikey, theme, paymentMethode;
+  final reason, name, sandbox, phone, data, apikey, theme, paymentMethod;
 
   Map<String, dynamic> toMap() {
     return {
       'amount': amount,
-      'paymentmethod': paymentMethode,
+      'paymentmethod': paymentMethod,
       'reason': reason,
       'name': name,
       'sandbox': sandbox,
