@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:kkiapay_flutter_sdk/kkiapayConf.sample.dart';
 import 'package:kkiapay_flutter_sdk/kkiapayWebview.dart';
 import './successScreen.dart';
 
 void main() => runApp(App());
 
-void sucessCallback(response, context) {
+void successCallback(response, context) {
   print(response);
   Navigator.pop(context);
   Navigator.push(
@@ -20,13 +21,14 @@ void sucessCallback(response, context) {
 
 final kkiapay = KKiaPay(
   amount: 1,
-  phone: '97000000',
+  phone: '61000000',
   data: 'hello world',
   sandbox: true,
   apikey: 'xxx',
-  callback: sucessCallback,
+  callback: successCallback,
   name: 'JOHN DOE',
   theme: "#E30E25",
+  //paymentMethod: PaymentMethod.momo, // or PaymentMethod.card
 );
 
 class App extends StatelessWidget {

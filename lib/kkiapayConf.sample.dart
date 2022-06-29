@@ -13,3 +13,9 @@ const url = "";
 
 /// Widget header image url */
 const host = ""; /** package name */
+
+/// Widget payment Mode
+enum PaymentMethod {
+  momo,
+  card
+}
