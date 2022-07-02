@@ -1,4 +1,4 @@
-name: Workflow test
+name: Publish KkiaPay flutter sdk to Pub.dev
 on: push
 
 jobs:
@@ -14,4 +14,4 @@ jobs:
           accessToken: ${{ secrets.OAUTH_ACCESS_TOKEN }}
           refreshToken: ${{ secrets.OAUTH_REFRESH_TOKEN }}
           relativePath: .
-          dryRunOnly: true
+          dryRunOnly: false

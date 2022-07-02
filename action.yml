@@ -1,9 +1,5 @@
 name: "Flutter Package Publisher"
 description: "Continuously Test & Publish Flutter Package To Pub.dev When Version Changed"
-author: "k-paxian"
-branding:
-  color: "blue"
-  icon: "package"
 inputs:
   accessToken:
     description: "(Required) Token from ~/.pub-cache/credentials.json. Use secrets.OAUTH_ACCESS_TOKEN"
