@@ -8,11 +8,11 @@ check_required_inputs() {
   echo "Check inputs..."
   if [ -z "$INPUT_CREDENTIALJSON" ]; then
     echo "Missing credentialJson, trying tokens"
-    if [ -z "$OAUTH_ACCESS_TOKEN" ]; then
+    if [ -z "$INPUT_ACCESSTOKEN" ]; then
       echo "Missing accessToken"
       exit 1
     fi
-    if [ -z "$OAUTH_REFRESH_TOKEN" ]; then
+    if [ -z "$INPUT_REFRESHTOKEN" ]; then
       echo "Missing refreshToken"
       exit 1
     fi
@@ -127,11 +127,11 @@ publish() {
     if [ -z "$INPUT_CREDENTIALJSON" ]; then
       cat <<-EOF > ~/.config/dart/pub-credentials.json
       {
-        "accessToken":"$OAUTH_ACCESS_TOKEN",
-        "refreshToken":"$OAUTH_REFRESH_TOKEN",
+        "accessToken":"$INPUT_ACCESSTOKEN",
+        "refreshToken":"$INPUT_REFRESHTOKEN",
         "tokenEndpoint":"https://accounts.google.com/o/oauth2/token",
         "scopes": [ "openid", "https://www.googleapis.com/auth/userinfo.email" ],
-        "expiration": 1656766130294
+        "expiration": 1577149838000
       }
 EOF
     else
