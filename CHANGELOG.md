@@ -1,3 +1,7 @@
+## 1.0.6
+
+- update flutter webview plugin to latest version.
+
 ## 1.0.5
 
 - add support for flutter last version
