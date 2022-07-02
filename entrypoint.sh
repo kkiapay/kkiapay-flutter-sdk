@@ -171,7 +171,7 @@ check_required_inputs
 switch_working_directory
 detect_flutter_package || true
 get_local_package_version
-run_unit_tests || true
+run_unit_tests
 get_remote_package_version || true
 format || true
 publish || true
