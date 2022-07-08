@@ -29,7 +29,7 @@ class KKiaPay extends StatefulWidget {
     this.data,
     this.paymentMethod,
     this.sandbox,
-    this.apikey,
+    required this.apikey,
     required this.callback,
     this.theme,
     this.name,
