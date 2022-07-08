@@ -12,13 +12,19 @@ dependencies:
     sdk: flutter
   http: ^0.13.3
 
-  #webview_flutter: ^0.3.1
-  flutter_webview_plugin: ^0.4.0
+  webview_flutter: ^3.0.4
   cupertino_icons: ^1.0.3
+  stacked: ^2.2.4
+  stacked_hooks: ^0.2.1
+  stacked_services: ^0.8.13
+  logger: ^1.1.0
+  stacked_generator: ^0.5.6
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_lints: ^1.0.0
+  build_runner: ^2.1.5
 
 flutter:
   uses-material-design: true
