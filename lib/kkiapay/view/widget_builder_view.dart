@@ -11,6 +11,7 @@ import 'dart:io';
 class KKiaPay extends StatefulWidget {
 
   final int amount;
+  final String? reason;
   final String? phone;
   final String? data;
   final String? apikey;
@@ -27,6 +28,7 @@ class KKiaPay extends StatefulWidget {
     required this.amount ,
     this.phone,
     this.data,
+    this.reason,
     this.paymentMethod,
     this.sandbox,
     required this.apikey,
@@ -43,6 +45,7 @@ class KKiaPay extends StatefulWidget {
     this.amount ,
     this.phone,
     this.data,
+    this.reason,
     this.paymentMethod,
     this.sandbox,
     this.apikey,
@@ -60,6 +63,7 @@ class _KKiaPayState extends State<KKiaPay> with SingleTickerProviderStateMixin {
 
   final int amount;
   final String? phone;
+  final String? reason;
   final String? data;
   final String? apikey;
   final bool? sandbox;
@@ -74,8 +78,9 @@ class _KKiaPayState extends State<KKiaPay> with SingleTickerProviderStateMixin {
   _KKiaPayState(
       this.amount ,
     this.phone, 
-    this.data, 
-    this.paymentMethod, 
+    this.reason,
+    this.data,
+    this.paymentMethod,
     this.sandbox, 
     this.apikey,
       this.callback,
@@ -96,6 +101,7 @@ class _KKiaPayState extends State<KKiaPay> with SingleTickerProviderStateMixin {
         ));
         model.setData ({
           'amount':amount,
+          'reason': reason,
           'phone': phone,
           'data': data,
           'paymentMethod': paymentMethod,
@@ -105,7 +111,7 @@ class _KKiaPayState extends State<KKiaPay> with SingleTickerProviderStateMixin {
         });
       },
       builder: (context, model, child) =>  Scaffold(
-        backgroundColor: nColorPrimary,
+        backgroundColor: Color(Utils.getColorFromHex(theme ?? defaultTheme)),
         /// Show AppBar on IOS
         appBar: Platform.isIOS ? AppBar(
           backgroundColor: Color(Utils.getColorFromHex(theme ?? defaultTheme)),
@@ -116,7 +122,8 @@ class _KKiaPayState extends State<KKiaPay> with SingleTickerProviderStateMixin {
               margin:  Platform.isIOS ? null : EdgeInsets.only( top: MediaQuery.of(context).viewPadding.top),
               child: model.hide ? null : WidgetBuild (
                   url: Utils.getUrl( SdkData(
-                      amount: this.amount, paymentMethod: this.paymentMethod?.name,
+                      reason: this.reason, amount: this.amount,
+                      paymentMethod: this.paymentMethod == null  ? null : [ this.paymentMethod?.name ],
                       phone: this.phone, data: this.data, sandbox: this.sandbox,
                       apikey: this.apikey, theme: this.theme, name: this.name, email: this.email
                   ) ),

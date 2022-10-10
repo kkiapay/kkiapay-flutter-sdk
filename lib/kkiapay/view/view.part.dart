@@ -32,7 +32,7 @@ class LoadingView extends ViewModelWidget<WidgetBuilderViewModel> {
                             : Size(95, 95));
                       },
                       builder: (_, Size? size, child) {
-                        Utils.log.d(size);
+                        //Utils.log.d(size);
                         return Container(
                           width: size?.width,
                           height: size?.height,
