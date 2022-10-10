@@ -78,3 +78,5 @@ class SdkData {
     return base64.encode(bytes);
   }
 }
+
+//    var json = jsonEncode({"amount":100,"sandbox":false,"serviceId":"INTEGRATION","position":"left","theme":"primary","key":"LprYUAyMpfAjq4z2yTHPiY0b6XktIQ","paymentMethods":["momo","card","direct_debit"]});

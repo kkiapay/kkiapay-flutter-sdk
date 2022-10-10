@@ -140,7 +140,20 @@ class KkiapaySample extends StatelessWidget {
 
 the successCallback function takes two parameters in the following order
 - Map<String,dynamic> containing the transaction information
-
+  { 
+    'requestData': {
+      'amount': int,
+      'phone': String,
+      'data': String,
+      'paymentMethod': PaymentMethod,
+      'sandbox': bool,
+      'name': String,
+      'email': String
+    },
+    'transactionId': String, 
+    'status': String 
+  }
+  
 - the context of type BuildContext
 
 

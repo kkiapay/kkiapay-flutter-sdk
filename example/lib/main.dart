@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kkiapay_flutter_sdk/kkiapay/view/widget_builder_view.dart';
+import 'package:kkiapay_flutter_sdk/utils/kkiapayConf.sample.dart';
 import './successScreen.dart';
 
 void main() => runApp(App());
@@ -19,17 +20,15 @@ void successCallback(response, context) {
 }
 
 final kkiapay = KKiaPay(
-  amount: 1,
-  phone: '61000000',
-  data: 'hello world',
+  amount: 100,
   sandbox: true,
-  apikey: 'xxx',
+  apikey: '3425dc6035d711eca8f5b92f2997955b',
   callback: successCallback,
-  name: 'JOHN DOE',
-  email: 'yourmail@mail.com',
   theme: "#E30E25",
-  //paymentMethod: PaymentMethod.momo, // or PaymentMethod.card
+  paymentMethod: PaymentMethod.momo, // or PaymentMethod.card
 );
+
+//=eyJhbW91bnQiOjEwMCwicGF5bWVudE1ldGhvZHMiOiJtb21vIiwic2FuZGJveCI6dHJ1ZSwia2V5IjoiMzQyNWRjNjAzNWQ3MTFlY2E4ZjViOTJmMjk5Nzk1NWIiLCJjYWxsYmFjayI6Imh0dHA6Ly9yZWRpcmVjdC5ra2lhcGF5Lm1lIiwidGhlbWUiOiIjRTMwRTI1In0=
 
 class App extends StatelessWidget {
   @override
@@ -78,24 +77,7 @@ class KkiapaySample extends StatelessWidget {
                 );
               },
             ),
-          ),
-          /*ButtonTheme(
-            minWidth: 250.0,
-            height: 60.0,
-            child: TextButton(
-              style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(Color(0xFFFBBF00)),
-                foregroundColor: MaterialStateProperty.all(Colors.white),
-              ),
-              child: Text(
-                'Pay Now Without Widget (for mobile payment only)',
-                style: TextStyle(color: Colors.white),
-              ),
-              onPressed: () {
-
-              },
-            ),
-          ),*/
+          )
         ],
       )
     );

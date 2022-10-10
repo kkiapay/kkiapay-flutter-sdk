@@ -1,6 +1,24 @@
+## 1.1.1
+
+- add successCallback function Map<String,dynamic> parameters model to readme
+
 ## 1.1.0
 
 - change webview plugin.
+- update the successCallback function Map<String,dynamic> parameters to
+  {
+  'requestData': {
+  'amount': int,
+  'phone': String,
+  'data': String,
+  'paymentMethod': PaymentMethod,
+  'sandbox': bool,
+  'name': String,
+  'email': String
+  },
+  'transactionId': String,
+  'status': String
+  }
 
 ## 1.0.6
 
