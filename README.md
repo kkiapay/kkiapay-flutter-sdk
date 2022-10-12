@@ -34,6 +34,8 @@ final kkiapay = KKiaPay(
     data: String,
     phone: String,
     name: String,
+    reason: String,
+    email: String,
     theme: dynamic
 );
 
@@ -60,21 +62,25 @@ void successCallback(response, context) {
     context,
     MaterialPageRoute(
         builder: (context) => SuccessScreen( 
-              amount: response['amount'],
+              amount: response['requestData']['amount'],
               transactionId: response['transactionId']
             )),
   );
 }
 
 final kkiapay = KKiaPay(
-    callback: successCallback,
-    amount: '2000',
-    sandbox: true,
-    data: 'fakedata',
-    apikey: 'xxxxxxxxxxxxxxxxxxxxxxx',
-    phone: '97000000',
-    name: 'JOHN DOE',
-    theme: '#2ba359');
+  amount: 1000,
+  phone: "22961000000",
+  name: "John Doe",
+  sandbox: true,
+  email: "email@mail.com",
+  reason: 'transaction reason',
+  data: 'Fake data',
+  apikey: 'XXX',
+  callback: successCallback,
+  theme: defaultTheme, // Ex : "#222F5A",
+  // paymentMethod: PaymentMethod.momo // PaymentMethod.direct_debit or PaymentMethod.card
+);
 
 class App extends StatelessWidget {
   @override
@@ -144,6 +150,7 @@ the successCallback function takes two parameters in the following order
     'requestData': {
       'amount': int,
       'phone': String,
+      'reason': String,
       'data': String,
       'paymentMethod': PaymentMethod,
       'sandbox': bool,

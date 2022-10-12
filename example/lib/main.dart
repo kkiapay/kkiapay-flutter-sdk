@@ -12,7 +12,7 @@ void successCallback(response, context) {
     context,
     MaterialPageRoute(
       builder: (context) => SuccessScreen(
-        amount: response['amount'],
+        amount: response['requestData']['amount'],
         transactionId: response['transactionId'],
       ),
     ),
@@ -21,19 +21,17 @@ void successCallback(response, context) {
 
 final kkiapay = KKiaPay(
   amount: 100,
-  phone: "22961877882",
+  phone: "22961000000",
   name: "John Doe",
   email: "email@mail.com",
   reason: 'transaction reason',
-  data: 'other data',
+  data: 'Fake data',
   sandbox: true,
-  apikey: '3425dc6035d711eca8f5b92f2997955b',
+  apikey: 'XXX',
   callback: successCallback,
-  theme: "#222F5A",
-  // paymentMethod: PaymentMethod.momo or PaymentMethod.direct_debit or PaymentMethod.card
+  theme: defaultTheme, // Ex : "#222F5A",
+  // paymentMethod: PaymentMethod.momo // PaymentMethod.direct_debit or PaymentMethod.card
 );
-
-//=eyJhbW91bnQiOjEwMCwicGF5bWVudE1ldGhvZHMiOiJtb21vIiwic2FuZGJveCI6dHJ1ZSwia2V5IjoiMzQyNWRjNjAzNWQ3MTFlY2E4ZjViOTJmMjk5Nzk1NWIiLCJjYWxsYmFjayI6Imh0dHA6Ly9yZWRpcmVjdC5ra2lhcGF5Lm1lIiwidGhlbWUiOiIjRTMwRTI1In0=
 
 class App extends StatelessWidget {
   @override

@@ -8,6 +8,7 @@ import 'package:webview_flutter/webview_flutter.dart';
 
 class WidgetBuilderViewModel extends BaseViewModel {
 
+  /// Using for loader animation
   Size _newSize = Size(95, 95);
   Size get newSize => _newSize;
   void setNewSize (newSize) {
