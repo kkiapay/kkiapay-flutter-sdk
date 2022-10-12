@@ -1,15 +1,12 @@
-## 1.1.1
+## 1.2.0
 
-- add successCallback function Map<String,dynamic> parameters model to readme
-
-## 1.1.0
-
-- change webview plugin.
+- migration to the new version of the widget ui
 - update the successCallback function Map<String,dynamic> parameters to
   {
   'requestData': {
   'amount': int,
   'phone': String,
+  'reason': String,
   'data': String,
   'paymentMethod': PaymentMethod,
   'sandbox': bool,
@@ -19,6 +16,10 @@
   'transactionId': String,
   'status': String
   }
+
+## 1.1.0
+
+- change webview plugin.
 
 ## 1.0.6
 
