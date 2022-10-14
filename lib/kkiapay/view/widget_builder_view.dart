@@ -20,7 +20,9 @@ class KKiaPay extends StatefulWidget {
   final String? theme;
   final String? name;
   final String? email;
-  final PaymentMethod? paymentMethod;
+  final List<String>? countries;
+  final String? partnerId;
+  final List<String>? paymentMethods;
 
 
   const KKiaPay({
@@ -29,9 +31,11 @@ class KKiaPay extends StatefulWidget {
     required this.apikey,
     required this.callback,
     this.phone,
-    this.data,
+    this.partnerId,
+    this.countries,
     this.reason,
-    this.paymentMethod,
+    this.data,
+    this.paymentMethods,
     this.sandbox,
     this.theme,
     this.name,
@@ -44,9 +48,11 @@ class KKiaPay extends StatefulWidget {
   _KKiaPayState createState() => _KKiaPayState(
     this.amount ,
     this.phone,
-    this.data,
+    this.partnerId,
+    this.countries,
     this.reason,
-    this.paymentMethod,
+    this.data,
+    this.paymentMethods,
     this.sandbox,
     this.apikey,
     this.callback,
@@ -70,23 +76,27 @@ class _KKiaPayState extends State<KKiaPay> with SingleTickerProviderStateMixin {
   final Function(Map<String, dynamic>, BuildContext) callback;
   final String? theme;
   final String? name;
+  final List<String>? countries;
+  final String? partnerId;
   final String? email;
-  final PaymentMethod? paymentMethod;
+  final List<String>? paymentMethods;
 
 
 
   _KKiaPayState(
       this.amount ,
-    this.phone, 
-    this.reason,
-    this.data,
-    this.paymentMethod,
-    this.sandbox, 
-    this.apikey,
+      this.phone,
+      this.partnerId,
+      this.countries,
+      this.reason,
+      this.data,
+      this.paymentMethods,
+      this.sandbox,
+      this.apikey,
       this.callback,
-    this.theme, 
-    this.name,
-    this.email,
+      this.theme,
+      this.name,
+      this.email,
   );
 
 
@@ -100,11 +110,13 @@ class _KKiaPayState extends State<KKiaPay> with SingleTickerProviderStateMixin {
             statusBarIconBrightness: Brightness.light
         ));
         model.setData ({
+          'countries':countries,
+          'partnerId': partnerId,
           'amount':amount,
           'reason': reason,
           'phone': phone,
           'data': data,
-          'paymentMethod': paymentMethod,
+          'paymentMethods': paymentMethods,
           'sandbox': sandbox,
           'name':name,
           'email': email
@@ -122,10 +134,11 @@ class _KKiaPayState extends State<KKiaPay> with SingleTickerProviderStateMixin {
               margin:  Platform.isIOS ? null : EdgeInsets.only( top: MediaQuery.of(context).viewPadding.top),
               child: model.hide ? null : WidgetBuild (
                   url: Utils.getUrl( SdkData(
-                      reason: this.reason, amount: this.amount,
-                      paymentMethod: this.paymentMethod == null  ? null : [ this.paymentMethod?.name ],
-                      phone: this.phone, data: this.data, sandbox: this.sandbox,
-                      apikey: this.apikey, theme: this.theme, name: this.name, email: this.email
+                      reason: reason, amount: amount,
+                      paymentMethod: paymentMethods,partnerId: partnerId,
+                      countries: countries, phone: phone, data: data,
+                      sandbox: sandbox, apikey: apikey, theme: theme,
+                      name: name, email: email
                   ) ),
                   callback: callback
               ),

@@ -8,8 +8,10 @@
   'phone': String,
   'reason': String,
   'data': String,
-  'paymentMethod': PaymentMethod,
+  'paymentMethods': List<String>,
   'sandbox': bool,
+  'partnerId': String,
+  'countries': List<String>,
   'name': String,
   'email': String
   },

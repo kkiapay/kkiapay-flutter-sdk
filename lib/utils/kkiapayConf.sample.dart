@@ -44,6 +44,8 @@ class SdkData {
     this.reason,
     this.name,
     this.email,
+    this.partnerId,
+    this.countries,
     this.phone,
     this.data,
     this.sandbox = true,
@@ -52,10 +54,12 @@ class SdkData {
   });
 
   final int? amount;
-  final reason, name, email, sandbox, phone, data, apikey, theme, paymentMethod;
+  final reason, name, email, sandbox, phone, data, apikey, theme, paymentMethod, countries,partnerId;
 
   Map<String, dynamic> toMap() {
     return {
+      'partnerId': partnerId,
+      'countries': countries,
       'serviceId': "INTEGRATION",
       'amount': amount,
       'paymentMethods': paymentMethod ?? ["momo","card","direct_debit"],

@@ -36,7 +36,10 @@ final kkiapay = KKiaPay(
     name: String,
     reason: String,
     email: String,
-    theme: dynamic
+    theme: dynamic,
+    countries: List<String>,
+    partnerId: String,
+    paymentMethods: List<String>
 );
 
 ```
@@ -69,17 +72,19 @@ void successCallback(response, context) {
 }
 
 final kkiapay = KKiaPay(
-  amount: 1000,
-  phone: "22961000000",
-  name: "John Doe",
-  sandbox: true,
-  email: "email@mail.com",
-  reason: 'transaction reason',
-  data: 'Fake data',
-  apikey: 'XXX',
-  callback: successCallback,
-  theme: defaultTheme, // Ex : "#222F5A",
-  // paymentMethod: PaymentMethod.momo // PaymentMethod.direct_debit or PaymentMethod.card
+    amount: 100,
+    countries: ["BJ"],
+    phone: "22961000000",
+    name: "John Doe",
+    email: "email@mail.com",
+    reason: 'transaction reason',
+    data: 'Fake data',
+    sandbox: true,
+    apikey: 'XXXXXXXXXXXXXXXXXXXXXX',
+    callback: successCallback,
+    theme: defaultTheme, // Ex : "#222F5A",
+    partnerId: 'AxXxXXxId',
+    paymentMethods: ["momo","card"]
 );
 
 class App extends StatelessWidget {
@@ -134,7 +139,9 @@ class KkiapaySample extends StatelessWidget {
 <tr><td>phone</td><td>String</td><td>Yes</td><td>Valid mobile money number to debit. ex : 22967434270 </td></tr>
 <tr><td>amount</td><td>Numeric</td><td>Yes</td><td>Amount to debit from user account (XOF) </td></tr>
 <tr><td>name</td><td>String</td><td>No</td><td>Client firstname and lastname </td></tr>
-<tr><td>paymentMethod</td><td>PaymentMethod</td><td>No</td><td>Set widget payment method </td></tr>
+<tr><td>partnerId</td><td>String</td><td>No</td><td>Your id to find transaction</td></tr>
+<tr><td>countries</td><td>List of String</td><td>No</td><td>Set widget countries ex: ["CI"] </td></tr>
+<tr><td>paymentMethods</td><td>List of String</td><td>No</td><td>Set widget payment methods ex: ["momo","card"] </td></tr>
 <tr><td>theme</td><td>String</td><td>No</td><td> the hexadecimal code of the color you want to give to your widget </td></tr>
 <tr><td>apikey</td><td>String</td><td>Yes</td><td>public api key</td></tr>
 <tr><td>sandbox</td><td>Boolean</td><td>No</td><td>The true value of this attribute allows you to switch to test mode</td></tr>
@@ -152,7 +159,9 @@ the successCallback function takes two parameters in the following order
       'phone': String,
       'reason': String,
       'data': String,
-      'paymentMethod': PaymentMethod,
+      'paymentMethods': List<String>,
+      'partnerId': String,
+      'countries': List<String>,
       'sandbox': bool,
       'name': String,
       'email': String
