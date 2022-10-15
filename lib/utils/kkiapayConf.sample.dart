@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'dart:ui';
 
-const KKiaPayURL = "https://widget-v2.kkiapay.me";
+const KKiaPayURL = "https://widget-v3.kkiapay.me";
 const KKiaPayRedirectURL = "http://redirect.kkiapay.me";
 const key = "xxxxxxxxxxxxxxxxxxxxxx";
 
@@ -10,7 +10,7 @@ const key = "xxxxxxxxxxxxxxxxxxxxxx";
 const callback = 'http://redirect.kkiapay.me';
 
 /// Webhook */
-const sdk = "android";
+const sdk = "flutter";
 const defaultTheme = "#4E6BFC";
 const nColorPrimary = Color(0xffF11C33);
 const nColorSecondary = Color(0xff222F5A);
@@ -27,7 +27,8 @@ const host = ""; /** package name **/
 /// Widget payment Mode
 enum PaymentMethod {
   momo,
-  card
+  card,
+  direct_debit
 }
 
 class SdkData {
@@ -43,6 +44,8 @@ class SdkData {
     this.reason,
     this.name,
     this.email,
+    this.partnerId,
+    this.countries,
     this.phone,
     this.data,
     this.sandbox = true,
@@ -51,19 +54,22 @@ class SdkData {
   });
 
   final int? amount;
-  final reason, name, email, sandbox, phone, data, apikey, theme, paymentMethod;
+  final reason, name, email, sandbox, phone, data, apikey, theme, paymentMethod, countries,partnerId;
 
   Map<String, dynamic> toMap() {
     return {
+      'partnerId': partnerId,
+      'countries': countries,
+      'serviceId': "INTEGRATION",
       'amount': amount,
-      'paymentmethod': paymentMethod,
+      'paymentMethods': paymentMethod ?? ["momo","card","direct_debit"],
       'reason': reason,
-      'name': name,
+      'fullname': name,
       'email': email,
       'sandbox': sandbox,
       'key': apikey,
       'callback': callback,
-      'phone': phone,
+      'phoneNumber': phone,
       'sdk': sdk,
       'theme': theme,
       'url': url,
@@ -78,3 +84,5 @@ class SdkData {
     return base64.encode(bytes);
   }
 }
+
+//    var json = jsonEncode({"amount":100,"sandbox":false,"serviceId":"INTEGRATION","position":"left","theme":"primary","key":"LprYUAyMpfAjq4z2yTHPiY0b6XktIQ","paymentMethods":["momo","card","direct_debit"]});

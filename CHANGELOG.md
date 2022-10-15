@@ -1,3 +1,24 @@
+## 1.2.0
+
+- migration to the new version of the widget ui
+- update the successCallback function Map<String,dynamic> parameters to
+  {
+  'requestData': {
+  'amount': int,
+  'phone': String,
+  'reason': String,
+  'data': String,
+  'paymentMethods': List<String>,
+  'sandbox': bool,
+  'partnerId': String,
+  'countries': List<String>,
+  'name': String,
+  'email': String
+  },
+  'transactionId': String,
+  'status': String
+  }
+
 ## 1.1.0
 
 - change webview plugin.

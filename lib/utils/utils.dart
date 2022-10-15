@@ -36,10 +36,9 @@ class Utils {
   ///
   static String getUrl( SdkData sdkData) {
     final base64 = sdkData.toBase64();
-    log.d('$KKiaPayURL/?=$base64');
-    return '$KKiaPayURL/?=$base64';
+    log.d('$KKiaPayURL/?$base64');
+    return '$KKiaPayURL/?$base64';
   }
-
 
 }
 

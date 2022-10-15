@@ -11,6 +11,7 @@ import 'dart:io';
 class KKiaPay extends StatefulWidget {
 
   final int amount;
+  final String? reason;
   final String? phone;
   final String? data;
   final String? apikey;
@@ -19,18 +20,23 @@ class KKiaPay extends StatefulWidget {
   final String? theme;
   final String? name;
   final String? email;
-  final PaymentMethod? paymentMethod;
+  final List<String>? countries;
+  final String? partnerId;
+  final List<String>? paymentMethods;
 
 
   const KKiaPay({
     Key? key,
     required this.amount ,
-    this.phone,
-    this.data,
-    this.paymentMethod,
-    this.sandbox,
     required this.apikey,
     required this.callback,
+    this.phone,
+    this.partnerId,
+    this.countries,
+    this.reason,
+    this.data,
+    this.paymentMethods,
+    this.sandbox,
     this.theme,
     this.name,
     this.email,
@@ -42,8 +48,11 @@ class KKiaPay extends StatefulWidget {
   _KKiaPayState createState() => _KKiaPayState(
     this.amount ,
     this.phone,
+    this.partnerId,
+    this.countries,
+    this.reason,
     this.data,
-    this.paymentMethod,
+    this.paymentMethods,
     this.sandbox,
     this.apikey,
     this.callback,
@@ -60,28 +69,34 @@ class _KKiaPayState extends State<KKiaPay> with SingleTickerProviderStateMixin {
 
   final int amount;
   final String? phone;
+  final String? reason;
   final String? data;
   final String? apikey;
   final bool? sandbox;
   final Function(Map<String, dynamic>, BuildContext) callback;
   final String? theme;
   final String? name;
+  final List<String>? countries;
+  final String? partnerId;
   final String? email;
-  final PaymentMethod? paymentMethod;
+  final List<String>? paymentMethods;
 
 
 
   _KKiaPayState(
       this.amount ,
-    this.phone, 
-    this.data, 
-    this.paymentMethod, 
-    this.sandbox, 
-    this.apikey,
+      this.phone,
+      this.partnerId,
+      this.countries,
+      this.reason,
+      this.data,
+      this.paymentMethods,
+      this.sandbox,
+      this.apikey,
       this.callback,
-    this.theme, 
-    this.name,
-    this.email,
+      this.theme,
+      this.name,
+      this.email,
   );
 
 
@@ -95,17 +110,20 @@ class _KKiaPayState extends State<KKiaPay> with SingleTickerProviderStateMixin {
             statusBarIconBrightness: Brightness.light
         ));
         model.setData ({
+          'countries':countries,
+          'partnerId': partnerId,
           'amount':amount,
+          'reason': reason,
           'phone': phone,
           'data': data,
-          'paymentMethod': paymentMethod,
+          'paymentMethods': paymentMethods,
           'sandbox': sandbox,
           'name':name,
           'email': email
         });
       },
       builder: (context, model, child) =>  Scaffold(
-        backgroundColor: nColorPrimary,
+        backgroundColor: Color(Utils.getColorFromHex(theme ?? defaultTheme)),
         /// Show AppBar on IOS
         appBar: Platform.isIOS ? AppBar(
           backgroundColor: Color(Utils.getColorFromHex(theme ?? defaultTheme)),
@@ -116,9 +134,11 @@ class _KKiaPayState extends State<KKiaPay> with SingleTickerProviderStateMixin {
               margin:  Platform.isIOS ? null : EdgeInsets.only( top: MediaQuery.of(context).viewPadding.top),
               child: model.hide ? null : WidgetBuild (
                   url: Utils.getUrl( SdkData(
-                      amount: this.amount, paymentMethod: this.paymentMethod?.name,
-                      phone: this.phone, data: this.data, sandbox: this.sandbox,
-                      apikey: this.apikey, theme: this.theme, name: this.name, email: this.email
+                      reason: reason, amount: amount,
+                      paymentMethod: paymentMethods,partnerId: partnerId,
+                      countries: countries, phone: phone, data: data,
+                      sandbox: sandbox, apikey: apikey, theme: theme,
+                      name: name, email: email
                   ) ),
                   callback: callback
               ),

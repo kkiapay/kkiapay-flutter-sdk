@@ -34,7 +34,12 @@ final kkiapay = KKiaPay(
     data: String,
     phone: String,
     name: String,
-    theme: dynamic
+    reason: String,
+    email: String,
+    theme: dynamic,
+    countries: List<String>,
+    partnerId: String,
+    paymentMethods: List<String>
 );
 
 ```
@@ -60,21 +65,27 @@ void successCallback(response, context) {
     context,
     MaterialPageRoute(
         builder: (context) => SuccessScreen( 
-              amount: response['amount'],
+              amount: response['requestData']['amount'],
               transactionId: response['transactionId']
             )),
   );
 }
 
 final kkiapay = KKiaPay(
-    callback: successCallback,
-    amount: '2000',
+    amount: 100,
+    countries: ["BJ"],
+    phone: "22961000000",
+    name: "John Doe",
+    email: "email@mail.com",
+    reason: 'transaction reason',
+    data: 'Fake data',
     sandbox: true,
-    data: 'fakedata',
-    apikey: 'xxxxxxxxxxxxxxxxxxxxxxx',
-    phone: '97000000',
-    name: 'JOHN DOE',
-    theme: '#2ba359');
+    apikey: 'XXXXXXXXXXXXXXXXXXXXXX',
+    callback: successCallback,
+    theme: defaultTheme, // Ex : "#222F5A",
+    partnerId: 'AxXxXXxId',
+    paymentMethods: ["momo","card"]
+);
 
 class App extends StatelessWidget {
   @override
@@ -128,7 +139,9 @@ class KkiapaySample extends StatelessWidget {
 <tr><td>phone</td><td>String</td><td>Yes</td><td>Valid mobile money number to debit. ex : 22967434270 </td></tr>
 <tr><td>amount</td><td>Numeric</td><td>Yes</td><td>Amount to debit from user account (XOF) </td></tr>
 <tr><td>name</td><td>String</td><td>No</td><td>Client firstname and lastname </td></tr>
-<tr><td>paymentMethod</td><td>PaymentMethod</td><td>No</td><td>Set widget payment method </td></tr>
+<tr><td>partnerId</td><td>String</td><td>No</td><td>Your id to find transaction</td></tr>
+<tr><td>countries</td><td>List of String</td><td>No</td><td>Set widget countries ex: ["CI"] </td></tr>
+<tr><td>paymentMethods</td><td>List of String</td><td>No</td><td>Set widget payment methods ex: ["momo","card"] </td></tr>
 <tr><td>theme</td><td>String</td><td>No</td><td> the hexadecimal code of the color you want to give to your widget </td></tr>
 <tr><td>apikey</td><td>String</td><td>Yes</td><td>public api key</td></tr>
 <tr><td>sandbox</td><td>Boolean</td><td>No</td><td>The true value of this attribute allows you to switch to test mode</td></tr>
@@ -140,7 +153,23 @@ class KkiapaySample extends StatelessWidget {
 
 the successCallback function takes two parameters in the following order
 - Map<String,dynamic> containing the transaction information
-
+  { 
+    'requestData': {
+      'amount': int,
+      'phone': String,
+      'reason': String,
+      'data': String,
+      'paymentMethods': List<String>,
+      'partnerId': String,
+      'countries': List<String>,
+      'sandbox': bool,
+      'name': String,
+      'email': String
+    },
+    'transactionId': String, 
+    'status': String 
+  }
+  
 - the context of type BuildContext
 
 

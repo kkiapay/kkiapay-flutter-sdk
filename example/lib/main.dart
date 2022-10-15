@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kkiapay_flutter_sdk/kkiapay/view/widget_builder_view.dart';
+import 'package:kkiapay_flutter_sdk/utils/kkiapayConf.sample.dart';
 import './successScreen.dart';
 
 void main() => runApp(App());
@@ -11,7 +12,7 @@ void successCallback(response, context) {
     context,
     MaterialPageRoute(
       builder: (context) => SuccessScreen(
-        amount: response['amount'],
+        amount: response['requestData']['amount'],
         transactionId: response['transactionId'],
       ),
     ),
@@ -19,16 +20,19 @@ void successCallback(response, context) {
 }
 
 final kkiapay = KKiaPay(
-  amount: 1,
-  phone: '61000000',
-  data: 'hello world',
-  sandbox: true,
-  apikey: 'xxx',
-  callback: successCallback,
-  name: 'JOHN DOE',
-  email: 'yourmail@mail.com',
-  theme: "#E30E25",
-  //paymentMethod: PaymentMethod.momo, // or PaymentMethod.card
+    amount: 1000,
+    countries: ["CI"],
+    phone: "2250577100000",
+    name: "John Doe",
+    email: "email@mail.com",
+    reason: 'transaction reason',
+    data: 'Fake data',
+    sandbox: true,
+    apikey: 'XXXXXXXXXXXXXXXXXXXXXX',
+    callback: successCallback,
+    theme: defaultTheme, // Ex : "#222F5A",
+    partnerId: 'AxXxXXxId',
+    paymentMethods: ["momo"/*,"card"*/]
 );
 
 class App extends StatelessWidget {
@@ -38,6 +42,7 @@ class App extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
+          backgroundColor: nColorPrimary,
           title: Text('Kkiapay Sample'),
           centerTitle: true,
         ),
@@ -60,11 +65,11 @@ class KkiapaySample extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           ButtonTheme(
-            minWidth: 250.0,
-            height: 60.0,
+            minWidth: 500.0,
+            height: 100.0,
             child: TextButton(
               style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(Color(0xffF11C33)),
+                backgroundColor: MaterialStateProperty.all(Color(0xff222F5A)),
                 foregroundColor: MaterialStateProperty.all(Colors.white),
               ),
               child: Text(
@@ -78,24 +83,7 @@ class KkiapaySample extends StatelessWidget {
                 );
               },
             ),
-          ),
-          /*ButtonTheme(
-            minWidth: 250.0,
-            height: 60.0,
-            child: TextButton(
-              style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(Color(0xFFFBBF00)),
-                foregroundColor: MaterialStateProperty.all(Colors.white),
-              ),
-              child: Text(
-                'Pay Now Without Widget (for mobile payment only)',
-                style: TextStyle(color: Colors.white),
-              ),
-              onPressed: () {
-
-              },
-            ),
-          ),*/
+          )
         ],
       )
     );

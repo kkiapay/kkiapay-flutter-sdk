@@ -32,7 +32,7 @@ class LoadingView extends ViewModelWidget<WidgetBuilderViewModel> {
                             : Size(95, 95));
                       },
                       builder: (_, Size? size, child) {
-                        Utils.log.d(size);
+                        //Utils.log.d(size);
                         return Container(
                           width: size?.width,
                           height: size?.height,
@@ -77,6 +77,9 @@ class WidgetBuild extends ViewModelWidget<WidgetBuilderViewModel> {
       initialUrl: url,
       zoomEnabled: false,
       javascriptMode: JavascriptMode.unrestricted,
+      /*onWebViewCreated: (WebViewController webViewController) {
+        webViewController.clearCache();
+      },*/
       onWebResourceError: (error) {
         viewModel.loadingStart();
         Utils.log.d(error.failingUrl);

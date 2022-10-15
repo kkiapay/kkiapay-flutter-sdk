@@ -8,6 +8,7 @@ import 'package:webview_flutter/webview_flutter.dart';
 
 class WidgetBuilderViewModel extends BaseViewModel {
 
+  /// Using for loader animation
   Size _newSize = Size(95, 95);
   Size get newSize => _newSize;
   void setNewSize (newSize) {
@@ -44,7 +45,7 @@ class WidgetBuilderViewModel extends BaseViewModel {
       Function(Map<String, dynamic>, BuildContext)? callback, context)
   async {
     if (request.url.startsWith(KKiaPayRedirectURL)) {
-      print('blocking navigation to $request}');
+      //print('blocking navigation to $request}');
 
       hideWebView ();
       loadingStart ();
@@ -69,16 +70,16 @@ class WidgetBuilderViewModel extends BaseViewModel {
   }
 
   void onPageStarted (url) {
-    Utils.log.d('onPageStarted:::: url = $url');
+    //Utils.log.d('onPageStarted:::: url = $url');
     loadingStart();
-    Utils.log.d('loadingStarted');
+    //Utils.log.d('loadingStarted');
   }
 
   void onPageFinished ( url) async {
-    Utils.log.d('onPageFinished:::: url = $url');
+   // Utils.log.d('onPageFinished:::: url = $url');
     await Future.delayed(const Duration(seconds: 2));
     loadingFinish();
-    Utils.log.d('loadingFinish');
+    // Utils.log.d('loadingFinish');
   }
 
 
