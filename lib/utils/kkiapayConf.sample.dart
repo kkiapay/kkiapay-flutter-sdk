@@ -4,6 +4,8 @@ import 'dart:ui';
 
 const KKiaPayURL = "https://widget-v3.kkiapay.me";
 const KKiaPayRedirectURL = "http://redirect.kkiapay.me";
+const WaveRedirectURI = "wave:";
+const WaveStoreRedirectURI = "https://play.google.com";
 const key = "xxxxxxxxxxxxxxxxxxxxxx";
 
 /// API Key */

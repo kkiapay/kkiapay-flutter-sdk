@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:stacked_services/stacked_services.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'kkiapayConf.sample.dart';
 
@@ -38,6 +39,17 @@ class Utils {
     final base64 = sdkData.toBase64();
     log.d('$KKiaPayURL/?$base64');
     return '$KKiaPayURL/?$base64';
+  }
+
+
+  static Future<void> launchWave(String url) async {
+    try{
+      await launch(url);
+    }catch(e){
+      if(await launch("market://details?id=com.wave.personal")){
+        throw 'Could not launch market://details?id=com.wave.personal';
+      }
+    }
   }
 
 }
