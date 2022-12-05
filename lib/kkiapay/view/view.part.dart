@@ -77,9 +77,9 @@ class WidgetBuild extends ViewModelWidget<WidgetBuilderViewModel> {
       initialUrl: url,
       zoomEnabled: false,
       javascriptMode: JavascriptMode.unrestricted,
-      /*onWebViewCreated: (WebViewController webViewController) {
+      onWebViewCreated: (WebViewController webViewController) {
         webViewController.clearCache();
-      },*/
+      },
       onWebResourceError: (error) {
         Utils.log.d("error",error.failingUrl);
         viewModel.loadingStart();
