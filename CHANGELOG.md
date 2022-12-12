@@ -1,3 +1,9 @@
+
+## 1.2.1
+
+- Add redirection to wave or play store application
+- Update KKiaPay payment instance import link on readme
+
 ## 1.2.0
 
 - migration to the new version of the widget ui

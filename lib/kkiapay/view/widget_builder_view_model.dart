@@ -64,8 +64,12 @@ class WidgetBuilderViewModel extends BaseViewModel {
 
       return NavigationDecision.prevent;
     }
+    if (request.url.startsWith(WaveRedirectURI)
+        || request.url.startsWith(WaveStoreRedirectURI)) {
+      Utils.launchWave(request.url);
+      return NavigationDecision.prevent;
+    }
 
-    print('allowing navigation to $request');
     return NavigationDecision.navigate;
   }
 

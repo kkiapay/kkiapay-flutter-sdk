@@ -77,19 +77,22 @@ class WidgetBuild extends ViewModelWidget<WidgetBuilderViewModel> {
       initialUrl: url,
       zoomEnabled: false,
       javascriptMode: JavascriptMode.unrestricted,
-      /*onWebViewCreated: (WebViewController webViewController) {
+      onWebViewCreated: (WebViewController webViewController) {
         webViewController.clearCache();
-      },*/
+      },
       onWebResourceError: (error) {
+        Utils.log.d("error",error.failingUrl);
         viewModel.loadingStart();
         Utils.log.d(error.failingUrl);
       },
       onPageStarted: (url) => viewModel.onPageStarted(url),
       onPageFinished: (url) => viewModel.onPageFinished(url),
-      navigationDelegate: (NavigationRequest request) =>
-          viewModel.onUrlChange(request, (object, context) async {
-        callback(object, context);
-      }, context),
+      navigationDelegate: (NavigationRequest request) {
+        Utils.log.d("error",request.url);
+         return viewModel.onUrlChange( request, (object, context) async {
+            callback(object, context);
+            }, context);
+          },
     );
   }
 }

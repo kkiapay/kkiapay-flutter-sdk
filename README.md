@@ -20,7 +20,7 @@ dependencies:
 ## Usage
 
 ```dart
-    import 'package:kkiapay_flutter_sdk/kkiapayWebview.dart';
+    import 'package:kkiapay_flutter_sdk/kkiapay/view/widget_builder_view.dart';
 ```
 
 ##### Initialise the Kkiapay Instance

@@ -32,7 +32,7 @@ final kkiapay = KKiaPay(
     callback: successCallback,
     theme: defaultTheme, // Ex : "#222F5A",
     partnerId: 'AxXxXXxId',
-    paymentMethods: ["momo"/*,"card"*/]
+//    paymentMethods: ["momo","card"]
 );
 
 class App extends StatelessWidget {
