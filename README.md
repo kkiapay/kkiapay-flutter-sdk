@@ -17,6 +17,15 @@ dependencies:
   kkiapay_flutter_sdk:
 ```
 
+Add this line in index.html in Web folder :
+
+```html
+<head>
+    ...
+    <script src="https://cdn.kkiapay.me/k.js"></script>
+</head>
+```
+
 ## Usage
 
 ```dart
@@ -53,9 +62,12 @@ final Widget kkiapayWebview = KkiapayWebview(kkiapay)
 ## Example
 
 ```dart
-import 'package:example/screens/successScreen.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:kkiapay_flutter_sdk/kkiapayWebview.dart';
+import 'package:kkiapay_flutter_sdk/kkiapay/view/widget_builder_view.dart';
+import 'package:kkiapay_flutter_sdk/kkiapayWeb/web_widget_builder.dart';
+import 'package:kkiapay_flutter_sdk/utils/kkiapayConf.sample.dart';
+
 
 void main() => runApp(App());
 
@@ -119,10 +131,16 @@ class KkiapaySample extends StatelessWidget {
             style: TextStyle(color: Colors.white),
           ),
           onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => kkiapay),
-            );
+            if (kIsWeb) {
+              KKiaPayWeb.pay(kkiapay, (response){
+                successCallback(response, context);
+              });
+            }else{
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => kkiapay),
+              );
+            }
           },
         ),
       ),
