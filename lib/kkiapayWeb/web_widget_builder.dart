@@ -1,95 +1,52 @@
+import 'dart:js' as js;
 import 'dart:async';
-import 'package:flutter/cupertino.dart';
-import 'package:kkiapay_flutter_sdk/utils/kkiapayConf.sample.dart';
-import 'package:kkiapay_flutter_sdk/utils/utils.dart';
-import 'package:stacked/stacked.dart';
-import 'package:webview_flutter/webview_flutter.dart';
+import 'package:kkiapay_flutter_sdk/kkiapay/view/widget_builder_view.dart';
 
 
-class WidgetBuilderViewModel extends BaseViewModel {
+class KKiaPayWeb {
 
-  /// Using for loader animation
-  Size _newSize = Size(95, 95);
-  Size get newSize => _newSize;
-  void setNewSize (newSize) {
-    _newSize = newSize;
-    notifyListeners();
-  }
+  static Future pay (KKiaPay paymentRequest, Function(dynamic) callback) async {
+    final _data = js.JsObject.jsify({
+      'amount': paymentRequest.amount.toString(),
+      'key': paymentRequest.apikey.toString(),
+      'sandbox': paymentRequest.sandbox.toString(),
+      'name': paymentRequest.name.toString(),
+      'phone': paymentRequest.phone.toString(),
+      'email': paymentRequest.email.toString(),
+      'data': paymentRequest.data.toString(),
+      'theme': paymentRequest.theme.toString(),
+      'reason': paymentRequest.reason.toString(),
+      'partnerId': paymentRequest.partnerId.toString(),
+      'countries': paymentRequest.countries,
+    });
 
-  bool _hide = false;
-  bool get hide => _hide;
-  void hideWebView () {
-    _hide = true;
-    notifyListeners();
-  }
+    void _onSuccessListener(js.JsObject response) async {
+      print("transactionId");
+      print(response["transactionId"]);
 
-  bool _onLoading = true;
-  bool get onLoading => _onLoading;
-  void loadingStart () {
-    _onLoading = true;
-    notifyListeners();
-  }
-  void loadingFinish () {
-    _onLoading = false;
-    notifyListeners();
-  }
-
-  Map<String,dynamic> _data = {};
-  Map<String,dynamic> get data => _data;
-  void setData (Map<String,dynamic> data) {
-    _data = data;
-    notifyListeners();
-  }
-
-  FutureOr<NavigationDecision> onUrlChange (request,
-      Function(Map<String, dynamic>, BuildContext)? callback, context)
-  async {
-    if (request.url.startsWith(KKiaPayRedirectURL)) {
-      //print('blocking navigation to $request}');
-
-      hideWebView ();
-      loadingStart ();
-
-      /**
-       * Payment Done with success
-       */
-      final link = Uri.parse(request.url);
-      final transactionId = link.queryParameters['transaction_id'];
-      callback!( { 'requestData': data, 'transactionId': transactionId, 'status': 'SUCCESS' }, context);
-
-      /**
-       * dispose this view switch  [disposeOnCallBack]
-       */
-      //try{ Navigator.pop(context); } catch(e) {Utils.log.e(e);}
-
-      return NavigationDecision.prevent;
-    }
-    if (request.url.startsWith(WaveRedirectURI)
-        || request.url.startsWith(WaveStoreRedirectURI)) {
-      Utils.launchWave(request.url);
-      return NavigationDecision.prevent;
+      callback( {
+            'requestData':  {
+              'amount': paymentRequest.amount,
+              'key': paymentRequest.apikey,
+              'sandbox': paymentRequest.sandbox,
+              'name': paymentRequest.name,
+              'phone': paymentRequest.phone,
+              'email': paymentRequest.email,
+              'data': paymentRequest.data,
+              'theme': paymentRequest.theme
+              /*'countries': paymentRequest.countries.toString(),
+      'reason': paymentRequest.reason.toString(),
+      'partnerId': paymentRequest.partnerId.toString(),*/
+            },
+            'transactionId': response["transactionId"],
+            'status': response["status"]
+          } );
     }
 
-    return NavigationDecision.navigate;
+    js.context.callMethod('addSuccessListener', [_onSuccessListener]);
+    js.context.callMethod('openKkiapayWidget', [_data]);
   }
-
-  void onPageStarted (url) {
-    //Utils.log.d('onPageStarted:::: url = $url');
-    loadingStart();
-    //Utils.log.d('loadingStarted');
-  }
-
-  void onPageFinished ( url) async {
-   // Utils.log.d('onPageFinished:::: url = $url');
-    await Future.delayed(const Duration(seconds: 2));
-    loadingFinish();
-    // Utils.log.d('loadingFinish');
-  }
-
-
-  /** Animation */
-
-  double scale = 0;
-  AnimationController? controller ;
 
 }
+
+
