@@ -1,5 +1,7 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:kkiapay_flutter_sdk/kkiapay/view/widget_builder_view.dart';
+import 'package:kkiapay_flutter_sdk/kkiapayWeb/web_widget_builder.dart';
 import 'package:kkiapay_flutter_sdk/utils/kkiapayConf.sample.dart';
 import './successScreen.dart';
 
@@ -28,7 +30,7 @@ final kkiapay = KKiaPay(
     reason: 'transaction reason',
     data: 'Fake data',
     sandbox: true,
-    apikey: 'XXXXXXXXXXXXXXXXXXXXXX',
+    apikey: '299d09a01c5811ec917be1e6b38a3730',
     callback: successCallback,
     theme: defaultTheme, // Ex : "#222F5A",
     partnerId: 'AxXxXXxId',
@@ -74,13 +76,19 @@ class KkiapaySample extends StatelessWidget {
               ),
               child: Text(
                 'Pay Now',
-                style: TextStyle(color: Colors.white),
+                 style: TextStyle(color: Colors.white),
               ),
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => kkiapay),
-                );
+                if (kIsWeb) {
+                  KKiaPayWeb.pay(kkiapay, (response){
+                    successCallback(response, context);
+                  });
+                }else{
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => kkiapay),
+                  );
+                }
               },
             ),
           )
