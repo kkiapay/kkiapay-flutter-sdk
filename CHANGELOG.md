@@ -1,4 +1,8 @@
 
+## 1.3.0
+
+- Add web integration and update readme
+
 ## 1.2.1
 
 - Add redirection to wave or play store application
