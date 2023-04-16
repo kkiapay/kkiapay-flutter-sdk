@@ -14,11 +14,11 @@ dependencies:
 
   webview_flutter: ^3.0.4
   cupertino_icons: ^1.0.3
-  stacked: ^2.2.4
+  stacked: ^3.1.0+3
   stacked_hooks: ^0.2.1
-  stacked_services: ^0.8.13
+  stacked_services: ^0.9.9
   logger: ^1.1.0
-  stacked_generator: ^0.5.6
+  stacked_generator: ^0.9.1+1
   url_launcher: ^6.1.7
 
 dev_dependencies:
