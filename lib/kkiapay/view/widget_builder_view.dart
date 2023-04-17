@@ -45,11 +45,13 @@ class KKiaPay extends StackedView<WidgetBuilderViewModel> {
 
   @override
   Widget builder(BuildContext context, WidgetBuilderViewModel viewModel, Widget? child) {
-    Platform.isIOS ? null : SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+    if (Platform.isIOS) {
+      SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
         statusBarColor: Colors.black,
         statusBarBrightness: Brightness.light,
         statusBarIconBrightness: Brightness.light
     ));
+    }
     viewModel.setData ({
       'countries':countries,
       'partnerId': partnerId,
