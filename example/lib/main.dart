@@ -80,9 +80,11 @@ class KkiapaySample extends StatelessWidget {
               ),
               onPressed: () {
                 if (kIsWeb) {
-                  KKiaPayWeb.pay(kkiapay, (response){
-                    successCallback(response, context);
-                  });
+                  /// This method are currently avoid
+                  /// Waiting, new flutter web plugin architecture ...
+                  //KKiaPayWeb.pay(kkiapay, (response){
+                   //successCallback(response, context);
+                  //});
                 }else{
                   Navigator.push(
                     context,

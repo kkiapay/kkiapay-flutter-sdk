@@ -1,7 +1,7 @@
 
-## 1.3.0
+## 1.2.2
 
-- Add web integration and update readme
+- Update Stacked dependencies
 
 ## 1.2.1
 
