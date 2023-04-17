@@ -18,7 +18,7 @@
           #skipTests: true
 
 # .github/workflows/publish.yml
-name: Publish to pub.dev
+name: Publish KkiaPay flutter sdk to pub.dev
 
 on:
   push:
