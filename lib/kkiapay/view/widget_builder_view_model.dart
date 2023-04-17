@@ -87,7 +87,7 @@ class WidgetBuilderViewModel extends BaseViewModel {
   }
 
 
-  /** Animation */
+  /// Animation
 
   double scale = 0;
   AnimationController? controller ;

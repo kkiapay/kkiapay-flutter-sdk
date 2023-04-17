@@ -1,7 +1,5 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:kkiapay_flutter_sdk/kkiapay/view/widget_builder_view.dart';
-import 'package:kkiapay_flutter_sdk/kkiapayWeb/web_widget_builder.dart';
 import 'package:kkiapay_flutter_sdk/utils/kkiapayConf.sample.dart';
 import './successScreen.dart';
 
@@ -79,18 +77,10 @@ class KkiapaySample extends StatelessWidget {
                  style: TextStyle(color: Colors.white),
               ),
               onPressed: () {
-                if (kIsWeb) {
-                  /// This method are currently avoid
-                  /// Waiting, new flutter web plugin architecture ...
-                  //KKiaPayWeb.pay(kkiapay, (response){
-                   //successCallback(response, context);
-                  //});
-                }else{
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => kkiapay),
                   );
-                }
               },
             ),
           )
