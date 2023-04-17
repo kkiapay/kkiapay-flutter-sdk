@@ -8,7 +8,8 @@ import 'widget_builder_view_model.dart';
 import 'dart:io';
 
 
-class KKiaPay extends StatefulWidget {
+
+class KKiaPay extends StackedView<WidgetBuilderViewModel> {
 
   final int amount;
   final String? reason;
@@ -42,87 +43,26 @@ class KKiaPay extends StatefulWidget {
     this.email,
   }) : super(key: key);
 
-
-
   @override
-  _KKiaPayState createState() => _KKiaPayState(
-    this.amount ,
-    this.phone,
-    this.partnerId,
-    this.countries,
-    this.reason,
-    this.data,
-    this.paymentMethods,
-    this.sandbox,
-    this.apikey,
-    this.callback,
-    this.theme,
-    this.name,
-    this.email,
-  );
-
-}
-
-
-
-class _KKiaPayState extends State<KKiaPay> with SingleTickerProviderStateMixin {
-
-  final int amount;
-  final String? phone;
-  final String? reason;
-  final String? data;
-  final String? apikey;
-  final bool? sandbox;
-  final Function(Map<String, dynamic>, BuildContext) callback;
-  final String? theme;
-  final String? name;
-  final List<String>? countries;
-  final String? partnerId;
-  final String? email;
-  final List<String>? paymentMethods;
-
-
-
-  _KKiaPayState(
-      this.amount ,
-      this.phone,
-      this.partnerId,
-      this.countries,
-      this.reason,
-      this.data,
-      this.paymentMethods,
-      this.sandbox,
-      this.apikey,
-      this.callback,
-      this.theme,
-      this.name,
-      this.email,
-  );
-
-
-  @override
-  Widget build(BuildContext context) {
-    return ViewModelBuilder<WidgetBuilderViewModel>.reactive(
-      onModelReady: (model) {
-        Platform.isIOS ? null : SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-            statusBarColor: Colors.black,
-            statusBarBrightness: Brightness.light,
-            statusBarIconBrightness: Brightness.light
-        ));
-        model.setData ({
-          'countries':countries,
-          'partnerId': partnerId,
-          'amount':amount,
-          'reason': reason,
-          'phone': phone,
-          'data': data,
-          'paymentMethods': paymentMethods,
-          'sandbox': sandbox,
-          'name':name,
-          'email': email
-        });
-      },
-      builder: (context, model, child) =>  Scaffold(
+  Widget builder(BuildContext context, WidgetBuilderViewModel viewModel, Widget? child) {
+    Platform.isIOS ? null : SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+        statusBarColor: Colors.black,
+        statusBarBrightness: Brightness.light,
+        statusBarIconBrightness: Brightness.light
+    ));
+    viewModel.setData ({
+      'countries':countries,
+      'partnerId': partnerId,
+      'amount':amount,
+      'reason': reason,
+      'phone': phone,
+      'data': data,
+      'paymentMethods': paymentMethods,
+      'sandbox': sandbox,
+      'name':name,
+      'email': email
+    });
+    return Scaffold(
         backgroundColor: Color(Utils.getColorFromHex(theme ?? defaultTheme)),
         /// Show AppBar on IOS
         appBar: Platform.isIOS ? AppBar(
@@ -132,7 +72,7 @@ class _KKiaPayState extends State<KKiaPay> with SingleTickerProviderStateMixin {
           children: [
             Container (
               margin:  Platform.isIOS ? null : EdgeInsets.only( top: MediaQuery.of(context).viewPadding.top),
-              child: model.hide ? null : WidgetBuild (
+              child: viewModel.hide ? null : WidgetBuild (
                   url: Utils.getUrl( SdkData(
                       reason: reason, amount: amount,
                       paymentMethod: paymentMethods,partnerId: partnerId,
@@ -144,15 +84,16 @@ class _KKiaPayState extends State<KKiaPay> with SingleTickerProviderStateMixin {
               ),
             ),
             SizedBox(
-              child: model.onLoading ? LoadingView() : null,
+              child: viewModel.onLoading ? LoadingView() : null,
             )
           ],
         )
-      ),
-      viewModelBuilder: () => WidgetBuilderViewModel(),
     );
   }
 
-
+  @override
+  WidgetBuilderViewModel viewModelBuilder(BuildContext context) {
+    return WidgetBuilderViewModel();
+  }
 
 }

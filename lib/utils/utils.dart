@@ -44,9 +44,11 @@ class Utils {
 
   static Future<void> launchWave(String url) async {
     try{
-      await launch(url);
+      final Uri _uri = Uri.parse(url);
+      await launchUrl(_uri);
     }catch(e){
-      if(await launch("market://details?id=com.wave.personal")){
+      final Uri _uri = Uri.parse("market://details?id=com.wave.personal");
+      if(await launchUrl(_uri)){
         throw 'Could not launch market://details?id=com.wave.personal';
       }
     }
