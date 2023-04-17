@@ -10,9 +10,10 @@ jobs:
 
       - name: ">> Flutter package <<"
         uses: k-paxian/dart-package-publisher@v1.4
-        with:
-          accessToken: ${{ secrets.OAUTH_ACCESS_TOKEN }}
-          refreshToken: ${{ secrets.OAUTH_REFRESH_TOKEN }}
-          relativePath: .
-          dryRunOnly: false
-          skipTests: true
+        
+      - name: Install dependencies
+        run: dart pub get
+      # Here you can insert custom steps you need
+      # - run: dart tool/generate-code.dart
+      - name: Publish
+        run: dart pub publish --force
