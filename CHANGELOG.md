@@ -1,4 +1,8 @@
 
+## 1.2.3
+
+- Listen close event from javascript
+
 ## 1.2.2
 
 - Update Stacked dependencies
