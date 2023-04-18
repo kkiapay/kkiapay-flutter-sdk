@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:kkiapay_flutter_sdk/utils/utils.dart';
 import 'package:stacked/stacked.dart';
@@ -77,6 +79,16 @@ class WidgetBuild extends ViewModelWidget<WidgetBuilderViewModel> {
       initialUrl: url,
       zoomEnabled: false,
       javascriptMode: JavascriptMode.unrestricted,
+      javascriptChannels: Set.from([
+        JavascriptChannel(
+            name: 'SDK_CHANNEL',
+            onMessageReceived: (JavascriptMessage message) {
+              print( JsonDecoder().convert(message.message)["name"] );
+              if(JsonDecoder().convert(message.message)["name"] == "CLOSE_WIDGET"){
+                Navigator.pop(context);
+              }
+            })
+      ]),
       onWebViewCreated: (WebViewController webViewController) {
         webViewController.clearCache();
       },
