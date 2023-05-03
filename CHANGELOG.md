@@ -1,4 +1,8 @@
 
+## 1.2.4
+
+- Remove loader animation 
+
 ## 1.2.3
 
 - Listen close event from javascript

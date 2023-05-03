@@ -17,15 +17,6 @@ dependencies:
   kkiapay_flutter_sdk:
 ```
 
-Add this line in index.html in Web folder :
-
-```html
-<head>
-    ...
-    <script src="https://cdn.kkiapay.me/k.js"></script>
-</head>
-```
-
 ## Usage
 
 ```dart
