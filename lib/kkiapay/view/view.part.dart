@@ -21,35 +21,16 @@ class LoadingView extends ViewModelWidget<WidgetBuilderViewModel> {
             mainAxisSize: MainAxisSize.min,
             children: [
               Container(
-                  height: 104,
+                  height: 52,
                   child: Center(
-                    child: TweenAnimationBuilder(
-                      duration: Duration(seconds: 3),
-                      tween: SizeTween(
-                          begin: Size(65, 65), end: viewModel.newSize),
-                      curve: Curves.bounceIn,
-                      onEnd: () {
-                        viewModel.setNewSize(viewModel.newSize == Size(95, 95)
-                            ? Size(65, 65)
-                            : Size(95, 95));
-                      },
-                      builder: (_, Size? size, child) {
-                        //Utils.log.d(size);
-                        return Container(
-                          width: size?.width,
-                          height: size?.height,
-                          child: child,
-                        );
-                      },
-                      child: imageFromBase64String(),
-                    ),
+                    child: imageFromBase64String(),
                   )),
               RichText(
                   text: new TextSpan(
-                style: new TextStyle(
+                    style: new TextStyle(
                   fontSize: 18.0,
                 ),
-                children: <TextSpan>[
+                    children: <TextSpan>[
                   new TextSpan(
                       text: 'Chargement',
                       style: new TextStyle(
@@ -59,7 +40,8 @@ class LoadingView extends ViewModelWidget<WidgetBuilderViewModel> {
                       style: new TextStyle(
                           fontWeight: FontWeight.bold, color: Colors.black54)),
                 ],
-              )),
+                  )
+              ),
             ],
           ),
         ));
@@ -93,9 +75,9 @@ class WidgetBuild extends ViewModelWidget<WidgetBuilderViewModel> {
         webViewController.clearCache();
       },
       onWebResourceError: (error) {
-        Utils.log.d("error",error.failingUrl);
+       //Utils.log.d("error",error.failingUrl);
         viewModel.loadingStart();
-        Utils.log.d(error.failingUrl);
+        //Utils.log.d(error.failingUrl);
       },
       onPageStarted: (url) => viewModel.onPageStarted(url),
       onPageFinished: (url) => viewModel.onPageFinished(url),
