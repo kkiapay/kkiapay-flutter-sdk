@@ -8,14 +8,6 @@ import 'package:webview_flutter/webview_flutter.dart';
 
 class WidgetBuilderViewModel extends BaseViewModel {
 
-  /// Using for loader animation
-  Size _newSize = Size(95, 95);
-  Size get newSize => _newSize;
-  void setNewSize (newSize) {
-    _newSize = newSize;
-    notifyListeners();
-  }
-
   bool _hide = false;
   bool get hide => _hide;
   void hideWebView () {
@@ -34,6 +26,13 @@ class WidgetBuilderViewModel extends BaseViewModel {
     notifyListeners();
   }
 
+  String _lastEvent = "";
+  String get lastEvent => _lastEvent;
+  void setLastEvent(value) {
+    _lastEvent = value;
+    notifyListeners();
+  }
+
   Map<String,dynamic> _data = {};
   Map<String,dynamic> get data => _data;
   void setData (Map<String,dynamic> data) {
@@ -44,52 +43,12 @@ class WidgetBuilderViewModel extends BaseViewModel {
   FutureOr<NavigationDecision> onUrlChange (request,
       Function(Map<String, dynamic>, BuildContext)? callback, context)
   async {
-    if (request.url.startsWith(KKiaPayRedirectURL)) {
-      //print('blocking navigation to $request}');
-
-      hideWebView ();
-      loadingStart ();
-
-      /**
-       * Payment Done with success
-       */
-      final link = Uri.parse(request.url);
-      final transactionId = link.queryParameters['transaction_id'];
-      callback!( { 'requestData': data, 'transactionId': transactionId, 'status': 'SUCCESS' }, context);
-
-      /**
-       * dispose this view switch  [disposeOnCallBack]
-       */
-      //try{ Navigator.pop(context); } catch(e) {Utils.log.e(e);}
-
-      return NavigationDecision.prevent;
-    }
     if (request.url.startsWith(WaveRedirectURI)
-        || request.url.startsWith(WaveStoreRedirectURI)) {
+        || request.url.startsWith(PlayStoreRedirectURI)) {
       Utils.launchWave(request.url);
       return NavigationDecision.prevent;
     }
-
     return NavigationDecision.navigate;
   }
-
-  void onPageStarted (url) {
-    //Utils.log.d('onPageStarted:::: url = $url');
-    loadingStart();
-    //Utils.log.d('loadingStarted');
-  }
-
-  void onPageFinished ( url) async {
-   // Utils.log.d('onPageFinished:::: url = $url');
-    await Future.delayed(const Duration(seconds: 2));
-    loadingFinish();
-    // Utils.log.d('loadingFinish');
-  }
-
-
-  /// Animation
-
-  double scale = 0;
-  AnimationController? controller ;
 
 }

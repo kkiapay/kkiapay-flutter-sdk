@@ -44,20 +44,10 @@ class KKiaPay extends StackedView<WidgetBuilderViewModel> {
       BuildContext context, WidgetBuilderViewModel viewModel, Widget? child) {
     return Scaffold(
         backgroundColor: Color(Utils.getColorFromHex(theme ?? defaultTheme)),
-
-        /// Show AppBar on IOS
-        appBar: Platform.isIOS
-            ? AppBar(
-                backgroundColor:
-                    Color(Utils.getColorFromHex(theme ?? defaultTheme)),
-              )
-            : null,
         body: Stack(
           children: [
             Container(
-              margin: Platform.isIOS
-                  ? null
-                  : EdgeInsets.only(
+              margin: EdgeInsets.only(
                       top: MediaQuery.of(context).viewPadding.top),
               child: viewModel.hide
                   ? null
@@ -91,6 +81,7 @@ class KKiaPay extends StackedView<WidgetBuilderViewModel> {
           statusBarBrightness: Brightness.light,
           statusBarIconBrightness: Brightness.light));
     }
+    viewModel.setLastEvent("");
     viewModel.setData({
       'countries': countries,
       'partnerId': partnerId,

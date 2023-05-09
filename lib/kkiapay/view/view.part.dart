@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:kkiapay_flutter_sdk/utils/utils.dart';
 import 'package:stacked/stacked.dart';
 import 'package:webview_flutter/webview_flutter.dart';
+import '../../utils/kkiapayConf.sample.dart';
 import 'widget_builder_view_model.dart';
 
 class LoadingView extends ViewModelWidget<WidgetBuilderViewModel> {
@@ -65,9 +66,39 @@ class WidgetBuild extends ViewModelWidget<WidgetBuilderViewModel> {
         JavascriptChannel(
             name: 'SDK_CHANNEL',
             onMessageReceived: (JavascriptMessage message) {
-              print( JsonDecoder().convert(message.message)["name"] );
-              if(JsonDecoder().convert(message.message)["name"] == "CLOSE_WIDGET"){
-                Navigator.pop(context);
+              print( JsonDecoder().convert(message.message));
+
+              switch (JsonDecoder().convert(message.message)["name"]) {
+
+                case CLOSE_WIDGET: viewModel.lastEvent == PAYMENT_SUCCESS ? null:
+                callback( {
+                  'requestData': viewModel.data,
+                  'transactionId': null,
+                  'status': CallbackStatus.PAYMENT_CANCELLED.name
+                }, context);
+                  break;
+
+                case WIDGET_SUCCESSFULLY_INIT: viewModel.loadingFinish();
+                  break;
+
+                case PAYMENT_SUCCESS:
+                  viewModel.setLastEvent(PAYMENT_SUCCESS);
+                  callback( {
+                        'requestData': viewModel.data,
+                        'transactionId': JsonDecoder().convert(message.message)["data"]["transactionId"],
+                        'status': CallbackStatus.PAYMENT_SUCCESS.name
+                      }, context);
+                  break;
+
+                case PAYMENT_FAILED: callback( {
+                        'requestData': null,
+                        'transactionId': JsonDecoder().convert(message.message)["data"]["transactionId"],
+                        'status': CallbackStatus.PAYMENT_FAILED.name
+                      }, context);
+                  break;
+
+                default:
+                  break;
               }
             })
       ]),
@@ -75,14 +106,10 @@ class WidgetBuild extends ViewModelWidget<WidgetBuilderViewModel> {
         webViewController.clearCache();
       },
       onWebResourceError: (error) {
-       //Utils.log.d("error",error.failingUrl);
         viewModel.loadingStart();
-        //Utils.log.d(error.failingUrl);
       },
-      onPageStarted: (url) => viewModel.onPageStarted(url),
-      onPageFinished: (url) => viewModel.onPageFinished(url),
+      //onPageStarted: (url) => viewModel.loadingStart(),
       navigationDelegate: (NavigationRequest request) {
-        Utils.log.d("error",request.url);
          return viewModel.onUrlChange( request, (object, context) async {
             callback(object, context);
             }, context);

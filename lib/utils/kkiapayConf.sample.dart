@@ -5,7 +5,8 @@ import 'dart:ui';
 const KKiaPayURL = "https://widget-v3.kkiapay.me";
 const KKiaPayRedirectURL = "http://redirect.kkiapay.me";
 const WaveRedirectURI = "wave:";
-const WaveStoreRedirectURI = "https://play.google.com";
+const PlayStoreRedirectURI = "https://play.google.com";
+const WaveStoreRedirectURI = "market://details?id=com.wave.personal";
 const key = "xxxxxxxxxxxxxxxxxxxxxx";
 
 /// API Key */
@@ -32,6 +33,35 @@ enum PaymentMethod {
   card,
   direct_debit
 }
+
+/// Widget event
+enum CallbackStatus {
+  PAYMENT_CANCELLED,
+  PAYMENT_FAILED,
+  PAYMENT_SUCCESS,
+}
+
+
+const NETWORK_STATE_CHANGED = 'NETWORK_STATE_CHANGED';
+const INIT_WIDGET = 'INIT_WIDGET';
+const WIDGET_SUCCESSFULLY_INIT = 'WIDGET_SUCCESSFULLY_INIT';
+const CLOSE_WIDGET = 'CLOSE_WIDGET';
+const DESTROY_WIDGET = 'DESTROY_WIDGET';
+const WIDGET_SUCCESSFULLY_DESTROYED = 'WIDGET_SUCCESSFULLY_DESTROYED';
+const PAYMENT_INIT = 'PAYMENT_INIT';
+const PAYMENT_ABORTED = 'PAYMENT_ABORTED';
+const PENDING_PAYMENT = 'PENDING_PAYMENT';
+const ON_USER_FEEDBACK = 'ON_USER_FEEDBACK';
+const PAYMENT_FAILED = 'PAYMENT_FAILED';
+const PAYMENT_SUCCESS = 'PAYMENT_SUCCESS';
+const PAYMENT_CANCELLED = 'PAYMENT_CANCELLED';
+const PAYMENT_END = 'PAYMENT_END';
+const RETRY_PAYMENT = 'RETRY_PAYMENT';
+
+
+
+
+
 
 class SdkData {
   /// @Params amount : Payment amount
