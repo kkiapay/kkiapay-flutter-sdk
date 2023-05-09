@@ -70,8 +70,7 @@ class WidgetBuild extends ViewModelWidget<WidgetBuilderViewModel> {
 
               switch (JsonDecoder().convert(message.message)["name"]) {
 
-                case CLOSE_WIDGET: viewModel.lastEvent == PAYMENT_SUCCESS ? null:
-                callback( {
+                case CLOSE_WIDGET: if (viewModel.lastEvent != PAYMENT_SUCCESS) callback( {
                   'requestData': viewModel.data,
                   'transactionId': null,
                   'status': CallbackStatus.PAYMENT_CANCELLED.name
