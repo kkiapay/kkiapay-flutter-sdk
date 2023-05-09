@@ -6,17 +6,31 @@ import './successScreen.dart';
 void main() => runApp(App());
 
 void successCallback(response, context) {
-  print(response);
   Navigator.pop(context);
-  Navigator.push(
-    context,
-    MaterialPageRoute(
-      builder: (context) => SuccessScreen(
-        amount: response['requestData']['amount'],
-        transactionId: response['transactionId'],
-      ),
-    ),
-  );
+
+  switch ( response['status'] ) {
+
+   case PAYMENT_CANCELLED: print(PAYMENT_CANCELLED);
+   break;
+
+    case PAYMENT_SUCCESS:
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => SuccessScreen(
+            amount: response['requestData']['amount'],
+            transactionId: response['transactionId'],
+          ),
+        ),
+      );
+    break;
+
+    case PAYMENT_FAILED: print(PAYMENT_FAILED);
+    break;
+
+    default:
+      break;
+  }
 }
 
 final kkiapay = KKiaPay(

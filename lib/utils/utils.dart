@@ -37,7 +37,6 @@ class Utils {
   ///
   static String getUrl( SdkData sdkData) {
     final base64 = sdkData.toBase64();
-    log.d('$KKiaPayURL/?$base64');
     return '$KKiaPayURL/?$base64';
   }
 
@@ -47,9 +46,9 @@ class Utils {
       final Uri _uri = Uri.parse(url);
       await launchUrl(_uri);
     }catch(e){
-      final Uri _uri = Uri.parse("market://details?id=com.wave.personal");
+      final Uri _uri = Uri.parse(WaveStoreRedirectURI);
       if(await launchUrl(_uri)){
-        throw 'Could not launch market://details?id=com.wave.personal';
+        throw 'Could not launch $WaveStoreRedirectURI';
       }
     }
   }

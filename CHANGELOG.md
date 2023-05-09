@@ -1,4 +1,8 @@
 
+## 1.2.5
+
+- listen more event (PAYMENT_FAILED, PAYMENT_CANCELLED, PAYMENT_SUCCESS ) on payment callBack
+
 ## 1.2.4
 
 - Remove loader animation 

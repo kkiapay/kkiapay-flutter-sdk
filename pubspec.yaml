@@ -1,6 +1,6 @@
 name: kkiapay_flutter_sdk
 description: KkiaPay allows businesses to safely receive payments by mobile money, credit card and bank account.
-version: 1.2.4
+version: 1.2.5
 support: kkiapay <support@kkiapay.me>
 homepage: "https://github.com/kkiapay/kkiapay-flutter-sdk"
 
