@@ -35,8 +35,8 @@ void successCallback(response, context) {
 
 final kkiapay = KKiaPay(
     amount: 1000,
-    countries: ["CI"],
-    phone: "2250577100000",
+    //countries: [],
+    phone: "22961000000",
     name: "John Doe",
     email: "email@mail.com",
     reason: 'transaction reason',
