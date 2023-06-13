@@ -30,7 +30,7 @@ final kkiapay = KKiaPay(
     @required callback: Function(Map<String, dynamic> response, BuildContext context),
     @required amount: String,
     @required apikey: String,
-    sandbox: bool,
+    @required sandbox: bool,
     data: String,
     phone: String,
     name: String,
@@ -112,23 +112,26 @@ class KkiapaySample extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: ButtonTheme(
-        minWidth: 250.0,
-        height: 60.0,
-        child: FlatButton(
-          color: Color(0xFFE30E25),
+      child: 
+      ButtonTheme(
+        minWidth: 500.0,
+        height: 100.0,
+        child: TextButton(
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all(Color(0xff222F5A)),
+            foregroundColor: MaterialStateProperty.all(Colors.white),
+          ),
           child: Text(
             'Pay Now',
             style: TextStyle(color: Colors.white),
           ),
           onPressed: () {
-            if (kIsWeb) {
-              KKiaPayWeb.pay(kkiapay, (response){
+              if (kIsWeb) {
+              KKiaPayWeb.pay(kkiapay, (response) {
                 successCallback(response, context);
               });
-            }else{
-              Navigator.push(
-                context,
+              } else {
+                Navigator.push(context,
                 MaterialPageRoute(builder: (context) => kkiapay),
               );
             }

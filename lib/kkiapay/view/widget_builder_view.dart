@@ -33,7 +33,7 @@ class KKiaPay extends StackedView<WidgetBuilderViewModel> {
     this.reason,
     this.data,
     this.paymentMethods,
-    this.sandbox,
+    required this.sandbox,
     this.theme,
     this.name,
     this.email,
