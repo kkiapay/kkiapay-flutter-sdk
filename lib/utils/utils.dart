@@ -1,18 +1,12 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:logger/logger.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'kkiapayConf.sample.dart';
 
 class Utils {
-
-  ///
-  /// Dev tools [logger]
-  ///
-  static Logger log = Logger();
 
   ///
   /// Provide current context from anywhere

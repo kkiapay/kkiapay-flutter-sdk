@@ -1,6 +1,6 @@
 name: kkiapay_flutter_sdk
 description: KkiaPay allows businesses to safely receive payments by mobile money, credit card and bank account.
-version: 1.2.5
+version: 1.2.6
 support: kkiapay <support@kkiapay.me>
 homepage: "https://github.com/kkiapay/kkiapay-flutter-sdk"
 
@@ -10,23 +10,21 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  http: ^0.13.3
-
+  stacked: ^3.4.1+1
+  #stacked_hooks:
+  stacked_services:
+  url_launcher:
+  http:
   webview_flutter: ^3.0.4
-  cupertino_icons: ^1.0.3
-  stacked: 
-  #^3.2.0
-  stacked_hooks: ^0.2.1
-  stacked_services: ^1.0.0
-  logger: ^1.1.0
-  url_launcher: ^6.1.7
+  cupertino_icons:
+  #logger:
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^1.0.0
-  build_runner: ^2.2.0
-  stacked_generator: ^1.0.0
+  flutter_lints:
+  build_runner:
+  stacked_generator:
 
 flutter:
   uses-material-design: true

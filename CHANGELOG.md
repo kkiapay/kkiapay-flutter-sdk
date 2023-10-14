@@ -1,7 +1,7 @@
 ## 1.2.6
 
 - Set sandbox as required
-- Update Stacked dependencies
+- Update few plugin dependencies 
 
 ## 1.2.5
 

@@ -34,19 +34,19 @@ void successCallback(response, context) {
 }
 
 final kkiapay = KKiaPay(
-    amount: 1000,
-    //countries: [],
-    phone: "22961000000",
-    name: "John Doe",
-    email: "email@mail.com",
-    reason: 'transaction reason',
-    data: 'Fake data',
-    sandbox: true,
-    apikey: '299d09a01c5811ec917be1e6b38a3730',
-    callback: successCallback,
+    amount: 1000,//
+    countries: ["BJ"],//
+    phone: "22961000000",//
+    name: "John Doe",//
+    email: "email@mail.com",//
+    reason: 'transaction reason',//
+    data: 'Fake data',//
+    sandbox: true,//
+    apikey: '4afb8d60021211edadbe55ee0346ea8f',//
+    callback: successCallback,//
     theme: defaultTheme, // Ex : "#222F5A",
-    partnerId: 'AxXxXXxId',
-//    paymentMethods: ["momo","card"]
+    partnerId: 'AxXxXXxId',//
+    paymentMethods: ["momo","card"]//
 );
 
 class App extends StatelessWidget {
