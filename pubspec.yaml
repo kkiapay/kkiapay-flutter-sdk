@@ -11,13 +11,11 @@ dependencies:
   flutter:
     sdk: flutter
   stacked: ^3.4.1+1
-  #stacked_hooks:
   stacked_services:
   url_launcher:
   http:
   webview_flutter: ^3.0.4
   cupertino_icons:
-  #logger:
 
 dev_dependencies:
   flutter_test:
