@@ -3,7 +3,6 @@ import 'package:stacked_services/stacked_services.dart';
 import '../view/widget_builder_view.dart';
 
 @StackedApp(
-  logger: StackedLogger(),
   routes: [
     MaterialRoute(page: KKiaPay),
   ],

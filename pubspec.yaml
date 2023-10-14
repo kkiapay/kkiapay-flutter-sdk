@@ -5,7 +5,7 @@ support: kkiapay <support@kkiapay.me>
 homepage: "https://github.com/kkiapay/kkiapay-flutter-sdk"
 
 environment:
-  sdk: ">=2.12.0 <3.0.0"
+  sdk: ">=2.17.0 <4.0.0"
 
 dependencies:
   flutter:

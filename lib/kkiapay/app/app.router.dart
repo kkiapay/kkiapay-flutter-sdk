@@ -52,6 +52,7 @@ class StackedRouter extends _i1.RouterBase {
 
   @override
   List<_i1.RouteDef> get routes => _routes;
+
   @override
   Map<Type, _i1.StackedRouteFactory> get pagesMap => _pagesMap;
 }
@@ -68,7 +69,7 @@ class KKiaPayArguments {
     this.reason,
     this.data,
     this.paymentMethods,
-    this.sandbox,
+    required this.sandbox,
     this.theme,
     this.name,
     this.email,
@@ -163,7 +164,7 @@ extension NavigatorStateExtension on _i4.NavigationService {
     String? reason,
     String? data,
     List<String>? paymentMethods,
-    bool? sandbox,
+    required bool? sandbox,
     String? theme,
     String? name,
     String? email,
@@ -209,7 +210,7 @@ extension NavigatorStateExtension on _i4.NavigationService {
     String? reason,
     String? data,
     List<String>? paymentMethods,
-    bool? sandbox,
+    required bool? sandbox,
     String? theme,
     String? name,
     String? email,
