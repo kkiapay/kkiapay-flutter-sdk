@@ -20,7 +20,7 @@ dependencies:
 ## Usage
 
 ```dart
-    import 'package:kkiapay_flutter_sdk/kkiapay/view/widget_builder_view.dart';
+    import 'package:kkiapay_flutter_sdk/src/widget_builder_view.dart';
 ```
 
 ##### Initialise the Kkiapay Instance
@@ -55,9 +55,9 @@ final Widget kkiapayWebview = KkiapayWebview(kkiapay)
 ```dart
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:kkiapay_flutter_sdk/kkiapay/view/widget_builder_view.dart';
+import 'package:kkiapay_flutter_sdk/kkiapay/src/widget_builder_view.dart';
 import 'package:kkiapay_flutter_sdk/kkiapayWeb/web_widget_builder.dart';
-import 'package:kkiapay_flutter_sdk/utils/kkiapayConf.sample.dart';
+import 'package:kkiapay_flutter_sdk/utils/config.dart';
 
 
 void main() => runApp(App());
@@ -171,9 +171,7 @@ the successCallback function takes two parameters in the following order
       'phone': String,
       'reason': String,
       'data': String,
-      'paymentMethods': List<String>,
       'partnerId': String,
-      'countries': List<String>,
       'sandbox': bool,
       'name': String,
       'email': String

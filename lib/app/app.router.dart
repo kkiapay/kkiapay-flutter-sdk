@@ -7,8 +7,7 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:flutter/material.dart' as _i3;
 import 'package:flutter/material.dart';
-import 'package:kkiapay_flutter_sdk/kkiapay/view/widget_builder_view.dart'
-    as _i2;
+import 'package:kkiapay_flutter_sdk/src/widget_builder_view.dart' as _i2;
 import 'package:stacked/stacked.dart' as _i1;
 import 'package:stacked_services/stacked_services.dart' as _i4;
 
@@ -33,18 +32,18 @@ class StackedRouter extends _i1.RouterBase {
         builder: (context) => _i2.KKiaPay(
             key: args.key,
             amount: args.amount,
-            apikey: args.apikey,
-            callback: args.callback,
-            phone: args.phone,
-            partnerId: args.partnerId,
-            countries: args.countries,
             reason: args.reason,
+            phone: args.phone,
+            name: args.name,
+            email: args.email,
             data: args.data,
-            paymentMethods: args.paymentMethods,
+            partnerId: args.partnerId,
+            callback: args.callback,
+            apikey: args.apikey,
             sandbox: args.sandbox,
             theme: args.theme,
-            name: args.name,
-            email: args.email),
+            countries: args.countries,
+            paymentMethods: args.paymentMethods),
         settings: data,
       );
     }
@@ -61,54 +60,54 @@ class KKiaPayArguments {
   const KKiaPayArguments({
     this.key,
     required this.amount,
-    required this.apikey,
-    required this.callback,
+    required this.reason,
     this.phone,
-    this.partnerId,
-    this.countries,
-    this.reason,
-    this.data,
-    this.paymentMethods,
-    required this.sandbox,
-    this.theme,
     this.name,
     this.email,
+    this.data,
+    this.partnerId,
+    required this.callback,
+    required this.apikey,
+    required this.sandbox,
+    this.theme,
+    this.countries,
+    this.paymentMethods,
   });
 
   final _i3.Key? key;
 
   final int amount;
 
-  final String? apikey;
+  final String reason;
+
+  final String? phone;
+
+  final String? name;
+
+  final String? email;
+
+  final String? data;
+
+  final String? partnerId;
 
   final dynamic Function(
     Map<String, dynamic>,
     _i3.BuildContext,
   ) callback;
 
-  final String? phone;
-
-  final String? partnerId;
-
-  final List<String>? countries;
-
-  final String? reason;
-
-  final String? data;
-
-  final List<String>? paymentMethods;
+  final String apikey;
 
   final bool? sandbox;
 
   final String? theme;
 
-  final String? name;
+  final List<String>? countries;
 
-  final String? email;
+  final List<String>? paymentMethods;
 
   @override
   String toString() {
-    return '{"key": "$key", "amount": "$amount", "apikey": "$apikey", "callback": "$callback", "phone": "$phone", "partnerId": "$partnerId", "countries": "$countries", "reason": "$reason", "data": "$data", "paymentMethods": "$paymentMethods", "sandbox": "$sandbox", "theme": "$theme", "name": "$name", "email": "$email"}';
+    return '{"key": "$key", "amount": "$amount", "reason": "$reason", "phone": "$phone", "name": "$name", "email": "$email", "data": "$data", "partnerId": "$partnerId", "callback": "$callback", "apikey": "$apikey", "sandbox": "$sandbox", "theme": "$theme", "countries": "$countries", "paymentMethods": "$paymentMethods"}';
   }
 
   @override
@@ -116,36 +115,36 @@ class KKiaPayArguments {
     if (identical(this, other)) return true;
     return other.key == key &&
         other.amount == amount &&
-        other.apikey == apikey &&
-        other.callback == callback &&
-        other.phone == phone &&
-        other.partnerId == partnerId &&
-        other.countries == countries &&
         other.reason == reason &&
+        other.phone == phone &&
+        other.name == name &&
+        other.email == email &&
         other.data == data &&
-        other.paymentMethods == paymentMethods &&
+        other.partnerId == partnerId &&
+        other.callback == callback &&
+        other.apikey == apikey &&
         other.sandbox == sandbox &&
         other.theme == theme &&
-        other.name == name &&
-        other.email == email;
+        other.countries == countries &&
+        other.paymentMethods == paymentMethods;
   }
 
   @override
   int get hashCode {
     return key.hashCode ^
         amount.hashCode ^
-        apikey.hashCode ^
-        callback.hashCode ^
-        phone.hashCode ^
-        partnerId.hashCode ^
-        countries.hashCode ^
         reason.hashCode ^
+        phone.hashCode ^
+        name.hashCode ^
+        email.hashCode ^
         data.hashCode ^
-        paymentMethods.hashCode ^
+        partnerId.hashCode ^
+        callback.hashCode ^
+        apikey.hashCode ^
         sandbox.hashCode ^
         theme.hashCode ^
-        name.hashCode ^
-        email.hashCode;
+        countries.hashCode ^
+        paymentMethods.hashCode;
   }
 }
 
@@ -153,21 +152,21 @@ extension NavigatorStateExtension on _i4.NavigationService {
   Future<dynamic> navigateToKKiaPay({
     _i3.Key? key,
     required int amount,
-    required String? apikey,
+    required String reason,
+    String? phone,
+    String? name,
+    String? email,
+    String? data,
+    String? partnerId,
     required dynamic Function(
       Map<String, dynamic>,
       _i3.BuildContext,
     ) callback,
-    String? phone,
-    String? partnerId,
-    List<String>? countries,
-    String? reason,
-    String? data,
-    List<String>? paymentMethods,
+    required String apikey,
     required bool? sandbox,
     String? theme,
-    String? name,
-    String? email,
+    List<String>? countries,
+    List<String>? paymentMethods,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -178,18 +177,18 @@ extension NavigatorStateExtension on _i4.NavigationService {
         arguments: KKiaPayArguments(
             key: key,
             amount: amount,
-            apikey: apikey,
-            callback: callback,
-            phone: phone,
-            partnerId: partnerId,
-            countries: countries,
             reason: reason,
+            phone: phone,
+            name: name,
+            email: email,
             data: data,
-            paymentMethods: paymentMethods,
+            partnerId: partnerId,
+            callback: callback,
+            apikey: apikey,
             sandbox: sandbox,
             theme: theme,
-            name: name,
-            email: email),
+            countries: countries,
+            paymentMethods: paymentMethods),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -199,21 +198,21 @@ extension NavigatorStateExtension on _i4.NavigationService {
   Future<dynamic> replaceWithKKiaPay({
     _i3.Key? key,
     required int amount,
-    required String? apikey,
+    required String reason,
+    String? phone,
+    String? name,
+    String? email,
+    String? data,
+    String? partnerId,
     required dynamic Function(
       Map<String, dynamic>,
       _i3.BuildContext,
     ) callback,
-    String? phone,
-    String? partnerId,
-    List<String>? countries,
-    String? reason,
-    String? data,
-    List<String>? paymentMethods,
+    required String apikey,
     required bool? sandbox,
     String? theme,
-    String? name,
-    String? email,
+    List<String>? countries,
+    List<String>? paymentMethods,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -224,18 +223,18 @@ extension NavigatorStateExtension on _i4.NavigationService {
         arguments: KKiaPayArguments(
             key: key,
             amount: amount,
-            apikey: apikey,
-            callback: callback,
-            phone: phone,
-            partnerId: partnerId,
-            countries: countries,
             reason: reason,
+            phone: phone,
+            name: name,
+            email: email,
             data: data,
-            paymentMethods: paymentMethods,
+            partnerId: partnerId,
+            callback: callback,
+            apikey: apikey,
             sandbox: sandbox,
             theme: theme,
-            name: name,
-            email: email),
+            countries: countries,
+            paymentMethods: paymentMethods),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,

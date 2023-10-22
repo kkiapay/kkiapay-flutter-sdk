@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:flutter/cupertino.dart';
-import 'package:kkiapay_flutter_sdk/utils/kkiapayConf.sample.dart';
+import 'package:kkiapay_flutter_sdk/utils/config.dart';
 import 'package:kkiapay_flutter_sdk/utils/utils.dart';
 import 'package:stacked/stacked.dart';
 import 'package:webview_flutter/webview_flutter.dart';
@@ -8,12 +8,6 @@ import 'package:webview_flutter/webview_flutter.dart';
 
 class WidgetBuilderViewModel extends BaseViewModel {
 
-  bool _hide = false;
-  bool get hide => _hide;
-  void hideWebView () {
-    _hide = true;
-    notifyListeners();
-  }
 
   bool _onLoading = true;
   bool get onLoading => _onLoading;
@@ -40,15 +34,19 @@ class WidgetBuilderViewModel extends BaseViewModel {
     notifyListeners();
   }
 
-  FutureOr<NavigationDecision> onUrlChange (request,
+  FutureOr<NavigationDecision> onUrlChange (UrlChange request,
       Function(Map<String, dynamic>, BuildContext)? callback, context)
   async {
-    if (request.url.startsWith(WaveRedirectURI)
-        || request.url.startsWith(PlayStoreRedirectURI)) {
-      Utils.launchWave(request.url);
+    if (request.url == null ) {
       return NavigationDecision.prevent;
+    }else{
+      if (request.url!.startsWith(WaveRedirectURI)
+          || request.url!.startsWith(PlayStoreRedirectURI)) {
+        Utils.launchWave(request.url!);
+        return NavigationDecision.prevent;
+      }
+      return NavigationDecision.navigate;
     }
-    return NavigationDecision.navigate;
   }
 
 }

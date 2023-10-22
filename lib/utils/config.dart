@@ -1,31 +1,25 @@
 import 'dart:convert';
-
 import 'dart:ui';
 
+/// developer account api key
+const public_api_key = '4afb8d60021211edadbe55ee0346ea8f';
+/// widget default theme
+const defaultTheme = "#4E6BFC";
+
+/// KKiaPay widget base url
 const KKiaPayURL = "https://widget-v3.kkiapay.me";
-const KKiaPayRedirectURL = "http://redirect.kkiapay.me";
+
+/// const for wave payment
 const WaveRedirectURI = "wave:";
 const PlayStoreRedirectURI = "https://play.google.com";
 const WaveStoreRedirectURI = "market://details?id=com.wave.personal";
-const key = "xxxxxxxxxxxxxxxxxxxxxx";
 
-/// API Key */
-const callback = 'http://redirect.kkiapay.me';
-
-/// Webhook */
-const sdk = "flutter";
-const defaultTheme = "#4E6BFC";
+/// static additional data
 const nColorPrimary = Color(0xffF11C33);
-const nColorSecondary = Color(0xff222F5A);
-const nColorYellow = Color(0xffE8C145);
-const nColorGray1 = Color(0xffF9F9F9);
-const nColorGray2 = Color(0xeaeaea);
-
-/// Widget hex color */
+const callback = 'http://redirect.kkiapay.me';
+const sdk = "flutter";
 const url = "";
-
-/// Widget header image url */
-const host = ""; /** package name **/
+const host = "";
 
 /// Widget payment Mode
 enum PaymentMethod {
@@ -41,7 +35,7 @@ enum CallbackStatus {
   PAYMENT_SUCCESS,
 }
 
-
+/// widget javascript events
 const NETWORK_STATE_CHANGED = 'NETWORK_STATE_CHANGED';
 const INIT_WIDGET = 'INIT_WIDGET';
 const WIDGET_SUCCESSFULLY_INIT = 'WIDGET_SUCCESSFULLY_INIT';
@@ -60,16 +54,7 @@ const RETRY_PAYMENT = 'RETRY_PAYMENT';
 
 
 
-
-
-
 class SdkData {
-  /// @Params amount : Payment amount
-  /// @Params reason : Payment reason
-  /// @Params name : Payment owner
-  /// @Params phone : Payment phoneNumber
-  /// @Params data : Payment data send by webhook
-  /// @Params sandbox : Payment request made in sandbox
   SdkData({
     this.amount,
     this.paymentMethod,
@@ -116,5 +101,3 @@ class SdkData {
     return base64.encode(bytes);
   }
 }
-
-//    var json = jsonEncode({"amount":100,"sandbox":false,"serviceId":"INTEGRATION","position":"left","theme":"primary","key":"LprYUAyMpfAjq4z2yTHPiY0b6XktIQ","paymentMethods":["momo","card","direct_debit"]});

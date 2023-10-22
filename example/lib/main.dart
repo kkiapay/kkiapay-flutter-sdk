@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:kkiapay_flutter_sdk/kkiapay/view/widget_builder_view.dart';
-import 'package:kkiapay_flutter_sdk/utils/kkiapayConf.sample.dart';
+import 'package:kkiapay_flutter_sdk/src/widget_builder_view.dart';
+import 'package:kkiapay_flutter_sdk/utils/config.dart';
 import './successScreen.dart';
 
 void main() => runApp(App());
@@ -42,7 +42,7 @@ final kkiapay = KKiaPay(
     reason: 'transaction reason',//
     data: 'Fake data',//
     sandbox: true,//
-    apikey: '4afb8d60021211edadbe55ee0346ea8f',//
+    apikey: public_api_key,//
     callback: successCallback,//
     theme: defaultTheme, // Ex : "#222F5A",
     partnerId: 'AxXxXXxId',//

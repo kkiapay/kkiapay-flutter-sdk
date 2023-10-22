@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import 'kkiapayConf.sample.dart';
+import 'config.dart';
 
 class Utils {
 
