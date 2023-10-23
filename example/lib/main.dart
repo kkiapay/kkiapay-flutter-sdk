@@ -10,8 +10,8 @@ void successCallback(response, context) {
 
   switch ( response['status'] ) {
 
-   case PAYMENT_CANCELLED: print(PAYMENT_CANCELLED);
-   break;
+    case PAYMENT_CANCELLED: print(PAYMENT_CANCELLED);
+    break;
 
     case PAYMENT_SUCCESS:
       Navigator.push(
@@ -23,7 +23,7 @@ void successCallback(response, context) {
           ),
         ),
       );
-    break;
+      break;
 
     case PAYMENT_FAILED: print(PAYMENT_FAILED);
     break;
@@ -74,32 +74,32 @@ class KkiapaySample extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          ButtonTheme(
-            minWidth: 500.0,
-            height: 100.0,
-            child: TextButton(
-              style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(Color(0xff222F5A)),
-                foregroundColor: MaterialStateProperty.all(Colors.white),
-              ),
-              child: Text(
-                'Pay Now',
-                 style: TextStyle(color: Colors.white),
-              ),
-              onPressed: () {
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ButtonTheme(
+              minWidth: 500.0,
+              height: 100.0,
+              child: TextButton(
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(Color(0xff222F5A)),
+                  foregroundColor: MaterialStateProperty.all(Colors.white),
+                ),
+                child: const Text(
+                  'Pay Now',
+                  style: TextStyle(color: Colors.white),
+                ),
+                onPressed: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => kkiapay),
                   );
-              },
-            ),
-          )
-        ],
-      )
+                },
+              ),
+            )
+          ],
+        )
     );
   }
 }
