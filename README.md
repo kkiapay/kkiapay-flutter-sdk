@@ -47,7 +47,7 @@ final kkiapay = KKiaPay(
 ##### Create payment webview instance
 
 ```dart
-final Widget kkiapayWebview = KkiapayWebview(kkiapay)
+Navigator.push(context, MaterialPageRoute(builder: (context) => kkiapay),
 ```
 
 ## Example
