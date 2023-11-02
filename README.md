@@ -28,18 +28,18 @@ dependencies:
 ```dart
 final kkiapay = KKiaPay(
     @required callback: Function(Map<String, dynamic> response, BuildContext context),
-    @required amount: String,
-    @required apikey: String,
-    @required sandbox: bool,
-    data: String,
-    phone: String,
-    name: String,
-    reason: String,
-    email: String,
-    theme: dynamic,
-    countries: List<String>,
-    partnerId: String,
-    paymentMethods: List<String>
+    @required amount: int, // Ex : 1000
+    @required apikey: String, // Ex : XXXX_public_api_key_XXX
+    @required sandbox: bool, // Ex : true
+    data: String, // Ex : 'Big data'
+    phone: String, // Ex : "22961000000"
+    name: String, // Ex : "John Doe"
+    reason: String, // Ex : "transaction reason"
+    email: String, // Ex : "email@mail.com"
+    theme: String, // Ex : "#222F5A"
+    countries: List<String>, // Ex :  ["CI"]
+    partnerId: String, // Ex : 'AxXxXXxId'
+    paymentMethods: List<String> // Ex : ["momo","card"]
 );
 
 ```
@@ -53,91 +53,108 @@ Navigator.push(context, MaterialPageRoute(builder: (context) => kkiapay),
 ## Example
 
 ```dart
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:kkiapay_flutter_sdk/kkiapay/src/widget_builder_view.dart';
-import 'package:kkiapay_flutter_sdk/kkiapayWeb/web_widget_builder.dart';
+import 'package:kkiapay_flutter_sdk/src/widget_builder_view.dart';
 import 'package:kkiapay_flutter_sdk/utils/config.dart';
-
+import './successScreen.dart';
 
 void main() => runApp(App());
 
 void successCallback(response, context) {
   Navigator.pop(context);
-  Navigator.push(
-    context,
-    MaterialPageRoute(
-        builder: (context) => SuccessScreen( 
-              amount: response['requestData']['amount'],
-              transactionId: response['transactionId']
-            )),
-  );
+
+  switch ( response['status'] ) {
+
+    case PAYMENT_CANCELLED: print(PAYMENT_CANCELLED);
+    break;
+
+    case PAYMENT_SUCCESS:
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => SuccessScreen(
+            amount: response['requestData']['amount'],
+            transactionId: response['transactionId'],
+          ),
+        ),
+      );
+      break;
+
+    case PAYMENT_FAILED: print(PAYMENT_FAILED);
+    break;
+
+    default:
+      break;
+  }
 }
 
 final kkiapay = KKiaPay(
-    amount: 100,
-    countries: ["BJ"],
-    phone: "22961000000",
-    name: "John Doe",
-    email: "email@mail.com",
-    reason: 'transaction reason',
-    data: 'Fake data',
-    sandbox: true,
-    apikey: 'XXXXXXXXXXXXXXXXXXXXXX',
-    callback: successCallback,
+    amount: 1000,//
+    countries: ["BJ"],//
+    phone: "22961000000",//
+    name: "John Doe",//
+    email: "email@mail.com",//
+    reason: 'transaction reason',//
+    data: 'Fake data',//
+    sandbox: true,//
+    apikey: public_api_key,//
+    callback: successCallback,//
     theme: defaultTheme, // Ex : "#222F5A",
-    partnerId: 'AxXxXXxId',
-    paymentMethods: ["momo","card"]
+    partnerId: 'AxXxXXxId',//
+    paymentMethods: ["momo","card"]//
 );
 
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        home: Scaffold(
-      appBar: AppBar(
-        title: Text('Kkiapay Sample'),
-        centerTitle: true,
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        appBar: AppBar(
+          backgroundColor: nColorPrimary,
+          title: Text('Kkiapay Sample'),
+          centerTitle: true,
+        ),
+        body: KkiapaySample(),
       ),
-      body: KkiapaySample(),
-    ));
+    );
   }
 }
 
 class KkiapaySample extends StatelessWidget {
   const KkiapaySample({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: 
-      ButtonTheme(
-        minWidth: 500.0,
-        height: 100.0,
-        child: TextButton(
-          style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all(Color(0xff222F5A)),
-            foregroundColor: MaterialStateProperty.all(Colors.white),
-          ),
-          child: Text(
-            'Pay Now',
-            style: TextStyle(color: Colors.white),
-          ),
-          onPressed: () {
-              if (kIsWeb) {
-              KKiaPayWeb.pay(kkiapay, (response) {
-                successCallback(response, context);
-              });
-              } else {
-                Navigator.push(context,
-                MaterialPageRoute(builder: (context) => kkiapay),
-              );
-            }
-          },
-        ),
-      ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ButtonTheme(
+              minWidth: 500.0,
+              height: 100.0,
+              child: TextButton(
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(Color(0xff222F5A)),
+                  foregroundColor: MaterialStateProperty.all(Colors.white),
+                ),
+                child: const Text(
+                  'Pay Now',
+                  style: TextStyle(color: Colors.white),
+                ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => kkiapay),
+                  );
+                },
+              ),
+            )
+          ],
+        )
     );
   }
 }

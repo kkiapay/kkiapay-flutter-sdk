@@ -33,20 +33,20 @@ void successCallback(response, context) {
   }
 }
 
-final kkiapay = KKiaPay(
-    amount: 1000,//
-    countries: ["BJ"],//
-    phone: "22961000000",//
-    name: "John Doe",//
-    email: "email@mail.com",//
-    reason: 'transaction reason',//
-    data: 'Fake data',//
-    sandbox: true,//
-    apikey: public_api_key,//
-    callback: successCallback,//
-    theme: defaultTheme, // Ex : "#222F5A",
-    partnerId: 'AxXxXXxId',//
-    paymentMethods: ["momo","card"]//
+const kkiapay = KKiaPay(
+    amount: 1000,
+    countries: ["BJ"],
+    phone: "22961000000",
+    name: "John Doe",
+    email: "email@mail.com",
+    reason: 'transaction reason',
+    data: 'Fake data',
+    sandbox: true,
+    apikey: public_api_key,
+    callback: successCallback,
+    theme: defaultTheme,
+    partnerId: 'AxXxXXxId',
+    paymentMethods: ["momo","card"]
 );
 
 class App extends StatelessWidget {
@@ -57,10 +57,10 @@ class App extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
           backgroundColor: nColorPrimary,
-          title: Text('Kkiapay Sample'),
+          title: const Text('Kkiapay Sample'),
           centerTitle: true,
         ),
-        body: KkiapaySample(),
+        body: const KkiapaySample(),
       ),
     );
   }

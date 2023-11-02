@@ -1,3 +1,9 @@
+## 1.2.7
+
+- Update all plugin dependencies
+- Review example project
+- Review readme
+
 ## 1.2.6
 
 - Set sandbox as required

@@ -11,18 +11,25 @@ class KKiaPay extends StackedView<WidgetBuilderViewModel> {
 
   /* Payment info */
   /// @Params: Payment amount
+  /// Ex : 1000
   final int amount;
   /// @Params : Payment reason
+  /// Ex : "transaction reason"
   final String reason;
   /// @Params : Payment phoneNumber
+  /// Ex : "22961000000"
   final String? phone;
   /// @Params : Payment owner
+  /// Ex : "John Doe"
   final String? name;
   /// @Params email : Payment owner address mail
+  /// Ex : "email@mail.com"
   final String? email;
   /// @Params : Payment data send by webhook
+  /// Ex : 'Big data'
   final String? data;
   /// @Params partnerId : Your application payment reference
+  /// Ex : 'AxXxXXxId'
   final String? partnerId;
   /// @Params : Payment callback
   final Function(Map<String, dynamic>, BuildContext) callback;
@@ -30,14 +37,19 @@ class KKiaPay extends StackedView<WidgetBuilderViewModel> {
 
   /* Widget ui config */
   /// @Params : Your public api key according to [sandbox] value
+  /// Ex : XXXX_public_api_key_XXX
   final String apikey;
   /// @Params : Payment environment according to [apikey] value
+  /// Ex : true
   final bool? sandbox;
-  /// @Params : Widget authorized countries
+  /// @Params : Widget UI theme
+  /// Ex : "#222F5A"
   final String? theme;
   /// @Params : Widget authorized countries
+  /// Ex : ["CI"]
   final List<String>? countries;
   /// @Params : Widget authorized payment paymentMethods
+  /// Ex : ["momo","card"]
   final List<String>? paymentMethods;
 
 
