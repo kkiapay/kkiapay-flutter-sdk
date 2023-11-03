@@ -1,13 +1,22 @@
 import 'dart:async';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:kkiapay_flutter_sdk/utils/config.dart';
 import 'package:kkiapay_flutter_sdk/utils/utils.dart';
 import 'package:stacked/stacked.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
+import 'package:webview_flutter_android/webview_flutter_android.dart';
+import 'package:webview_flutter_wkwebview/webview_flutter_wkwebview.dart';
 
 class WidgetBuilderViewModel extends BaseViewModel {
 
+  String _progression = "...";
+  String get progression => _progression;
+  void setProgression(value) {
+    _progression = value;
+    notifyListeners();
+  }
 
   bool _onLoading = true;
   bool get onLoading => _onLoading;
@@ -34,15 +43,14 @@ class WidgetBuilderViewModel extends BaseViewModel {
     notifyListeners();
   }
 
-  FutureOr<NavigationDecision> onUrlChange (UrlChange request,
-      Function(Map<String, dynamic>, BuildContext)? callback, context)
+  FutureOr<NavigationDecision> onUrlChange (UrlChange urlChange, context)
   async {
-    if (request.url == null ) {
+    if (urlChange.url == null ) {
       return NavigationDecision.prevent;
     }else{
-      if (request.url!.startsWith(WaveRedirectURI)
-          || request.url!.startsWith(PlayStoreRedirectURI)) {
-        Utils.launchWave(request.url!);
+      if (urlChange.url!.startsWith(WaveRedirectURI)
+          || urlChange.url!.startsWith(PlayStoreRedirectURI)) {
+        Utils.launchWave(urlChange.url!);
         return NavigationDecision.prevent;
       }
       return NavigationDecision.navigate;
