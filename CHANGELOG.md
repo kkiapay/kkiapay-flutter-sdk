@@ -1,3 +1,7 @@
+## 1.2.8-dev.1
+
+- fix : webview_flutter building review
+
 ## 1.2.7
 
 - Update all plugin dependencies
