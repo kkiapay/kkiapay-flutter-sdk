@@ -1,4 +1,8 @@
-## 1.2.8-dev.1
+## 1.2.9-dev.1
+
+- WIDGET_SUCCESSFULLY_INIT event not found on ios emulator : hide loader with webview callback
+ 
+## 1.2.8
 
 - fix : webview_flutter building review
 

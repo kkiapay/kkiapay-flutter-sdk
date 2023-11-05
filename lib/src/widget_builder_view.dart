@@ -160,7 +160,7 @@ class _KKiaPayState extends State<KKiaPay> {
               },
               onPageFinished: (String url) {
                 debugPrint('Page finished loading: $url');
-                //viewModel.loadingFinish();
+                viewModel.loadingFinish();
               },
               onWebResourceError: (WebResourceError error) {
                 debugPrint('''
