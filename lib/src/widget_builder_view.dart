@@ -194,6 +194,19 @@ class _KKiaPayState extends State<KKiaPay> {
               viewModel.loadingFinish();
               break;
 
+            case PAYMENT_INIT:
+              if (viewModel.lastEvent != PAYMENT_SUCCESS)
+              widget.callback({
+                'requestData': viewModel.data,
+                'transactionId': null,
+                'status': CallbackStatus.PAYMENT_INIT.name
+              },context);
+              break;
+
+            case PENDING_PAYMENT:
+              viewModel.isBusy;
+              break;
+
             case PAYMENT_SUCCESS:
               viewModel.setLastEvent(PAYMENT_SUCCESS);
               widget.callback( {

@@ -6,14 +6,25 @@ import './successScreen.dart';
 void main() => runApp(App());
 
 void successCallback(response, context) {
-  Navigator.pop(context);
+
 
   switch ( response['status'] ) {
 
     case PAYMENT_CANCELLED: print(PAYMENT_CANCELLED);
+    Navigator.pop(context);
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(PAYMENT_CANCELLED),));
+    break;
+
+    case PENDING_PAYMENT : print(PENDING_PAYMENT);
+  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(PENDING_PAYMENT),));
+    break;
+
+    case PAYMENT_INIT : print(PAYMENT_INIT);
+  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(PAYMENT_INIT),));
     break;
 
     case PAYMENT_SUCCESS:
+      Navigator.pop(context);
       Navigator.push(
         context,
         MaterialPageRoute(
@@ -23,6 +34,7 @@ void successCallback(response, context) {
           ),
         ),
       );
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(PAYMENT_SUCCESS),));
       break;
 
     case PAYMENT_FAILED: print(PAYMENT_FAILED);

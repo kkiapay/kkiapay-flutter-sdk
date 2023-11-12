@@ -33,6 +33,7 @@ enum CallbackStatus {
   PAYMENT_CANCELLED,
   PAYMENT_FAILED,
   PAYMENT_SUCCESS,
+  PAYMENT_INIT,
 }
 
 /// widget javascript events
