@@ -1,7 +1,7 @@
 #!/bin/sh
 # This is a generated file; do not edit or check into version control.
-export "FLUTTER_ROOT=/home/farid/snap/flutter/common/flutter"
-export "FLUTTER_APPLICATION_PATH=/home/farid/opensi_project/kkiapay-flutter-sdk/example"
+export "FLUTTER_ROOT=/Users/fulberto/Library/Android/flutter"
+export "FLUTTER_APPLICATION_PATH=/Users/fulberto/Desktop/kkiapay-flutter-sdk/example"
 export "COCOAPODS_PARALLEL_CODE_SIGN=true"
 export "FLUTTER_TARGET=lib/main.dart"
 export "FLUTTER_BUILD_DIR=build"

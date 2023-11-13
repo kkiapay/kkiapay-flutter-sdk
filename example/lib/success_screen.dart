@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 
 class SuccessScreen extends StatelessWidget {
   final int? amount;
-  final transactionId;
+  final String? transactionId;
 
-  const SuccessScreen({this.amount, this.transactionId});
+  const SuccessScreen({super.key, this.amount, this.transactionId});
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('PAYMENT SUCCESSFUL'),
+          title: const Text('PAYMENT SUCCESSFUL'),
         ),
         body: Center(
           child: Text(
