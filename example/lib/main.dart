@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kkiapay_flutter_sdk/kkiapay.dart';
+import 'package:kkiapay_flutter_sdk/kkiapay_flutter_sdk.dart';
 import 'success_screen.dart';
 
 void main() => runApp(const App());
