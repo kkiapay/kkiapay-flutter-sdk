@@ -27,7 +27,7 @@ dependencies:
 ## Usage
 
 ```dart
-    import 'package:kkiapay_flutter_sdk/src/widget_builder_view.dart';
+    import 'package:kkiapay_flutter_sdk/kkiapay_flutter_sdk.dart';
 ```
 
 ##### Initialise the Kkiapay Instance
@@ -44,7 +44,7 @@ final kkiapay = KKiaPay(
     reason: String, // Ex : "transaction reason"
     email: String, // Ex : "email@mail.com"
     theme: String, // Ex : "#222F5A"
-    countries: List<String>, // Ex :  ["CI"]
+    countries: List<String>, // Ex :  ["CI","BJ"]
     partnerId: String, // Ex : 'AxXxXXxId'
     paymentMethods: List<String> // Ex : ["momo","card"]
 );
@@ -61,19 +61,35 @@ Navigator.push(context, MaterialPageRoute(builder: (context) => kkiapay),
 
 ```dart
 import 'package:flutter/material.dart';
-import 'package:kkiapay_flutter_sdk/src/widget_builder_view.dart';
-import 'package:kkiapay_flutter_sdk/utils/config.dart';
+import 'package:kkiapay_flutter_sdk/kkiapay_flutter_sdk.dart';
 import './successScreen.dart';
 
 void main() => runApp(App());
 
 void successCallback(response, context) {
-  Navigator.pop(context);
-
   switch ( response['status'] ) {
 
-    case PAYMENT_CANCELLED: print(PAYMENT_CANCELLED);
+    case PAYMENT_CANCELLED:
+      debugPrint(PAYMENT_CANCELLED);
+      Navigator.pop(context);
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        content: Text(PAYMENT_CANCELLED),
+      ));
     break;
+
+    case PENDING_PAYMENT:
+      debugPrint(PENDING_PAYMENT);
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        content: Text(PENDING_PAYMENT),
+      ));
+      break;
+
+    case PAYMENT_INIT:
+      debugPrint(PAYMENT_INIT);
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        content: Text(PAYMENT_INIT),
+      ));
+      break;  
 
     case PAYMENT_SUCCESS:
       Navigator.push(
@@ -85,6 +101,9 @@ void successCallback(response, context) {
           ),
         ),
       );
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        content: Text(PAYMENT_SUCCESS),
+      ));
       break;
 
     case PAYMENT_FAILED: print(PAYMENT_FAILED);
