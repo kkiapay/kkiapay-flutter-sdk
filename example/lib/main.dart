@@ -1,27 +1,32 @@
 import 'package:flutter/material.dart';
-import 'package:kkiapay_flutter_sdk/src/widget_builder_view.dart';
-import 'package:kkiapay_flutter_sdk/utils/config.dart';
-import './successScreen.dart';
+import 'package:kkiapay_flutter_sdk/kkiapay_flutter_sdk.dart';
+import 'success_screen.dart';
 
-void main() => runApp(App());
+void main() => runApp(const App());
 
 void successCallback(response, context) {
+  switch (response['status']) {
+    case PAYMENT_CANCELLED:
+      debugPrint(PAYMENT_CANCELLED);
+      Navigator.pop(context);
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        content: Text(PAYMENT_CANCELLED),
+      ));
+      break;
 
+    case PENDING_PAYMENT:
+      debugPrint(PENDING_PAYMENT);
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        content: Text(PENDING_PAYMENT),
+      ));
+      break;
 
-  switch ( response['status'] ) {
-
-    case PAYMENT_CANCELLED: print(PAYMENT_CANCELLED);
-    Navigator.pop(context);
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(PAYMENT_CANCELLED),));
-    break;
-
-    case PENDING_PAYMENT : print(PENDING_PAYMENT);
-  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(PENDING_PAYMENT),));
-    break;
-
-    case PAYMENT_INIT : print(PAYMENT_INIT);
-  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(PAYMENT_INIT),));
-    break;
+    case PAYMENT_INIT:
+      debugPrint(PAYMENT_INIT);
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        content: Text(PAYMENT_INIT),
+      ));
+      break;
 
     case PAYMENT_SUCCESS:
       Navigator.pop(context);
@@ -34,11 +39,14 @@ void successCallback(response, context) {
           ),
         ),
       );
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(PAYMENT_SUCCESS),));
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        content: Text(PAYMENT_SUCCESS),
+      ));
       break;
 
-    case PAYMENT_FAILED: print(PAYMENT_FAILED);
-    break;
+    case PAYMENT_FAILED:
+      debugPrint(PAYMENT_FAILED);
+      break;
 
     default:
       break;
@@ -58,10 +66,11 @@ const kkiapay = KKiaPay(
     callback: successCallback,
     theme: defaultTheme,
     partnerId: 'AxXxXXxId',
-    paymentMethods: ["momo","card"]
-);
+    paymentMethods: ["momo", "card"]);
 
 class App extends StatelessWidget {
+  const App({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -87,31 +96,31 @@ class KkiapaySample extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            ButtonTheme(
-              minWidth: 500.0,
-              height: 100.0,
-              child: TextButton(
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Color(0xff222F5A)),
-                  foregroundColor: MaterialStateProperty.all(Colors.white),
-                ),
-                child: const Text(
-                  'Pay Now',
-                  style: TextStyle(color: Colors.white),
-                ),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => kkiapay),
-                  );
-                },
-              ),
-            )
-          ],
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        ButtonTheme(
+          minWidth: 500.0,
+          height: 100.0,
+          child: TextButton(
+            style: ButtonStyle(
+              backgroundColor:
+                  MaterialStateProperty.all(const Color(0xff222F5A)),
+              foregroundColor: MaterialStateProperty.all(Colors.white),
+            ),
+            child: const Text(
+              'Pay Now',
+              style: TextStyle(color: Colors.white),
+            ),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => kkiapay),
+              );
+            },
+          ),
         )
-    );
+      ],
+    ));
   }
 }
