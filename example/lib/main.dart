@@ -45,6 +45,7 @@ void successCallback(response, context) {
       break;
 
     case PAYMENT_FAILED:
+      Navigator.pop(context);
       debugPrint(PAYMENT_FAILED);
       break;
 

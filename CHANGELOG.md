@@ -1,3 +1,8 @@
+## 1.2.10
+
+- Review sdk import
+- WIDGET_SUCCESSFULLY_INIT event not found on ios emulator : hide loader with webview callback
+
 ## 1.2.9-dev.2
 
 - Review sdk import
