@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kkiapay_flutter_sdk/utils/utils.dart';
 import 'package:stacked/stacked.dart';
@@ -222,6 +223,11 @@ class _KKiaPayState extends State<KKiaPay> {
               'status': CallbackStatus.PAYMENT_FAILED.name
             }, context);
             break;
+
+            case WAVE_LINK:
+             Utils.launchWave(
+               JsonDecoder().convert(message.message)["data"],);
+              break;
 
             default:
               break;

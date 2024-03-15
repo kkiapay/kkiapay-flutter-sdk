@@ -56,14 +56,14 @@ void successCallback(response, context) {
 
 const kkiapay = KKiaPay(
     amount: 1000,
-    countries: ["BJ"],
+    countries: ["BJ","CI"],
     phone: "22961000000",
     name: "John Doe",
     email: "email@mail.com",
     reason: 'transaction reason',
     data: 'Fake data',
-    sandbox: true,
-    apikey: public_api_key,
+    sandbox: false,
+    apikey: "df7995c06a906d4393528bb7315b74c43db1d800",
     callback: successCallback,
     theme: defaultTheme,
     partnerId: 'AxXxXXxId',

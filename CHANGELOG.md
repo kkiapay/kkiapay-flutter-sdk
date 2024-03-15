@@ -1,3 +1,7 @@
+## 1.2.12
+
+- Fix wave app redirection bug
+
 ## 1.2.10
 
 - Review sdk import
