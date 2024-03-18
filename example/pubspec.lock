@@ -123,9 +123,10 @@ packages:
   kkiapay_flutter_sdk:
     dependency: "direct main"
     description:
-      path: ".."
-      relative: true
-    source: path
+      name: kkiapay_flutter_sdk
+      sha256: "9825f40c084364e6720455e8b96974fde21487e5122dc4b9a6b8e311ce78ab9f"
+      url: "https://pub.dev"
+    source: hosted
     version: "1.2.12"
   leak_tracker:
     dependency: transitive

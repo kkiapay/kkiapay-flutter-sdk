@@ -70,28 +70,20 @@ void successCallback(response, context) {
   switch ( response['status'] ) {
 
     case PAYMENT_CANCELLED:
-      debugPrint(PAYMENT_CANCELLED);
       Navigator.pop(context);
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-        content: Text(PAYMENT_CANCELLED),
-      ));
+      debugPrint(PAYMENT_CANCELLED);
     break;
-
-    case PENDING_PAYMENT:
-      debugPrint(PENDING_PAYMENT);
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-        content: Text(PENDING_PAYMENT),
-      ));
-      break;
 
     case PAYMENT_INIT:
       debugPrint(PAYMENT_INIT);
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-        content: Text(PAYMENT_INIT),
-      ));
-      break;  
+      break;
 
+    case PENDING_PAYMENT:
+      debugPrint(PENDING_PAYMENT);
+      break;
+      
     case PAYMENT_SUCCESS:
+      Navigator.pop(context);
       Navigator.push(
         context,
         MaterialPageRoute(
@@ -101,12 +93,11 @@ void successCallback(response, context) {
           ),
         ),
       );
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-        content: Text(PAYMENT_SUCCESS),
-      ));
       break;
 
-    case PAYMENT_FAILED: print(PAYMENT_FAILED);
+    case PAYMENT_FAILED:
+      Navigator.pop(context);
+      print(PAYMENT_FAILED);
     break;
 
     default:
