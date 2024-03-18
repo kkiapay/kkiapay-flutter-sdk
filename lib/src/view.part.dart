@@ -14,28 +14,26 @@ class LoadingView extends ViewModelWidget<WidgetBuilderViewModel> {
             mainAxisAlignment: MainAxisAlignment.center,
             mainAxisSize: MainAxisSize.min,
             children: [
-              Container(
-                  height: 52,
-                  child: Center(
-                    child: imageFromBase64String(),
-                  )),
-              RichText(
-                  text: new TextSpan(
-                    style: new TextStyle(
-                  fontSize: 18.0,
-                ),
-                    children: <TextSpan>[
-                  new TextSpan(
-                      text: 'Chargement',
-                      style: new TextStyle(
-                          fontWeight: FontWeight.bold, color: Colors.black)),
-                  new TextSpan(
-                      text: viewModel.progression,
-                      style: new TextStyle(
-                          fontWeight: FontWeight.bold, color: Colors.black54)),
+              Stack(
+                alignment: Alignment.center,
+                children: [
+                  Container(
+                      height: 100,
+                      width: 100,
+                      child: CircularProgressIndicator(
+                        value: viewModel.progression,
+                        backgroundColor: Colors.grey.withOpacity(0.3),
+                        color: Colors.grey.withOpacity(0.6),
+                      )
+                  ),
+
+                  Container(
+                      height: 42,
+                      child: Center(
+                        child: imageFromBase64String(),
+                      )),
                 ],
-                  )
-              ),
+              )
             ],
           ),
         ));

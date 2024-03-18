@@ -153,7 +153,7 @@ class _KKiaPayState extends State<KKiaPay> {
             NavigationDelegate(
               onProgress: (int progress) {
                 debugPrint('WebView is loading (progress : $progress%)');
-                viewModel.setProgression(" $progress%");
+                viewModel.setProgression(progress/100);
               },
               onPageStarted: (String url) {
                 debugPrint('Page started loading: $url');

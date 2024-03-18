@@ -5,8 +5,8 @@ import 'package:stacked/stacked.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class WidgetBuilderViewModel extends BaseViewModel {
-  String _progression = "...";
-  String get progression => _progression;
+  double _progression = 0.0;
+  double get progression => _progression;
   void setProgression(value) {
     _progression = value;
     notifyListeners();

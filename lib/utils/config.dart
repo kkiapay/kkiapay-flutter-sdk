@@ -15,7 +15,8 @@ const PlayStoreRedirectURI = "https://play.google.com";
 const WaveStoreRedirectURI = "market://details?id=com.wave.personal";
 
 /// static additional data
-const nColorPrimary = Color(0xffF11C33);
+const primaryColor = Color(0xffF11C33);
+const secondaryColor = Color(0xff222F5A);
 const callback = 'http://redirect.kkiapay.me';
 const sdk = "flutter";
 const url = "";

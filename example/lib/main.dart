@@ -78,7 +78,7 @@ class App extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          backgroundColor: nColorPrimary,
+          backgroundColor: primaryColor,
           title: const Text('Kkiapay Sample'),
           centerTitle: true,
         ),
