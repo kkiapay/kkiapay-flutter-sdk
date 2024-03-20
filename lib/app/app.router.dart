@@ -39,6 +39,7 @@ class StackedRouter extends _i1.RouterBase {
             data: args.data,
             partnerId: args.partnerId,
             callback: args.callback,
+            callbackUrl: args.callbackUrl,
             apikey: args.apikey,
             sandbox: args.sandbox,
             theme: args.theme,
@@ -67,6 +68,7 @@ class KKiaPayArguments {
     this.data,
     this.partnerId,
     required this.callback,
+    this.callbackUrl,
     required this.apikey,
     required this.sandbox,
     this.theme,
@@ -95,6 +97,8 @@ class KKiaPayArguments {
     _i3.BuildContext,
   ) callback;
 
+  final String? callbackUrl;
+
   final String apikey;
 
   final bool? sandbox;
@@ -107,7 +111,7 @@ class KKiaPayArguments {
 
   @override
   String toString() {
-    return '{"key": "$key", "amount": "$amount", "reason": "$reason", "phone": "$phone", "name": "$name", "email": "$email", "data": "$data", "partnerId": "$partnerId", "callback": "$callback", "apikey": "$apikey", "sandbox": "$sandbox", "theme": "$theme", "countries": "$countries", "paymentMethods": "$paymentMethods"}';
+    return '{"key": "$key", "amount": "$amount", "reason": "$reason", "phone": "$phone", "name": "$name", "email": "$email", "data": "$data", "partnerId": "$partnerId", "callback": "$callback", "callbackUrl": "$callbackUrl", "apikey": "$apikey", "sandbox": "$sandbox", "theme": "$theme", "countries": "$countries", "paymentMethods": "$paymentMethods"}';
   }
 
   @override
@@ -122,6 +126,7 @@ class KKiaPayArguments {
         other.data == data &&
         other.partnerId == partnerId &&
         other.callback == callback &&
+        other.callbackUrl == callbackUrl &&
         other.apikey == apikey &&
         other.sandbox == sandbox &&
         other.theme == theme &&
@@ -140,6 +145,7 @@ class KKiaPayArguments {
         data.hashCode ^
         partnerId.hashCode ^
         callback.hashCode ^
+        callbackUrl.hashCode ^
         apikey.hashCode ^
         sandbox.hashCode ^
         theme.hashCode ^
@@ -162,6 +168,7 @@ extension NavigatorStateExtension on _i4.NavigationService {
       Map<String, dynamic>,
       _i3.BuildContext,
     ) callback,
+    String? callbackUrl,
     required String apikey,
     required bool? sandbox,
     String? theme,
@@ -184,6 +191,7 @@ extension NavigatorStateExtension on _i4.NavigationService {
             data: data,
             partnerId: partnerId,
             callback: callback,
+            callbackUrl: callbackUrl,
             apikey: apikey,
             sandbox: sandbox,
             theme: theme,
@@ -208,6 +216,7 @@ extension NavigatorStateExtension on _i4.NavigationService {
       Map<String, dynamic>,
       _i3.BuildContext,
     ) callback,
+    String? callbackUrl,
     required String apikey,
     required bool? sandbox,
     String? theme,
@@ -230,6 +239,7 @@ extension NavigatorStateExtension on _i4.NavigationService {
             data: data,
             partnerId: partnerId,
             callback: callback,
+            callbackUrl: callbackUrl,
             apikey: apikey,
             sandbox: sandbox,
             theme: theme,

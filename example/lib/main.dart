@@ -29,7 +29,11 @@ void successCallback(response, context) {
       break;
 
     case PAYMENT_SUCCESS:
+      debugPrint(PAYMENT_SUCCESS);
       Navigator.pop(context);
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        content: Text(PAYMENT_SUCCESS),
+      ));
       Navigator.push(
         context,
         MaterialPageRoute(
@@ -39,14 +43,11 @@ void successCallback(response, context) {
           ),
         ),
       );
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-        content: Text(PAYMENT_SUCCESS),
-      ));
       break;
 
     case PAYMENT_FAILED:
-      Navigator.pop(context);
       debugPrint(PAYMENT_FAILED);
+      Navigator.pop(context);
       break;
 
     default:
@@ -62,8 +63,8 @@ const kkiapay = KKiaPay(
     email: "email@mail.com",
     reason: 'transaction reason',
     data: 'Fake data',
-    sandbox: false,
-    apikey: "df7995c06a906d4393528bb7315b74c43db1d800",
+    sandbox: true,
+    apikey: public_api_key,
     callback: successCallback,
     theme: defaultTheme,
     partnerId: 'AxXxXXxId',

@@ -17,7 +17,7 @@ const WaveStoreRedirectURI = "market://details?id=com.wave.personal";
 /// static additional data
 const primaryColor = Color(0xffF11C33);
 const secondaryColor = Color(0xff222F5A);
-const callback = 'http://redirect.kkiapay.me';
+const callback = "http://kkiapay.me";
 const sdk = "flutter";
 const url = "";
 const host = "";
@@ -69,13 +69,14 @@ class SdkData {
     this.countries,
     this.phone,
     this.data,
+    this.callbackUrl = callback,
     this.sandbox = true,
     this.apikey,
     this.theme = '#4E6BFC',
   });
 
   final int? amount;
-  final reason, name, email, sandbox, phone, data, apikey, theme, paymentMethod, countries,partnerId;
+  final reason, name, email, sandbox, phone, data, apikey, theme, paymentMethod, callbackUrl, countries,partnerId;
 
   Map<String, dynamic> toMap() {
     return {
@@ -89,7 +90,7 @@ class SdkData {
       'email': email,
       'sandbox': sandbox,
       'key': apikey,
-      'callback': callback,
+      'callback': callbackUrl,
       'phoneNumber': phone,
       'sdk': sdk,
       'theme': theme,

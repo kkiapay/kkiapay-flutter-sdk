@@ -43,6 +43,7 @@ final kkiapay = KKiaPay(
     name: String, // Ex : "John Doe"
     reason: String, // Ex : "transaction reason"
     email: String, // Ex : "email@mail.com"
+    callbackUrl: String, // Ex : "http://kkiapay.me"
     theme: String, // Ex : "#222F5A"
     countries: List<String>, // Ex :  ["CI","BJ"]
     partnerId: String, // Ex : 'AxXxXXxId'

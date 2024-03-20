@@ -1,3 +1,9 @@
+## 1.3.0-dev.1
+
+- Update sdk loader ui
+- Add optional key callbackUrl
+- Update [README.md](README.md)
+
 ## 1.2.12
 
 - Fix wave app redirection bug

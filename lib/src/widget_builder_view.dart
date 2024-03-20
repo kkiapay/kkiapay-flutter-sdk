@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kkiapay_flutter_sdk/utils/utils.dart';
 import 'package:stacked/stacked.dart';
@@ -46,6 +45,9 @@ class KKiaPay extends StatefulWidget {
   /// @Params : Payment callback
   final Function(Map<String, dynamic>, BuildContext) callback;
 
+  /// @Params : Payment callback
+  final String? callbackUrl;
+
   /* Widget ui config */
 
   /// @Params : Your public api key according to [sandbox] value
@@ -79,6 +81,7 @@ class KKiaPay extends StatefulWidget {
     this.data,
     this.partnerId,
     required this.callback,
+    this.callbackUrl,
     /* Widget ui config */
     required this.apikey,
     required this.sandbox,
@@ -127,9 +130,9 @@ class _KKiaPayState extends State<KKiaPay> {
           sandbox: widget.sandbox,
           apikey: widget.apikey,
           theme: widget.theme,
+          callbackUrl: widget.callbackUrl,
           name: widget.name,
           email: widget.email ) )
-        //  'https://flutter.dev'
       ));
 
     // #docregion platform_features
