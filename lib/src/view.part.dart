@@ -24,9 +24,7 @@ class LoadingView extends ViewModelWidget<WidgetBuilderViewModel> {
                         value: viewModel.progression,
                         backgroundColor: Colors.grey.withOpacity(0.3),
                         color: Colors.grey.withOpacity(0.6),
-                      )
-                  ),
-
+                      )),
                   Container(
                       height: 42,
                       child: Center(
