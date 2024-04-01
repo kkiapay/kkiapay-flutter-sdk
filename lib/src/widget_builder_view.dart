@@ -132,8 +132,7 @@ class _KKiaPayState extends State<KKiaPay> {
           theme: widget.theme,
           callbackUrl: widget.callbackUrl,
           name: widget.name,
-          email: widget.email ) )
-      ));
+          email: widget.email))));
 
     // #docregion platform_features
     if (controller.platform is AndroidWebViewController) {
@@ -150,13 +149,12 @@ class _KKiaPayState extends State<KKiaPay> {
   Widget build(BuildContext context) {
     return ViewModelBuilder<WidgetBuilderViewModel>.reactive(
       onViewModelReady: (viewModel) {
-
         _controller
           ..setNavigationDelegate(
             NavigationDelegate(
               onProgress: (int progress) {
                 debugPrint('WebView is loading (progress : $progress%)');
-                viewModel.setProgression(progress/100);
+                viewModel.setProgression(progress / 100);
               },
               onPageStarted: (String url) {
                 debugPrint('Page started loading: $url');
@@ -176,66 +174,70 @@ class _KKiaPayState extends State<KKiaPay> {
             ''');
               },
               onUrlChange: (UrlChange change) {
-                viewModel.onUrlChange( change, context);
+                viewModel.onUrlChange(change, context);
               },
             ),
           )
           ..addJavaScriptChannel('SDK_CHANNEL', onMessageReceived: (message) {
-          print( JsonDecoder().convert(message.message));
+            print(JsonDecoder().convert(message.message));
 
-          switch (JsonDecoder().convert(message.message)["name"]) {
+            switch (JsonDecoder().convert(message.message)["name"]) {
+              case CLOSE_WIDGET:
+                if (viewModel.lastEvent != PAYMENT_SUCCESS) {
+                  widget.callback({
+                    'requestData': viewModel.data,
+                    'transactionId': null,
+                    'status': CallbackStatus.PAYMENT_CANCELLED.name
+                  }, context);
+                }
+                break;
 
-            case CLOSE_WIDGET:
-              if (viewModel.lastEvent != PAYMENT_SUCCESS)
-              widget.callback( {
-                'requestData': viewModel.data,
-                'transactionId': null,
-                'status': CallbackStatus.PAYMENT_CANCELLED.name
-              }, context);
-              break;
+              case WIDGET_SUCCESSFULLY_INIT:
+                viewModel.loadingFinish();
+                break;
 
-            case WIDGET_SUCCESSFULLY_INIT:
-              viewModel.loadingFinish();
-              break;
+              case PAYMENT_INIT:
+                if (viewModel.lastEvent != PAYMENT_SUCCESS)
+                  widget.callback({
+                    'requestData': viewModel.data,
+                    'transactionId': null,
+                    'status': CallbackStatus.PAYMENT_INIT.name
+                  }, context);
+                break;
 
-            case PAYMENT_INIT:
-              if (viewModel.lastEvent != PAYMENT_SUCCESS)
-              widget.callback({
-                'requestData': viewModel.data,
-                'transactionId': null,
-                'status': CallbackStatus.PAYMENT_INIT.name
-              },context);
-              break;
+              case PENDING_PAYMENT:
+                viewModel.isBusy;
+                break;
 
-            case PENDING_PAYMENT:
-              viewModel.isBusy;
-              break;
+              case PAYMENT_SUCCESS:
+                viewModel.setLastEvent(PAYMENT_SUCCESS);
+                widget.callback({
+                  'requestData': viewModel.data,
+                  'transactionId': JsonDecoder()
+                      .convert(message.message)["data"]["transactionId"],
+                  'status': CallbackStatus.PAYMENT_SUCCESS.name
+                }, context);
+                break;
 
-            case PAYMENT_SUCCESS:
-              viewModel.setLastEvent(PAYMENT_SUCCESS);
-              widget.callback( {
-                'requestData': viewModel.data,
-                'transactionId': JsonDecoder().convert(message.message)["data"]["transactionId"],
-                'status': CallbackStatus.PAYMENT_SUCCESS.name
-              }, context);
-              break;
+              case PAYMENT_FAILED:
+                widget.callback({
+                  'requestData': null,
+                  'transactionId': JsonDecoder()
+                      .convert(message.message)["data"]["transactionId"],
+                  'status': CallbackStatus.PAYMENT_FAILED.name
+                }, context);
+                break;
 
-            case PAYMENT_FAILED: widget.callback( {
-              'requestData': null,
-              'transactionId': JsonDecoder().convert(message.message)["data"]["transactionId"],
-              'status': CallbackStatus.PAYMENT_FAILED.name
-            }, context);
-            break;
+              case WAVE_LINK:
+                Utils.launchWave(
+                  JsonDecoder().convert(message.message)["data"],
+                );
+                break;
 
-            case WAVE_LINK:
-             Utils.launchWave(
-               JsonDecoder().convert(message.message)["data"],);
-              break;
-
-            default:
-              break;
-          }
-        });
+              default:
+                break;
+            }
+          });
 
         /// Change status bar if ios devise
         if (!Platform.isIOS) {
@@ -261,7 +263,8 @@ class _KKiaPayState extends State<KKiaPay> {
         });
       },
       builder: (context, viewModel, child) => Scaffold(
-          backgroundColor: Color(Utils.getColorFromHex(widget.theme ?? defaultTheme)),
+          backgroundColor:
+              Color(Utils.getColorFromHex(widget.theme ?? defaultTheme)),
           body: Stack(
             children: [
               Container(
