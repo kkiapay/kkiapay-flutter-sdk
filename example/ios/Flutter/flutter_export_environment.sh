@@ -1,7 +1,7 @@
 #!/bin/sh
 # This is a generated file; do not edit or check into version control.
 export "FLUTTER_ROOT=/opt/homebrew/Caskroom/flutter/3.16.9/flutter"
-export "FLUTTER_APPLICATION_PATH=/Users/segun/StudioProjects/segun/kkiapay-flutter-sdk/example"
+export "FLUTTER_APPLICATION_PATH=/Users/segun/StudioProjects/opensi/kkiapay-flutter-sdk/example"
 export "COCOAPODS_PARALLEL_CODE_SIGN=true"
 export "FLUTTER_TARGET=lib/main.dart"
 export "FLUTTER_BUILD_DIR=build"
