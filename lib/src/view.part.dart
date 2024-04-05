@@ -36,6 +36,7 @@ class LoadingView extends ViewModelWidget<WidgetBuilderViewModel> {
               )
             ],
           ),
-        ));
+        )
+    );
   }
 }
