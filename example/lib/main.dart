@@ -23,9 +23,9 @@ void callback(response, context) {
 
     case PAYMENT_INIT:
       debugPrint(PAYMENT_INIT);
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-        content: Text(PAYMENT_INIT),
-      ));
+      //ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        //content: Text(PAYMENT_INIT),
+      //));
       break;
 
     case PAYMENT_SUCCESS:
@@ -45,11 +45,6 @@ void callback(response, context) {
       );
       break;
 
-    case PAYMENT_FAILED:
-      debugPrint(PAYMENT_FAILED);
-      Navigator.pop(context);
-      break;
-
     default:
       debugPrint(UNKNOWN_EVENT);
       break;
@@ -57,9 +52,9 @@ void callback(response, context) {
 }
 
 const kkiapay = KKiaPay(
-    amount: 1000,
+    amount: 1,
     countries: ["BJ","CI","SN","TG"],
-    phone: "22961000000",
+    phone: "22961877882",
     name: "John Doe",
     email: "email@mail.com",
     reason: 'transaction reason',

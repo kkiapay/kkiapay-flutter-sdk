@@ -96,11 +96,6 @@ void callback(response, context) {
       );
       break;
 
-    case PAYMENT_FAILED:
-      Navigator.pop(context);
-      print(PAYMENT_FAILED);
-    break;
-
     default:
       debugPrint(UNKNOWN_EVENT);
       break;
@@ -109,11 +104,11 @@ void callback(response, context) {
 
 final kkiapay = KKiaPay(
     amount: 1000,//
-    countries: ["BJ"],//
+    countries: ["BJ","CI","SN","TG"],//
     phone: "22961000000",//
     name: "John Doe",//
     email: "email@mail.com",//
-    reason: 'transaction reason',//
+    reason: 'Transaction reason',//
     data: 'Fake data',//
     sandbox: true,//
     apikey: public_api_key,//

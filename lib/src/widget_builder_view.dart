@@ -220,13 +220,6 @@ class _KKiaPayState extends State<KKiaPay> {
               }, context);
               break;
 
-            case PAYMENT_FAILED: widget.callback( {
-              'requestData': null,
-              'transactionId': JsonDecoder().convert(message.message)["data"]["transactionId"],
-              'status': CallbackStatus.PAYMENT_FAILED.name
-            }, context);
-            break;
-
             case WAVE_LINK:
              Utils.launchWave(
                JsonDecoder().convert(message.message)["data"],);
