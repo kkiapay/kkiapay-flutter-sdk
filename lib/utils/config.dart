@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'dart:ui';
 
-/// developer account api key
-const public_api_key = '4afb8d60021211edadbe55ee0346ea8f';
+/// developer account public api key
+const public_api_key = '###';
 /// widget default theme
 const defaultTheme = "#4E6BFC";
 
@@ -53,6 +53,7 @@ const PAYMENT_SUCCESS = 'PAYMENT_SUCCESS';
 const PAYMENT_CANCELLED = 'PAYMENT_CANCELLED';
 const PAYMENT_END = 'PAYMENT_END';
 const RETRY_PAYMENT = 'RETRY_PAYMENT';
+const UNKNOWN_EVENT = 'UNKNOWN_EVENT';
 
 const WAVE_LINK = 'WAVE_LINK';
 

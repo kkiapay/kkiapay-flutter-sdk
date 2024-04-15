@@ -1,3 +1,12 @@
+## 1.3.0-dev.3
+
+- Reopening wave payment
+
+## 1.3.0-dev.2
+
+- Remove public_api_key
+- Update callback
+
 ## 1.3.0-dev.1
 
 - Update sdk loader ui

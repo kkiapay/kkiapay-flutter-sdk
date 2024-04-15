@@ -67,7 +67,7 @@ import './successScreen.dart';
 
 void main() => runApp(App());
 
-void successCallback(response, context) {
+void callback(response, context) {
   switch ( response['status'] ) {
 
     case PAYMENT_CANCELLED:
@@ -102,6 +102,7 @@ void successCallback(response, context) {
     break;
 
     default:
+      debugPrint(UNKNOWN_EVENT);
       break;
   }
 }
@@ -116,7 +117,7 @@ final kkiapay = KKiaPay(
     data: 'Fake data',//
     sandbox: true,//
     apikey: public_api_key,//
-    callback: successCallback,//
+    callback: callback,//
     theme: defaultTheme, // Ex : "#222F5A",
     partnerId: 'AxXxXXxId',//
     paymentMethods: ["momo","card"]//

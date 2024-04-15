@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:stacked_services/stacked_services.dart';
-//import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'config.dart';
 
@@ -38,12 +38,12 @@ class Utils {
   static Future<void> launchWave(String url) async {
     try{
       final Uri _uri = Uri.parse(url);
-     // await launchUrl(_uri);
+      await launchUrl(_uri);
     }catch(e){
       final Uri _uri = Uri.parse(WaveStoreRedirectURI);
-      //if(await launchUrl(_uri)){
-        //throw 'Could not launch $WaveStoreRedirectURI';
-      //}
+      if(await launchUrl(_uri)){
+        throw 'Could not launch $WaveStoreRedirectURI';
+      }
     }
   }
 
