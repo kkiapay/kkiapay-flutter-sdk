@@ -1,3 +1,8 @@
+## 1.3.0-dev.4
+
+- Remove payment_failed event
+- update readme.md
+
 ## 1.3.0-dev.3
 
 - Reopening wave payment

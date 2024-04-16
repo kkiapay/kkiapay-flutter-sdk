@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:ui';
 
 /// developer account public api key
-const public_api_key = '###';
+const public_api_key = 'fe285b06af51e28efa0be747ec04cd3d1c0b1006';
 /// widget default theme
 const defaultTheme = "#4E6BFC";
 
@@ -48,6 +48,7 @@ const PAYMENT_INIT = 'PAYMENT_INIT';
 const PAYMENT_ABORTED = 'PAYMENT_ABORTED';
 const PENDING_PAYMENT = 'PENDING_PAYMENT';
 const ON_USER_FEEDBACK = 'ON_USER_FEEDBACK';
+@Deprecated('We no longer send this event: in case of failure the client can either try again or cancel')
 const PAYMENT_FAILED = 'PAYMENT_FAILED';
 const PAYMENT_SUCCESS = 'PAYMENT_SUCCESS';
 const PAYMENT_CANCELLED = 'PAYMENT_CANCELLED';

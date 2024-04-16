@@ -179,6 +179,7 @@ class _KKiaPayState extends State<KKiaPay> {
             ),
           )
           ..addJavaScriptChannel('SDK_CHANNEL', onMessageReceived: (message) {
+
             print(JsonDecoder().convert(message.message));
 
             switch (JsonDecoder().convert(message.message)["name"]) {
@@ -238,6 +239,7 @@ class _KKiaPayState extends State<KKiaPay> {
                 break;
             }
           });
+
 
         /// Change status bar if ios devise
         if (!Platform.isIOS) {
