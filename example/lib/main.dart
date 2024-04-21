@@ -4,7 +4,7 @@ import 'success_screen.dart';
 
 void main() => runApp(const App());
 
-void successCallback(response, context) {
+void callback(response, context) {
   switch (response['status']) {
     case PAYMENT_CANCELLED:
       debugPrint(PAYMENT_CANCELLED);
@@ -23,9 +23,9 @@ void successCallback(response, context) {
 
     case PAYMENT_INIT:
       debugPrint(PAYMENT_INIT);
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-        content: Text(PAYMENT_INIT),
-      ));
+      //ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        //content: Text(PAYMENT_INIT),
+      //));
       break;
 
     case PAYMENT_SUCCESS:
@@ -45,27 +45,23 @@ void successCallback(response, context) {
       );
       break;
 
-    case PAYMENT_FAILED:
-      debugPrint(PAYMENT_FAILED);
-      Navigator.pop(context);
-      break;
-
     default:
+      debugPrint(UNKNOWN_EVENT);
       break;
   }
 }
 
 const kkiapay = KKiaPay(
-    amount: 1000,
-    countries: ["BJ","CI"],
-    phone: "22961000000",
+    amount: 1,
+    countries: ["BJ","CI","SN","TG"],
+    phone: "22961877882",
     name: "John Doe",
     email: "email@mail.com",
     reason: 'transaction reason',
     data: 'Fake data',
-    sandbox: true,
+    sandbox: false,
     apikey: public_api_key,
-    callback: successCallback,
+    callback: callback,
     theme: defaultTheme,
     partnerId: 'AxXxXXxId',
     paymentMethods: ["momo", "card"]);

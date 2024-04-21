@@ -67,7 +67,7 @@ import './successScreen.dart';
 
 void main() => runApp(App());
 
-void successCallback(response, context) {
+void callback(response, context) {
   switch ( response['status'] ) {
 
     case PAYMENT_CANCELLED:
@@ -96,27 +96,23 @@ void successCallback(response, context) {
       );
       break;
 
-    case PAYMENT_FAILED:
-      Navigator.pop(context);
-      print(PAYMENT_FAILED);
-    break;
-
     default:
+      debugPrint(UNKNOWN_EVENT);
       break;
   }
 }
 
 final kkiapay = KKiaPay(
     amount: 1000,//
-    countries: ["BJ"],//
+    countries: ["BJ","CI","SN","TG"],//
     phone: "22961000000",//
     name: "John Doe",//
     email: "email@mail.com",//
-    reason: 'transaction reason',//
+    reason: 'Transaction reason',//
     data: 'Fake data',//
     sandbox: true,//
     apikey: public_api_key,//
-    callback: successCallback,//
+    callback: callback,//
     theme: defaultTheme, // Ex : "#222F5A",
     partnerId: 'AxXxXXxId',//
     paymentMethods: ["momo","card"]//
