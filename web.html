@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Integration de KKiapay</title>
+    <script
+      src="https://cdn.kkiapay.me/k.js"
+      name="John Doe"
+      email="johndoe@gmail.com"
+      amount="1"
+      sandbox="true"
+      position="center"
+      theme="red"
+      api_key=""
+    ></script>
+
+    <style>
+      div {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        padding: 20px;
+      }
+      button {
+        background-color: #4661b9;
+        color: white;
+        padding: 10px 20px;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      body {
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        height: 100svh;
+      }
+    </style>
+  </head>
+  <body style="margin: 0">
+    <div>
+      Utilisation de la function openKKiapayWidget <br />
+      <button onclick="run()">openKKiapayWidget</button>
+    </div>
+    <div>
+      Utilisation de la class css <br />
+      <button class="kkiapay-button">class css</button>
+    </div>
+    <div>
+      Utilisation du web component <br />
+      <kkiapay-widget
+        amount="1"
+        sandbox="true"
+        fullname="John Doe"
+        email="johndoe@gmail.com"
+        callback="https://www.google.com"
+        api_key=""
+        buttontext="web component"
+      />
+    </div>
+  </body>
+
+  <script>
+    function run() {
+      openKkiapayWidget({
+        callback: "https://www.google.com",
+        data: { order: "google-order" },
+        sandbox: false,
+        amount: 50,
+        key: "fe285b06af51e28efa0be747ec04cd3d1c0b1006",
+      });
+    }
+
+    addSuccessListener((data) => {
+      console.log(data, "payment success");
+    });
+    addFailedListener((data) => {
+      console.log(data, "payment failed");
+    });
+  </script>
+</html>

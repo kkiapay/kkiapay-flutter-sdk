@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:ui';
 
 /// developer account public api key
-const public_api_key = 'xxx';
+const public_api_key = 'XXX';
 /// widget default theme
 const defaultTheme = "#4E6BFC";
 

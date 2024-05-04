@@ -23,6 +23,8 @@ dependencies:
   webview_flutter_android: ^3.16.0
   webview_flutter_wkwebview: ^3.13.0
   cupertino_icons: ^1.0.6
+  flutter_widget_from_html_core:
+  fwfh_webview: ^0.14.8
 
 dev_dependencies:
   flutter_test:
