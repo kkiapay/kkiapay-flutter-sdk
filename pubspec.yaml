@@ -14,7 +14,7 @@ dependencies:
     sdk: flutter
 
 
-  stacked_shared:
+  stacked_shared: ^1.4.0
   stacked: ^3.4.2
   stacked_services: ^1.5.0
   url_launcher: ^6.2.1           # used for wave payment
@@ -23,8 +23,6 @@ dependencies:
   webview_flutter_android: ^3.16.0
   webview_flutter_wkwebview: ^3.13.0
   cupertino_icons: ^1.0.6
-  flutter_widget_from_html_core:
-  fwfh_webview: ^0.14.8
 
 dev_dependencies:
   flutter_test:
