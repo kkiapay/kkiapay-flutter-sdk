@@ -1,3 +1,9 @@
+## 1.3.0-dev.10
+
+- Update License
+- Specify the official platforms available
+- Adding a method for flutter web
+
 ## 1.3.0-dev.4
 
 - Remove payment_failed event
