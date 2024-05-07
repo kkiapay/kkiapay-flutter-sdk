@@ -219,6 +219,19 @@ the successCallback function takes two parameters in the following order
 
 
 ```
+### Web Integration
+
+```html
+add to your index.html
+<script src="https://cdn.kkiapay.me/k.js"></script>
+
+```
+
+```dart
+Create payment webview instance
+kkiapayWeb.pay(kkiapay, (response){}
+
+```
 
 ### Issues and feedback
 
