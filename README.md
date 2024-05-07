@@ -55,7 +55,12 @@ final kkiapay = KKiaPay(
 ##### Create payment webview instance
 
 ```dart
+Mobile:
 Navigator.push(context, MaterialPageRoute(builder: (context) => kkiapay),
+
+Web:
+kkiapayWeb.pay(kkiapay, (response){}
+
 ```
 
 ## Example
@@ -227,13 +232,8 @@ add to your index.html
 
 ```
 
-```dart
-Create payment webview instance
-kkiapayWeb.pay(kkiapay, (response){}
-
-```
-
 ### Issues and feedback
 
 Please file [issues](https://github.com/kkiapay/kkiapay-flutter-sdk/issues/new)
 to send feedback or report a bug. Thank you!
+gir
