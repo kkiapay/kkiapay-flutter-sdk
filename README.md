@@ -59,7 +59,7 @@ Mobile:
 Navigator.push(context, MaterialPageRoute(builder: (context) => kkiapay),
 
 Web:
-kkiapayWeb.pay(kkiapay, (response){}
+kkiapayWeb.pay(kkiapay, (response){}),
 
 ```
 
@@ -173,6 +173,25 @@ class KkiapaySample extends StatelessWidget {
                     context,
                     MaterialPageRoute(builder: (context) => kkiapay),
                   );
+                },
+              ),
+            ),
+            const SizedBox(height: 50,),
+            ButtonTheme(
+              minWidth: 500.0,
+              height: 100.0,
+              child: TextButton(
+                style: ButtonStyle(
+                  backgroundColor:
+                  MaterialStateProperty.all(const Color(0xff222F5A)),
+                  foregroundColor: MaterialStateProperty.all(Colors.white),
+                ),
+                child: const Text(
+                  'Pay Now ( WEB )',
+                  style: TextStyle(color: Colors.white),
+                ),
+                onPressed: () {
+                  kkiapayWeb.pay(kkiapay, (response){});
                 },
               ),
             )
