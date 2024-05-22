@@ -23,13 +23,20 @@ dependencies:
   kkiapay_flutter_sdk:
 ```
 
+For web
+
+```html
+add to your index.html
+<script src="https://cdn.kkiapay.me/k.js"></script>
+```
+
 ## Usage
 
 ```dart
     import 'package:kkiapay_flutter_sdk/kkiapay_flutter_sdk.dart';
 ```
 
-##### Initialise the Kkiapay Instance
+#### Initialise the Kkiapay Instance
 
 ```dart
 final kkiapay = KKiaPay(
@@ -48,18 +55,20 @@ final kkiapay = KKiaPay(
     partnerId: String, // Ex : 'AxXxXXxId'
     paymentMethods: List<String> // Ex : ["momo","card"]
 );
-
 ```
 
-##### Create payment webview instance
+#### Create payment webview instance
+
+Mobile:
 
 ```dart
-Mobile:
 Navigator.push(context, MaterialPageRoute(builder: (context) => kkiapay),
+```
 
 Web:
-kkiapayWeb.pay(kkiapay, (response){}),
 
+```dart
+kkiapayWeb.pay(kkiapay, (response){}),
 ```
 
 ## Example
@@ -235,16 +244,6 @@ the successCallback function takes two parameters in the following order
   }
   
 - the context of type BuildContext
-
-
-```
-### Web Integration
-
-```html
-add to your index.html
-<script src="https://cdn.kkiapay.me/k.js"></script>
-
-```
 
 ### Issues and feedback
 
