@@ -54,7 +54,12 @@ final kkiapay = KKiaPay(
 ##### Create payment webview instance
 
 ```dart
+Mobile:
 Navigator.push(context, MaterialPageRoute(builder: (context) => kkiapay),
+
+Web:
+kkiapayWeb.pay(kkiapay, (response){}),
+
 ```
 
 ## Example
@@ -165,6 +170,25 @@ class KkiapaySample extends StatelessWidget {
                   );
                 },
               ),
+            ),
+            const SizedBox(height: 50,),
+            ButtonTheme(
+              minWidth: 500.0,
+              height: 100.0,
+              child: TextButton(
+                style: ButtonStyle(
+                  backgroundColor:
+                  MaterialStateProperty.all(const Color(0xff222F5A)),
+                  foregroundColor: MaterialStateProperty.all(Colors.white),
+                ),
+                child: const Text(
+                  'Pay Now ( WEB )',
+                  style: TextStyle(color: Colors.white),
+                ),
+                onPressed: () {
+                  kkiapayWeb.pay(kkiapay, (response){});
+                },
+              ),
             )
           ],
         )
@@ -214,8 +238,16 @@ the successCallback function takes two parameters in the following order
 
 
 ```
+### Web Integration
+
+```html
+add to your index.html
+<script src="https://cdn.kkiapay.me/k.js"></script>
+
+```
 
 ### Issues and feedback
 
 Please file [issues](https://github.com/kkiapay/kkiapay-flutter-sdk/issues/new)
 to send feedback or report a bug. Thank you!
+gir
