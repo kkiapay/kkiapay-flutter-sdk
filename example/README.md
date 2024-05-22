@@ -1,6 +1,6 @@
-# example
+# kkiapay_flutter_sdk_example
 
-A new Flutter project.
+Demonstrates how to use the kkiapay_flutter_sdk plugin.
 
 ## Getting Started
 

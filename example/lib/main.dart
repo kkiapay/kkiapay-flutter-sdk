@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kkiapay_flutter_sdk/kkiapay_flutter_sdk.dart';
+import 'package:kkiapay_flutter_sdk/kkiapay.dart';
 import 'success_screen.dart';
 
 void main() => runApp(const App());
@@ -133,50 +133,7 @@ class KkiapaySample extends StatelessWidget {
               style: TextStyle(color: Colors.white),
             ),
             onPressed: () {
-              kkiapayWeb.pay(kkiapay, (response){
-                switch (response['status']) {
-                  case PAYMENT_CANCELLED:
-                    debugPrint(PAYMENT_CANCELLED);
-                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                      content: Text(PAYMENT_CANCELLED),
-                    ));
-                    break;
 
-                  case PENDING_PAYMENT:
-                    debugPrint(PENDING_PAYMENT);
-                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                      content: Text(PENDING_PAYMENT),
-                    ));
-                    break;
-
-                  case PAYMENT_INIT:
-                    debugPrint(PAYMENT_INIT);
-                    //ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                    //content: Text(PAYMENT_INIT),
-                    //));
-                    break;
-
-                  case PAYMENT_SUCCESS:
-                    debugPrint(PAYMENT_SUCCESS);
-                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                      content: Text(PAYMENT_SUCCESS),
-                    ));
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => SuccessScreen(
-                          amount: response['requestData']['amount'],
-                          transactionId: response['transactionId'],
-                        ),
-                      ),
-                    );
-                    break;
-
-                  default:
-                    debugPrint(UNKNOWN_EVENT);
-                    break;
-                }
-              });
             },
           ),
         )
