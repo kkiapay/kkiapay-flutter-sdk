@@ -224,8 +224,6 @@ class KkiapaySample extends StatelessWidget {
 </table>
 
 ```dart
-
-
 the successCallback function takes two parameters in the following order
 - Map<String,dynamic> containing the transaction information
   { 
@@ -244,6 +242,7 @@ the successCallback function takes two parameters in the following order
   }
   
 - the context of type BuildContext
+```
 
 ### Issues and feedback
 
