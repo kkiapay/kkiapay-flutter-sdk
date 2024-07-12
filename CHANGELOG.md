@@ -1,3 +1,7 @@
+## 1.3.0-beta.1
+
+- review sample and update readme.md
+
 ## 1.3.0-dev.14
 
 - package to plugin
