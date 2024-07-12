@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:kkiapay_flutter_sdk/kkiapay.dart';
+
+/// NOTICE THAT YOU CAN'T IMPORT THIS LINE TO RUN MOBILE AND WEB AT SAME TIME
+/// ADD IT ONLY FOR WEB
+import 'package:kkiapay_flutter_sdk/kkiapay_web.dart';
+///
 import 'success_screen.dart';
 
 void main() => runApp(const App());
@@ -59,7 +64,7 @@ const kkiapay = KKiaPay(
     email: "email@mail.com",
     reason: 'transaction reason',
     data: 'Fake data',
-    sandbox: true,
+    sandbox: false,
     apikey: public_api_key,
     callback: callback,
     theme: defaultTheme,
@@ -133,7 +138,7 @@ class KkiapaySample extends StatelessWidget {
               style: TextStyle(color: Colors.white),
             ),
             onPressed: () {
-
+               KKiaPayWeb.pay(kkiapay, (response){});
             },
           ),
         )

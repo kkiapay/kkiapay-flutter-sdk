@@ -33,7 +33,7 @@ add to your index.html
 ## Usage
 
 ```dart
-    import 'package:kkiapay_flutter_sdk/kkiapay_flutter_sdk.dart';
+    import 'package:kkiapay_flutter_sdk/kkiapay.dart';
 ```
 
 #### Initialise the Kkiapay Instance
@@ -62,20 +62,25 @@ final kkiapay = KKiaPay(
 Mobile:
 
 ```dart
-Navigator.push(context, MaterialPageRoute(builder: (context) => kkiapay),
+    Navigator.push(context, MaterialPageRoute(builder: (context) => kkiapay),
 ```
 
 Web:
 
 ```dart
-kkiapayWeb.pay(kkiapay, (response){}),
+    KKiaPayWeb.pay(kkiapay, (response){});
 ```
 
 ## Example
 
 ```dart
 import 'package:flutter/material.dart';
-import 'package:kkiapay_flutter_sdk/kkiapay_flutter_sdk.dart';
+import 'package:kkiapay_flutter_sdk/kkiapay.dart';
+
+/// NOTICE THAT YOU CAN'T IMPORT THIS LINE TO RUN MOBILE AND WEB AT SAME TIME
+/// ADD IT ONLY FOR WEB
+/// import 'package:kkiapay_flutter_sdk/kkiapay_web.dart';
+/// 
 import './successScreen.dart';
 
 void main() => runApp(App());
@@ -195,7 +200,7 @@ class KkiapaySample extends StatelessWidget {
                   style: TextStyle(color: Colors.white),
                 ),
                 onPressed: () {
-                  kkiapayWeb.pay(kkiapay, (response){});
+                  /// KKiaPayWeb.pay(kkiapay, (response){});
                 },
               ),
             )
