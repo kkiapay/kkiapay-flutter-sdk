@@ -3,7 +3,7 @@ import 'package:kkiapay_flutter_sdk/kkiapay.dart';
 
 /// NOTICE THAT YOU CAN'T IMPORT THIS LINE TO RUN MOBILE AND WEB AT SAME TIME
 /// ADD IT ONLY FOR WEB
-import 'package:kkiapay_flutter_sdk/kkiapay_web.dart';
+/// import 'package:kkiapay_flutter_sdk/kkiapay_web.dart';
 ///
 import 'success_screen.dart';
 
@@ -138,7 +138,7 @@ class KkiapaySample extends StatelessWidget {
               style: TextStyle(color: Colors.white),
             ),
             onPressed: () {
-               KKiaPayWeb.pay(kkiapay, (response){});
+               /// KKiaPayWeb.pay(kkiapay, context, callback);
             },
           ),
         )
