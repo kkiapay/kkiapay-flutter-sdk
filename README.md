@@ -200,7 +200,7 @@ class KkiapaySample extends StatelessWidget {
                   style: TextStyle(color: Colors.white),
                 ),
                 onPressed: () {
-                  /// KKiaPayWeb.pay(kkiapay, (response){});
+                  /// KKiaPayWeb.pay(kkiapay, context, callback);
                 },
               ),
             )

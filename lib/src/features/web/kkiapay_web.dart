@@ -1,5 +1,7 @@
 import 'dart:js' as js;
 import 'dart:async';
+import 'package:flutter/cupertino.dart';
+
 import '../../../kkiapay_flutter_sdk_platform_interface.dart';
 import '../../utils/config.dart';
 import '../mobile/kkiapay.dart';
@@ -10,7 +12,7 @@ class KKiaPayWeb extends KkiapayFlutterSdkPlatform  {
   /// Constructs
   KKiaPayWeb();
 
- static Future pay (KKiaPay paymentRequest, Function(dynamic) callback) async {
+ static Future pay (KKiaPay paymentRequest, BuildContext context, Function(dynamic, BuildContext) callback) async {
     final data = js.JsObject.jsify({
       'amount': paymentRequest.amount.toString(),
       'key': paymentRequest.apikey.toString(),
@@ -42,7 +44,7 @@ class KKiaPayWeb extends KkiapayFlutterSdkPlatform  {
         },
         'transactionId': response["transactionId"],
         'status': PAYMENT_SUCCESS
-      } );
+      },context );
     }
 
     js.context.callMethod('addSuccessListener', [onSuccessListener]);
