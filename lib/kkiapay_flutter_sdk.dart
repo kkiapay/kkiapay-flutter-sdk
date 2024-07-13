@@ -1,6 +1,7 @@
-library kkiapay;
+library kkiapay_flutter_sdk;
 
-export 'src/platform_web.dart';
-export 'src/widget_builder_view.dart';
-export 'utils/utils.dart';
-export 'utils/config.dart';
+export 'src/features/mobile/kkiapay.dart';
+export 'src/utils/utils.dart';
+export 'src/utils/config.dart';
+export 'package:kkiapay_flutter_sdk/kkiapay_flutter_sdk_platform_interface.dart';
+

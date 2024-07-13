@@ -1,10 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kkiapay_flutter_sdk/kkiapay.dart';
-
-/// NOTICE THAT YOU CAN'T IMPORT THIS LINE TO RUN MOBILE AND WEB AT SAME TIME
-/// ADD IT ONLY FOR WEB
-/// import 'package:kkiapay_flutter_sdk/kkiapay_web.dart';
-///
+import 'package:kkiapay_flutter_sdk/kkiapay_flutter_sdk.dart';
 import 'success_screen.dart';
 
 void main() => runApp(const App());
@@ -112,7 +107,7 @@ class KkiapaySample extends StatelessWidget {
               foregroundColor: MaterialStateProperty.all(Colors.white),
             ),
             child: const Text(
-              'Pay Now',
+              'Pay Now ( on Mobile )',
               style: TextStyle(color: Colors.white),
             ),
             onPressed: () {
@@ -134,11 +129,11 @@ class KkiapaySample extends StatelessWidget {
               foregroundColor: MaterialStateProperty.all(Colors.white),
             ),
             child: const Text(
-              'Pay Now ( WEB )',
+              'Pay Now ( on WEB )',
               style: TextStyle(color: Colors.white),
             ),
             onPressed: () {
-               /// KKiaPayWeb.pay(kkiapay, context, callback);
+              KkiapayFlutterSdkPlatform.instance.pay(kkiapay, context, callback);
             },
           ),
         )

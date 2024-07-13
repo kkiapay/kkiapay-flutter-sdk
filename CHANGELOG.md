@@ -1,3 +1,7 @@
+## 1.3.1
+
+- Rebase web logic onto platform interface
+
 ## 1.3.0
 
 - Update License
