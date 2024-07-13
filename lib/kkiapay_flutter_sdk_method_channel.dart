@@ -9,9 +9,4 @@ class MethodChannelKkiapayFlutterSdk extends KkiapayFlutterSdkPlatform {
   @visibleForTesting
   final methodChannel = const MethodChannel('kkiapay_flutter_sdk');
 
-  @override
-  Future<String?> getPlatformVersion() async {
-    final version = await methodChannel.invokeMethod<String>('getPlatformVersion');
-    return version;
-  }
 }

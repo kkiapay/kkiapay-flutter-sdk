@@ -1,5 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
-
+import 'kkiapay_flutter_sdk.dart';
 import 'kkiapay_flutter_sdk_method_channel.dart';
 
 abstract class KkiapayFlutterSdkPlatform extends PlatformInterface {
@@ -23,7 +24,9 @@ abstract class KkiapayFlutterSdkPlatform extends PlatformInterface {
     _instance = instance;
   }
 
-  Future<String?> getPlatformVersion() {
+  /// Init kkiapay payment interface
+  Future pay (KKiaPay paymentRequest, BuildContext context, Function(dynamic, BuildContext) callback) async {
     throw UnimplementedError('platformVersion() has not been implemented.');
   }
+
 }
