@@ -3,7 +3,7 @@
 [Kkiapay](https://kkiapay.me) is developer friendly solution that allows you to accept mobile money and credit card payments
 in your application or website.
 
-Before using this SDK, make sure you have a right Merchant Account on [Kkiapay](https://kkiapay.me), otherwise [go](https://kkiapay.me)
+Before using this SDK, make sure you have a right Merchant Account on [Kkiapay](https://kkiapay.me), otherwise [go](https://app.kkiapay.me/signup/)
 and create your account is free and without pain :sunglasses:.
 
 <p align="center">
