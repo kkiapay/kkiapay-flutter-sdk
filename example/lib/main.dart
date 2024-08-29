@@ -59,7 +59,7 @@ const kkiapay = KKiaPay(
     email: "email@mail.com",
     reason: 'transaction reason',
     data: 'Fake data',
-    sandbox: true,
+    sandbox: false,
     apikey: public_api_key,
     callback: callback,
     theme: defaultTheme,
@@ -107,7 +107,7 @@ class KkiapaySample extends StatelessWidget {
               foregroundColor: MaterialStateProperty.all(Colors.white),
             ),
             child: const Text(
-              'Pay Now',
+              'Pay Now ( on Mobile )',
               style: TextStyle(color: Colors.white),
             ),
             onPressed: () {
@@ -129,54 +129,11 @@ class KkiapaySample extends StatelessWidget {
               foregroundColor: MaterialStateProperty.all(Colors.white),
             ),
             child: const Text(
-              'Pay Now ( WEB )',
+              'Pay Now ( on WEB )',
               style: TextStyle(color: Colors.white),
             ),
             onPressed: () {
-              kkiapayWeb.pay(kkiapay, (response){
-                switch (response['status']) {
-                  case PAYMENT_CANCELLED:
-                    debugPrint(PAYMENT_CANCELLED);
-                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                      content: Text(PAYMENT_CANCELLED),
-                    ));
-                    break;
-
-                  case PENDING_PAYMENT:
-                    debugPrint(PENDING_PAYMENT);
-                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                      content: Text(PENDING_PAYMENT),
-                    ));
-                    break;
-
-                  case PAYMENT_INIT:
-                    debugPrint(PAYMENT_INIT);
-                    //ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                    //content: Text(PAYMENT_INIT),
-                    //));
-                    break;
-
-                  case PAYMENT_SUCCESS:
-                    debugPrint(PAYMENT_SUCCESS);
-                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                      content: Text(PAYMENT_SUCCESS),
-                    ));
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => SuccessScreen(
-                          amount: response['requestData']['amount'],
-                          transactionId: response['transactionId'],
-                        ),
-                      ),
-                    );
-                    break;
-
-                  default:
-                    debugPrint(UNKNOWN_EVENT);
-                    break;
-                }
-              });
+              KkiapayFlutterSdkPlatform.instance.pay(kkiapay, context, callback);
             },
           ),
         )

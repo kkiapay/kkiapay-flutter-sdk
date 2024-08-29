@@ -8,6 +8,7 @@ and create your account is free and without pain :sunglasses:.
 
 <p align="center">
 <a href="https://pub.dev/packages/kkiapay_flutter_sdk"><img src="https://img.shields.io/pub/v/kkiapay_flutter_sdk.svg" alt="version"></a>
+<a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/license-MIT-purple.svg" alt="License: MIT"></a>
 <a href="https://pub.dev/packages/kkiapay_flutter_sdk/score"><img src="https://img.shields.io/pub/likes/kkiapay_flutter_sdk?logo=dart" alt="popularity"></a>
 <a><img src="https://img.shields.io/badge/all_contributors-7-orange.svg?style=flat-square" alt="all contributors"></a>
 </p>
@@ -62,13 +63,13 @@ final kkiapay = KKiaPay(
 Mobile:
 
 ```dart
-Navigator.push(context, MaterialPageRoute(builder: (context) => kkiapay),
+    Navigator.push( context, MaterialPageRoute(builder: (context) => kkiapay), );
 ```
 
 Web:
 
 ```dart
-kkiapayWeb.pay(kkiapay, (response){}),
+    KkiapayFlutterSdkPlatform.instance.pay( kkiapay, context, callback );
 ```
 
 ## Example
@@ -76,7 +77,7 @@ kkiapayWeb.pay(kkiapay, (response){}),
 ```dart
 import 'package:flutter/material.dart';
 import 'package:kkiapay_flutter_sdk/kkiapay_flutter_sdk.dart';
-import './successScreen.dart';
+
 
 void main() => runApp(App());
 
@@ -195,7 +196,7 @@ class KkiapaySample extends StatelessWidget {
                   style: TextStyle(color: Colors.white),
                 ),
                 onPressed: () {
-                  kkiapayWeb.pay(kkiapay, (response){});
+                  KkiapayFlutterSdkPlatform.instance.pay(kkiapay, context, callback);
                 },
               ),
             )

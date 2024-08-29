@@ -1,3 +1,25 @@
+## 1.3.1
+
+- Rebase web logic onto platform interface
+
+## 1.3.0
+
+- Update License
+- Specify the official platforms available
+- Adding a method for flutter web
+- package to plugin
+- Remove payment_failed event
+- update readme.md
+- Remove public_api_key
+- Update callback
+- Update sdk loader ui
+- Add optional key callbackUrl
+- Update [README.md](README.md)
+
+## 1.3.0-dev.17
+
+- package to plugin
+
 ## 1.3.0-dev.13
 
 - Update License
