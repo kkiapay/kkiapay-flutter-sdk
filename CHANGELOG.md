@@ -1,3 +1,7 @@
+## 1.3.2
+
+- Update payment objet
+
 ## 1.3.1
 
 - Rebase web logic onto platform interface
