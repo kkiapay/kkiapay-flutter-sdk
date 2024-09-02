@@ -21,7 +21,7 @@ class KKiaPay extends StatefulWidget {
 
   /// @Params : Payment reason
   /// Ex : "transaction reason"
-  final String reason;
+  final String? reason;
 
   /// @Params : Payment phoneNumber
   /// Ex : "22961000000"
@@ -75,20 +75,20 @@ class KKiaPay extends StatefulWidget {
     super.key,
     /* Payment info */
     required this.amount,
-    required this.reason,
-    this.phone,
-    this.name,
-    this.email,
-    this.data,
-    this.partnerId,
     required this.callback,
-    this.callbackUrl,
+    this.reason = "",
+    this.phone = "",
+    this.name = "",
+    this.email = "",
+    this.data = "",
+    this.partnerId = "",
+    this.callbackUrl = "",
     /* Widget ui config */
     required this.apikey,
     required this.sandbox,
-    this.theme,
-    this.countries,
-    this.paymentMethods,
+    this.theme = defaultTheme,
+    this.countries = const ["BJ","CI","SN","TG"],
+    this.paymentMethods = const ["momo", "card"]
   });
 
   @override

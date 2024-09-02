@@ -53,18 +53,19 @@ void callback(response, context) {
 
 const kkiapay = KKiaPay(
     amount: 1,
-    countries: ["BJ","CI","SN","TG"],
-    phone: "22961000000",
-    name: "John Doe",
-    email: "email@mail.com",
-    reason: 'transaction reason',
-    data: 'Fake data',
     sandbox: false,
     apikey: public_api_key,
     callback: callback,
-    theme: defaultTheme,
-    partnerId: 'AxXxXXxId',
-    paymentMethods: ["momo", "card"]);
+  //countries: ["BJ","CI","SN","TG"],
+  //phone: "22961000000",
+  //name: "John Doe",
+  //email: "email@mail.com",
+  //reason: 'transaction reason',
+  //data: 'Fake data',
+  //theme: defaultTheme,
+  //partnerId: 'AxXxXXxId',
+  //paymentMethods: ["momo", "card"]
+);
 
 class App extends StatelessWidget {
   const App({super.key});
