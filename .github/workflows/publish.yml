@@ -9,6 +9,16 @@ jobs:
   publish:
     permissions:
       id-token: write # Required for authentication using OIDC
-    uses: dart-lang/setup-dart/.github/workflows/publish.yml@v4
-    # with:
-    #   working-directory: path/to/package/within/repository
+    #uses: dart-lang/setup-dart/.github/workflows/publish.yml@v4
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dart-lang/setup-dart@v1
+        with:
+          sdk: ${{ matrix.sdk }}
+      - name: Install dependencies
+        run: dart pub get
+      - name: Publish - dry run
+        run: dart pub publish --dry-run --skip-validation
+      - name: Publish
+        run: dart pub publish -f
