@@ -1,0 +1,1 @@
+/Users/shegunmontcho/StudioProjects/opensi/kkiapay-flutter-sdk/example/build/app/intermediates/cxx/Debug/14h3ex5v/obj/x86

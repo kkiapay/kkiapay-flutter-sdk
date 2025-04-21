@@ -1,0 +1,2 @@
+/Users/shegunmontcho/StudioProjects/opensi/kkiapay-flutter-sdk/example/android/app/.cxx/Debug/14h3ex5v/armeabi-v7a/CMakeFiles/edit_cache.dir
+/Users/shegunmontcho/StudioProjects/opensi/kkiapay-flutter-sdk/example/android/app/.cxx/Debug/14h3ex5v/armeabi-v7a/CMakeFiles/rebuild_cache.dir
