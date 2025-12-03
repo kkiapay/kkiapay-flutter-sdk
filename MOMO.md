@@ -11,7 +11,7 @@ Mobile Money:
         phoneNumber: "229XXXXXXXX",
     );
 
-    PaymentCore.momoPay(
+    kkiapay.momoPay(
         paymentRequest: paymentRequest, /// required field
         eventsCallback: (Map<String, dynamic> object) { },/// required field
         mPublicApikey: "KKIAPAY_PUBLIC_API_KEY",
@@ -21,10 +21,8 @@ Mobile Money:
 ## Example
 
 ```dart
-
 import 'package:flutter/material.dart';
-import 'package:flutter_payment_core/flutter_payment_core.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:kkiapay_flutter_sdk/kkiapay_flutter_sdk.dart';
 
 void main() async {
   runApp(const MyApp());
@@ -56,7 +54,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  String status = "Click to pay";
+  String status = "Cliquez pour payer";
 
   @override
   Widget build(BuildContext context) {
@@ -70,50 +68,58 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(status, style: Theme.of(context).textTheme.headlineMedium),
+            SizedBox(height: 24,),
+            MaterialButton(
+              color: primaryColor,
+              padding: EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+              child: Text("MoMo Payment", style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 16
+              )),
+              onPressed: () {
+                setState(() {
+                  status = "On click";
+                });
+                var paymentRequest = PaymentRequest(
+                  amount: 1,
+                  country: "BJ",
+                  phoneNumber: "22901XXXXXXXX",
+                );
+                kkiapay.momoPay(
+                  paymentRequest: paymentRequest,
+                  eventsCallback: (Map<String, dynamic> object) {
+                    setState(() {
+                      status = object.toString();
+                    });
+
+                    switch ( object['status'] ) {
+                      case PENDING_PAYMENT:
+                      /// you may want to show a loading spinner
+                        debugPrint(PAYMENT_INIT);
+                        break;
+                      case PAYMENT_PROCESSING:
+                      /// only for orange money
+                        debugPrint(PAYMENT_PROCESSING);
+                        break;
+                      case PAYMENT_FAILED:
+                      /// you may want to show a failed payment message
+                        debugPrint(PAYMENT_FAILED);
+                        break;
+                      case PAYMENT_SUCCESS:
+                      /// you may want to show a success payment message
+                        debugPrint(PAYMENT_SUCCESS);
+                        break;
+                      default:
+                        debugPrint(UNKNOWN_EVENT);
+                        break;
+                    }
+
+                  },
+                  mPublicApikey: "KKIAPAY_PUBLIC_API_KEY",
+                );
+              },)
           ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          setState(() {
-            status = "On Click";
-          });
-          var paymentRequest = PaymentRequest(
-            amount: 1,
-            country: "BJ",
-            phoneNumber: "22961877882",
-          );
-          PaymentCore.momoPay(
-            paymentRequest: paymentRequest,
-            eventsCallback: (Map<String, dynamic> object) {
-              setState(() {
-                status = object.toString();
-              });
-
-              switch ( object['status'] ) {
-                case PENDING_PAYMENT:
-                  /// only for orange money
-                  debugPrint(PAYMENT_PROCESSING);
-                  break;
-                case PAYMENT_FAILED:
-                  /// you may want to show a failed payment message
-                  debugPrint(PAYMENT_FAILED);
-                  break;
-                case PAYMENT_SUCCESS:
-                  /// you may want to show a success payment message
-                  debugPrint(PAYMENT_SUCCESS);
-                  break;
-                default:
-                  debugPrint(UNKNOWN_EVENT);
-                  break;
-              }
-
-            },
-            mPublicApikey: "KKIAPAY_PUBLIC_API_KEY",
-          );
-        },
-        tooltip: 'Pay MoMo',
-        child: const Icon(Icons.payment),
       ),
     );
   }

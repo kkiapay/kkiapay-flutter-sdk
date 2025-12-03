@@ -1,3 +1,8 @@
+## 1.4.0-beta1
+
+- Init mobile money payment without kkiapay ui
+- Some @params are not required.
+
 ## 1.3.4
 
 - Update dependencies
