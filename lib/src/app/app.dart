@@ -1,13 +1,15 @@
 
+import 'package:kkiapay_flutter_sdk/src/features/withoutUI/methods/momo_payment_service.dart';
 import 'package:stacked/stacked_annotations.dart';
 import 'package:stacked_services/stacked_services.dart';
-import '../features/mobile/kkiapay.dart';
+import '../features/withUI/mobile/kkiapay.dart';
 
 @StackedApp(
   routes: [
     MaterialRoute(page: KKiaPay),
   ],
   dependencies: [
+    LazySingleton(classType: MoMoPaymentService),
     LazySingleton(classType: NavigationService),
     LazySingleton(classType: SnackbarService),
   ],

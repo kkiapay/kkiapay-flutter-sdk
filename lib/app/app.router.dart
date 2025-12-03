@@ -7,9 +7,10 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:flutter/material.dart' as _i3;
 import 'package:flutter/material.dart';
+import 'package:kkiapay_flutter_sdk/src/utils/config.dart' as _i4;
 import 'package:kkiapay_flutter_sdk/src/widget_builder_view.dart' as _i2;
 import 'package:stacked/stacked.dart' as _i1;
-import 'package:stacked_services/stacked_services.dart' as _i4;
+import 'package:stacked_services/stacked_services.dart' as _i5;
 
 class Routes {
   static const kKiaPay = '/k-kia-pay';
@@ -44,7 +45,8 @@ class StackedRouter extends _i1.RouterBase {
             sandbox: args.sandbox,
             theme: args.theme,
             countries: args.countries,
-            paymentMethods: args.paymentMethods),
+            paymentMethods: args.paymentMethods,
+            providers: args.providers),
         settings: data,
       );
     }
@@ -74,6 +76,7 @@ class KKiaPayArguments {
     this.theme,
     this.countries,
     this.paymentMethods,
+    this.providers,
   });
 
   final _i3.Key? key;
@@ -109,9 +112,11 @@ class KKiaPayArguments {
 
   final List<String>? paymentMethods;
 
+  final _i4.Providers? providers;
+
   @override
   String toString() {
-    return '{"key": "$key", "amount": "$amount", "reason": "$reason", "phone": "$phone", "name": "$name", "email": "$email", "data": "$data", "partnerId": "$partnerId", "callback": "$callback", "callbackUrl": "$callbackUrl", "apikey": "$apikey", "sandbox": "$sandbox", "theme": "$theme", "countries": "$countries", "paymentMethods": "$paymentMethods"}';
+    return '{"key": "$key", "amount": "$amount", "reason": "$reason", "phone": "$phone", "name": "$name", "email": "$email", "data": "$data", "partnerId": "$partnerId", "callback": "$callback", "callbackUrl": "$callbackUrl", "apikey": "$apikey", "sandbox": "$sandbox", "theme": "$theme", "countries": "$countries", "paymentMethods": "$paymentMethods", "providers": "$providers"}';
   }
 
   @override
@@ -131,7 +136,8 @@ class KKiaPayArguments {
         other.sandbox == sandbox &&
         other.theme == theme &&
         other.countries == countries &&
-        other.paymentMethods == paymentMethods;
+        other.paymentMethods == paymentMethods &&
+        other.providers == providers;
   }
 
   @override
@@ -150,11 +156,12 @@ class KKiaPayArguments {
         sandbox.hashCode ^
         theme.hashCode ^
         countries.hashCode ^
-        paymentMethods.hashCode;
+        paymentMethods.hashCode ^
+        providers.hashCode;
   }
 }
 
-extension NavigatorStateExtension on _i4.NavigationService {
+extension NavigatorStateExtension on _i5.NavigationService {
   Future<dynamic> navigateToKKiaPay({
     _i3.Key? key,
     required int amount,
@@ -174,6 +181,7 @@ extension NavigatorStateExtension on _i4.NavigationService {
     String? theme,
     List<String>? countries,
     List<String>? paymentMethods,
+    _i4.Providers? providers,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -196,7 +204,8 @@ extension NavigatorStateExtension on _i4.NavigationService {
             sandbox: sandbox,
             theme: theme,
             countries: countries,
-            paymentMethods: paymentMethods),
+            paymentMethods: paymentMethods,
+            providers: providers),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -222,6 +231,7 @@ extension NavigatorStateExtension on _i4.NavigationService {
     String? theme,
     List<String>? countries,
     List<String>? paymentMethods,
+    _i4.Providers? providers,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -244,7 +254,8 @@ extension NavigatorStateExtension on _i4.NavigationService {
             sandbox: sandbox,
             theme: theme,
             countries: countries,
-            paymentMethods: paymentMethods),
+            paymentMethods: paymentMethods,
+            providers: providers),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,

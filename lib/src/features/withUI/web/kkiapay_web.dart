@@ -3,9 +3,9 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 
-import '../../../kkiapay_flutter_sdk_platform_interface.dart';
-import '../../../kkiapay_flutter_sdk_web.dart';
-import '../../utils/config.dart';
+import '../../../../kkiapay_flutter_sdk_platform_interface.dart';
+import '../../../../kkiapay_flutter_sdk_web.dart';
+import '../../../utils/config.dart';
 import '../mobile/kkiapay.dart';
 
 class KKiaPayWeb extends KkiapayFlutterSdkPlatform {

@@ -2,8 +2,8 @@ import 'dart:async';
 import 'package:stacked/stacked.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
-import '../../utils/config.dart';
-import '../../utils/utils.dart';
+import '../../../utils/config.dart';
+import '../../../utils/utils.dart';
 
 class WidgetBuilderViewModel extends BaseViewModel {
   double _progression = 0.0;

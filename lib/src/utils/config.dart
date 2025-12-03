@@ -64,8 +64,8 @@ const PAYMENT_INIT = 'PAYMENT_INIT';
 const PAYMENT_ABORTED = 'PAYMENT_ABORTED';
 const PENDING_PAYMENT = 'PENDING_PAYMENT';
 const ON_USER_FEEDBACK = 'ON_USER_FEEDBACK';
-@Deprecated(
-    'We no longer send this event: in case of failure the client can either try again or cancel')
+//@Deprecated(
+  //  'We no longer send this event: in case of failure the client can either try again or cancel')
 const PAYMENT_FAILED = 'PAYMENT_FAILED';
 const PAYMENT_SUCCESS = 'PAYMENT_SUCCESS';
 const PAYMENT_CANCELLED = 'PAYMENT_CANCELLED';
@@ -74,6 +74,11 @@ const RETRY_PAYMENT = 'RETRY_PAYMENT';
 const UNKNOWN_EVENT = 'UNKNOWN_EVENT';
 
 const WAVE_LINK = 'WAVE_LINK';
+
+const INSTANCE_SUCCESSFULLY_DESTROYED = 'WIDGET_SUCCESSFULLY_DESTROYED';
+const PAYMENT_PROCESSING = 'PAYMENT_ABORTED';
+const NOT_FOUND = 'NOT_FOUND';
+
 
 class SdkData {
   SdkData({

@@ -10,6 +10,8 @@ import 'package:stacked_services/src/navigation/navigation_service.dart';
 import 'package:stacked_services/src/snackbar/snackbar_service.dart';
 import 'package:stacked_shared/stacked_shared.dart';
 
+import '../src/features/withoutUI/methods/momo_payment_service.dart';
+
 final locator = StackedLocator.instance;
 
 Future<void> setupLocator({
@@ -21,6 +23,7 @@ Future<void> setupLocator({
       environment: environment, environmentFilter: environmentFilter);
 
 // Register dependencies
+  locator.registerLazySingleton(() => MoMoPaymentService());
   locator.registerLazySingleton(() => NavigationService());
   locator.registerLazySingleton(() => SnackbarService());
 }
