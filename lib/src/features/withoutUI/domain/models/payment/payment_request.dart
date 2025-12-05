@@ -14,6 +14,7 @@ class PaymentRequest {
   String phoneNumber;
   @JsonKey(name: 'fullname')
   String fullName = "";
+  String partnerId = "";
   String reason = "";
   String stateData = "";
 
@@ -28,6 +29,7 @@ class PaymentRequest {
     required this.phoneNumber,
     this.fullName = "",
     this.reason = "",
+    this.partnerId = "",
     this.stateData = "",
   });
 

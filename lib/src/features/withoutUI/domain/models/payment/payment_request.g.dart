@@ -18,6 +18,7 @@ PaymentRequest _$PaymentRequestFromJson(Map<String, dynamic> json) =>
       phoneNumber: json['phoneNumber'] as String,
       fullName: json['fullname'] as String? ?? "",
       reason: json['reason'] as String? ?? "",
+      partnerId: json['partnerId'] as String? ?? "",
       stateData: json['stateData'] as String? ?? "",
     );
 
@@ -32,6 +33,7 @@ Map<String, dynamic> _$PaymentRequestToJson(PaymentRequest instance) =>
       'lastname': instance.lastname,
       'phoneNumber': instance.phoneNumber,
       'fullname': instance.fullName,
+      'partnerId': instance.partnerId,
       'reason': instance.reason,
       'stateData': instance.stateData,
     };

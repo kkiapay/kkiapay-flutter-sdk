@@ -1,3 +1,7 @@
+## 1.4.0-beta2
+
+- Update readme.md
+
 ## 1.4.0-beta1
 
 - Init mobile money payment without kkiapay ui
