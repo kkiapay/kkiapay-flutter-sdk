@@ -179,6 +179,7 @@ class _MyHomePageState extends State<MyHomePage> {
 <tr><td>fullName</td><td>String</td><td>No</td><td>Client firstname and lastname </td></tr>
 <tr><td>reason</td><td>String</td><td>No</td><td>Your transaction reason </td></tr>
 <tr><td>country</td><td>String</td><td>No</td><td>Set payment country ex: "CI" </td></tr>
+<tr><td>partnerId</td><td>String</td><td>No</td><td>Add a partner id to find transaction" </td></tr>
 </table>
 
 ```dart
